@@ -1,0 +1,33 @@
+---
+import HaikuSection from "@haiku/haiku-section.astro";
+---
+
+<HaikuSection>
+	<div class="relative bg-delft_blue h-full rounded-tablet">
+		<div class="absolute h-full w-full" container-bg-origamis></div>
+		<div class="flex flex-col items-center h-full">
+			<div class="grow"></div>
+			<div class="relative z-10 prose prose-p:text-atomic_tangerine prose-p:font-bold">
+				<slot />
+			</div>
+			<div class="grow-[2]"></div>
+		</div>
+	</div>
+	<script>
+		import { Engine } from "@utils/matterjs/engine";
+		import { createBodies } from "./bodies";
+		import { createCanvas } from "@utils/matterjs/canvas";
+
+		const containers = document.querySelectorAll(`[container-bg-origamis]`);
+		containers.forEach((container) => {
+			const canvas = createCanvas({ container });
+			const bodies = createBodies(canvas);
+			const engine = new Engine({
+				canvas,
+				bodies,
+			});
+
+			engine.run();
+		});
+	</script>
+</HaikuSection>

@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/haikus-layout.astro";
+import Linc from "./icons/linternaC.astro";
+---
+<Layout>
+    <div class="fixed -z-10 h-screen flex justify-center items-center w-screen">
+        <Linc />
+    </div>
+    <div class="h-screen flex justify-center items-center w-screen">
+        <slot />
+    </div>
+</Layout>

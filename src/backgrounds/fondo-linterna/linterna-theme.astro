@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/haikus-layout.astro";
+import Lint from "./icons/Linterna.astro";
+---
+
+<Layout>
+    <div class="absolute left-0 top-0">
+        <Lint />
+    </div>
+    <div class="absolute top-0 right-0">
+        <Lint />
+    </div>
+    <div class="flex justify-center items-center absolute inset-0">
+        <slot />
+    </div>
+</Layout>

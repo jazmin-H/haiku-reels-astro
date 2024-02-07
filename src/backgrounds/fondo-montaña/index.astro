@@ -1,0 +1,15 @@
+---
+import HaikuSection from "../../haiku/haiku-section.astro";
+import Montana from "./icons/montana.astro";
+---
+
+<HaikuSection>
+  <div class="bg-delft_blue h-full tablet:rounded-tablet">
+    <div class="flex justify-center items-center h-full">
+      <div class="prose prose-p:text-atomic_tangerine">
+        <slot />
+      </div>
+      <Montana/>
+    </div>
+  </div>
+</HaikuSection>

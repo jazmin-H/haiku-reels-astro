@@ -1,0 +1,23 @@
+---
+import Layouts from "@layouts/haikus-layout.astro";
+import Haiku from "@haiku/haiku.astro";
+---
+
+<style>
+  #frame {
+    background-color: #494949;
+    opacity: 1;
+    background-image: radial-gradient(#f4e9dc 0.45px, #494949 0.45px);
+    background-size: 9px 9px;
+  }
+</style>
+
+<Layouts>
+  <div
+    class="bg-dark h-screen rounded-lg flex items-center justify-center flex-col"
+  >
+    <Haiku />
+
+    <div class="bg-primary h-[20vh] w-[20vh] rounded-full"></div>
+  </div>
+</Layouts>

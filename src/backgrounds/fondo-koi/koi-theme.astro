@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/haikus-layout.astro";
+import Koi from "./icons/koi.astro";
+---
+<Layout>
+    <div class="fixed -z-10 h-screen flex justify-center items-center">
+        <Koi />
+    </div>
+    <div class="h-screen flex justify-center items-center">
+       <slot/>
+    </div>
+</Layout>

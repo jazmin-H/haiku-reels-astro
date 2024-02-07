@@ -1,0 +1,26 @@
+---
+import Layouts from "../../layouts/haikus-layout.astro";
+import Laguna from "./icons/laguna.astro";
+import Cat from "./icons/gato1.astro";
+import Cat1 from "./icons/gato2.astro";
+---
+
+<Layouts>
+  <div class="fixed -z-10 h-screen flex justify-center items-center">
+    <Laguna />
+  </div>
+  <div class="h-screen flex justify-center items-center">
+    <slot />
+  </div>
+
+  <div class="flex justify-between">
+    <div class="absolute bottom-0 right-0">
+      <Cat />
+    </div>
+  </div>
+  <div class="flex justify-between">
+    <div class="absolute bottom-0 left-0">
+      <Cat1 />
+    </div>
+  </div>
+</Layouts>

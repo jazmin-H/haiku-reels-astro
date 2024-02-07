@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/haikus-layout.astro";
+import Paraguas from "./icons/paraguas.astro";
+---
+
+<Layout>
+    <div class="justify-items-start h-screen">
+        <Paraguas />
+    </div>
+    <div class="h-screen flex justify-center items-center w-screen">
+        <slot />
+    </div>
+    <div class="flex justify-end">
+        <Paraguas />
+    </div>
+</Layout>
