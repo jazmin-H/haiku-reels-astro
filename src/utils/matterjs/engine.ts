@@ -44,7 +44,7 @@ export class Engine {
 		};
 	}
 
-	run() {
+	run(): void {
 		Matter.Render.run(this.props.render);
 		Matter.Runner.run(this.props.runner, this.props.engine);
 	}
