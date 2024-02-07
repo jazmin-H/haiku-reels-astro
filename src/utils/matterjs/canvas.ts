@@ -3,11 +3,7 @@ export interface ICanvasBounds {
 	height: number;
 }
 
-interface IProps {
-	container: Element;
-}
-
-export const createCanvas = ({ container }: IProps): HTMLCanvasElement => {
+export const createCanvasByContainer = (container: Element): HTMLCanvasElement => {
 	const size = container.getBoundingClientRect();
 	const canvas = document.createElement("canvas");
 	canvas.width = size.width;

@@ -16,11 +16,11 @@ import HaikuSection from "@haiku/haiku-section.astro";
 	<script>
 		import { Engine } from "@utils/matterjs/engine";
 		import { createBodies } from "./bodies";
-		import { createCanvas } from "@utils/matterjs/canvas";
+		import { createCanvasByContainer } from "@utils/matterjs/canvas";
 
 		const containers = document.querySelectorAll(`[container-bg-origamis]`);
 		containers.forEach((container) => {
-			const canvas = createCanvas({ container });
+			const canvas = createCanvasByContainer(container);
 			const bodies = createBodies(canvas);
 			const engine = new Engine({
 				canvas,

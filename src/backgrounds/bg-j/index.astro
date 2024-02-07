@@ -13,12 +13,12 @@ import HaikuSection from "@haiku/haiku-section.astro";
 	</div>
 	<script>
 		import { createBodies } from "./bodies";
-		import { createCanvas } from "@utils/matterjs/canvas";
+		import { createCanvasByContainer } from "@utils/matterjs/canvas";
 		import { Engine } from "@utils/matterjs/engine";
 
 		const containers = document.querySelectorAll(`[container-bg-j]`);
 		containers.forEach((container) => {
-			const canvas = createCanvas({ container });
+			const canvas = createCanvasByContainer(container);
 			const bodies = createBodies(canvas);
 			const engine = new Engine({
 				canvas,
