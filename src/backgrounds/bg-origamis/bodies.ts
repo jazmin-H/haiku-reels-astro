@@ -1,6 +1,7 @@
 import { Bodies, Common } from "matter-js";
 import { createRectangle } from "@utils/matterjs/bodies";
 import type { ICanvasBounds } from "@utils/matterjs/canvas";
+import { SITE_URL } from "@config/consts";
 
 interface IOrigami {
 	x: number;
@@ -13,7 +14,7 @@ const createOrigami = ({ x, y, size }: IOrigami): Matter.Body => {
 	return Bodies.circle(x, y, size / 2, {
 		render: {
 			sprite: {
-				texture: "haikus-etec/imgs/origami.png",
+				texture: `${SITE_URL}/imgs/origami.png`,
 				xScale: size / DIM_ORIGAMI_PNG,
 				yScale: size / DIM_ORIGAMI_PNG,
 			},
