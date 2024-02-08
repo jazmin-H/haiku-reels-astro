@@ -1,4 +1,4 @@
-import { circle, rectangle } from "@utils/matterjs/bodies";
+import { createCircle, createRectangle } from "@utils/matterjs/bodies";
 import type { ICanvasBounds } from "@utils/matterjs/canvas";
 
 import {
@@ -9,7 +9,7 @@ import {
 
 export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 	const wight = 10;
-	const floor = rectangle({
+	const floor = createRectangle({
 		x: bounds.width / 2,
 		y: bounds.height,
 		width: bounds.width,
@@ -17,7 +17,7 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		fillColor: "transparent",
 		isStatic: true,
 	});
-	const leftWall = rectangle({
+	const leftWall = createRectangle({
 		x: 0,
 		y: bounds.height / 2,
 		width: wight,
@@ -25,7 +25,7 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		fillColor: "transparent",
 		isStatic: true,
 	});
-	const rightWall = rectangle({
+	const rightWall = createRectangle({
 		x: bounds.width,
 		y: bounds.height / 2,
 		width: wight,
@@ -34,20 +34,20 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		isStatic: true,
 	});
 	const delta = 500;
-	const bar = rectangle({
+	const bar = createRectangle({
 		x: bounds.width / 2,
 		y: 0 - delta,
 		width: bounds.width - wight,
 		height: bounds.height * 0.1,
 		fillColor: quinacridoneMagentaColor,
 	});
-	const disco = circle({
+	const disco = createCircle({
 		x: bounds.width / 4,
 		y: bounds.height / 2 - delta,
 		radio: bounds.width / 4 - wight,
 		fillColor: brightPinkCrayolaColor,
 	});
-	const column = rectangle({
+	const column = createRectangle({
 		x: bounds.width * 0.75,
 		y: bounds.height / 2 - delta,
 		width: bounds.width / 2 - 2 * wight,

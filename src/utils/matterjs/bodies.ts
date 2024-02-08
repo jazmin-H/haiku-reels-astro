@@ -7,7 +7,7 @@ interface ICircle {
 	fillColor: string;
 }
 
-export const circle = ({ x, y, radio, fillColor }: ICircle): Matter.Body =>
+export const createCircle = ({ x, y, radio, fillColor }: ICircle): Matter.Body =>
 	Bodies.circle(x, y, radio, { render: { fillStyle: fillColor } });
 
 interface IRectangle {
@@ -19,7 +19,7 @@ interface IRectangle {
 	isStatic?: boolean;
 }
 
-export const rectangle = ({
+export const createRectangle = ({
 	x,
 	y,
 	width,
