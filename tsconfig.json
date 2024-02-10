@@ -8,7 +8,7 @@
 			"@config/*": ["src/config/*"],
 			"@content/*": ["src/content/*"],
 			"@backgrounds/*": ["src/backgrounds/*"],
-			"@haiku/*": ["src/haiku/*"],
+			"@components/*": ["src/components/*"],
 			"@utils/*": ["src/utils/*"]
 		}
 	}
