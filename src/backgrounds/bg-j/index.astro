@@ -25,7 +25,9 @@ import HaikuSection from "@components/haiku-section.astro";
 				bodies,
 			});
 
-			engine.run();
+			canvas.addEventListener("mouseover", () => {
+				engine.run();
+			});
 		});
 	</script>
 </HaikuSection>
