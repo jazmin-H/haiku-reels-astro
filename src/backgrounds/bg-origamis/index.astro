@@ -16,7 +16,7 @@ import HaikuSection from "@components/haiku-section.astro";
 	<script>
 		import { Engine } from "@utils/matterjs/engine";
 		import { createBodies } from "./bodies";
-		import { createCanvasByContainer } from "@utils/matterjs/canvas";
+		import { createCanvasByContainer, whenCanvasIsVisible } from "@utils/matterjs/canvas";
 
 		const containers = document.querySelectorAll(`[container-bg-origamis]`);
 		containers.forEach((container) => {
@@ -27,7 +27,10 @@ import HaikuSection from "@components/haiku-section.astro";
 				bodies,
 			});
 
-			engine.run();
+			whenCanvasIsVisible({
+				canvas,
+				callback: (): void => engine.run(),
+			});
 		});
 	</script>
 </HaikuSection>

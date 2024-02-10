@@ -13,7 +13,7 @@ import HaikuSection from "@components/haiku-section.astro";
 	</div>
 	<script>
 		import { createBodies } from "./bodies";
-		import { createCanvasByContainer } from "@utils/matterjs/canvas";
+		import { createCanvasByContainer, whenCanvasIsVisible } from "@utils/matterjs/canvas";
 		import { Engine } from "@utils/matterjs/engine";
 
 		const containers = document.querySelectorAll(`[container-bg-j]`);
@@ -24,9 +24,9 @@ import HaikuSection from "@components/haiku-section.astro";
 				canvas,
 				bodies,
 			});
-
-			canvas.addEventListener("mouseover", () => {
-				engine.run();
+			whenCanvasIsVisible({
+				canvas,
+				callback: (): void => engine.run(),
 			});
 		});
 	</script>

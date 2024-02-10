@@ -33,7 +33,8 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		fillColor: "transparent",
 		isStatic: true,
 	});
-	const delta = 500;
+
+	const delta = 750;
 	const bar = createRectangle({
 		x: bounds.width / 2,
 		y: 0 - delta,

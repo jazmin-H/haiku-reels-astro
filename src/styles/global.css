@@ -10,3 +10,7 @@ body {
 ::-webkit-scrollbar {
 	width: 0;
 }
+
+p {
+	user-select: none;
+}
