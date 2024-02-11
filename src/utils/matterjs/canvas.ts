@@ -11,28 +11,3 @@ export const createCanvasByContainer = (container: Element): HTMLCanvasElement =
 	container.appendChild(canvas);
 	return canvas;
 };
-
-interface ICallbackOnCanvas {
-	canvas: HTMLCanvasElement;
-	callback: () => void;
-}
-
-export const whenCanvasIsVisible = ({ canvas, callback }: ICallbackOnCanvas): void => {
-	document.addEventListener("DOMContentLoaded", () => {
-		const bottomCanvas = canvas.getBoundingClientRect().bottom;
-		const bottomWindow = window.innerHeight;
-		if (bottomWindow > bottomCanvas) {
-			callback();
-		}
-	});
-
-	const container = document.getElementById("haikus-container");
-	container?.addEventListener("scrollend", () => {
-		const rectCanvas = canvas.getBoundingClientRect();
-		const bottomCanvas = rectCanvas.bottom;
-		const positionView = container.scrollTop;
-		if (positionView > bottomCanvas) {
-			callback();
-		}
-	});
-};

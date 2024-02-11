@@ -2,42 +2,27 @@
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config/consts";
 
 export interface Props {
-  title?: string;
-  description?: string;
+	title?: string;
+	description?: string;
 }
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION }: Props =
-  Astro.props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION }: Props = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <!-- Primary Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href={SITE_URL + "/apple-touch-icon.png"}
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href={SITE_URL + "/favicon-32x32.png"}
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href={SITE_URL + "/favicon-16x16.png"}
-    />
-    <link rel="manifest" href={SITE_URL + "/site.webmanifest"} />
-  </head>
-  <body class="bg-burnt_sienna"><slot /></body>
+	<head>
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href={SITE_URL + "/apple-touch-icon.png"} />
+		<link rel="icon" type="image/png" sizes="32x32" href={SITE_URL + "/favicon-32x32.png"} />
+		<link rel="icon" type="image/png" sizes="16x16" href={SITE_URL + "/favicon-16x16.png"} />
+		<link rel="manifest" href={SITE_URL + "/site.webmanifest"} />
+	</head>
+	<body class="bg-burnt_sienna"><slot /></body>
 </html>

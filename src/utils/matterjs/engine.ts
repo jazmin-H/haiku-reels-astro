@@ -6,6 +6,7 @@ interface IEngineProps {
 	render: Matter.Render;
 	engine: Matter.Engine;
 	runner: Matter.Runner;
+	observer?: IntersectionObserver;
 }
 
 interface IEngineConstructorProps {
@@ -47,5 +48,29 @@ export class Engine {
 	run(): void {
 		Matter.Render.run(this.props.render);
 		Matter.Runner.run(this.props.runner, this.props.engine);
+	}
+
+	stop(): void {
+		Matter.Render.stop(this.props.render);
+		Matter.Runner.stop(this.props.runner);
+	}
+
+	runWhenCanvasIsVisible(): void {
+		const options: IntersectionObserverInit = {
+			root: document.getElementById("haikus-container"),
+			rootMargin: "0px",
+			threshold: 1.0,
+		};
+		const checkEntries = (entries: IntersectionObserverEntry[]): void => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					this.run();
+				} else {
+					this.stop();
+				}
+			});
+		};
+		this.props.observer = new IntersectionObserver(checkEntries, options);
+		this.props.observer.observe(this.props.canvas);
 	}
 }

@@ -13,7 +13,7 @@ import HaikuSection from "@components/haiku-section.astro";
 	</div>
 	<script>
 		import { createBodies } from "./bodies";
-		import { createCanvasByContainer, whenCanvasIsVisible } from "@utils/matterjs/canvas";
+		import { createCanvasByContainer } from "@utils/matterjs/canvas";
 		import { Engine } from "@utils/matterjs/engine";
 
 		const containers = document.querySelectorAll(`[container-bg-j]`);
@@ -24,10 +24,8 @@ import HaikuSection from "@components/haiku-section.astro";
 				canvas,
 				bodies,
 			});
-			whenCanvasIsVisible({
-				canvas,
-				callback: (): void => engine.run(),
-			});
+
+			engine.runWhenCanvasIsVisible();
 		});
 	</script>
 </HaikuSection>
