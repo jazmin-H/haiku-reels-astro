@@ -55,7 +55,7 @@ export class Engine {
 		Matter.Runner.stop(this.props.runner);
 	}
 
-	runWhenCanvasIsVisible(): void {
+	start(): void {
 		const options: IntersectionObserverInit = {
 			root: document.getElementById("haikus-container"),
 			rootMargin: "0px",
