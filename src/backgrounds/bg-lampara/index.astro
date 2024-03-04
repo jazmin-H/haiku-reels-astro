@@ -1,0 +1,17 @@
+---
+import HaikuSection from "../../components/haiku-section.astro";
+import Ave from "./icons/edificio.astro";
+import Templo from "./icons/lampara.astro";
+import Montania from "./icons/nube.astro";
+---
+
+<HaikuSection>
+    <div class="bg-gradient-to-b from-delft_blue to-quinacridone_magenta h-full tablet:rounded-tablet overflow-hidden">
+      <div class="relative h-full">
+        <div class="absolute prose prose-p:text-atomic_tangerine  prose-p:font-bold m-3">
+          <slot />
+        </div>
+        <div class="h-40 w-40 rounded-full bg-bright_pink_crayola"></div>
+      </div>
+    </div>
+  </HaikuSection>
