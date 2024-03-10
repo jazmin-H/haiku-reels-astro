@@ -26,6 +26,9 @@ module.exports = {
 			screens: {
 				tablet: "28rem",
 			},
+			boxShadow: {
+				"3xl": "5px 35px 60px -15px rgba(0, 0, 0 )",
+			},
 		},
 	},
 	plugins: [require("@tailwindcss/typography")],
