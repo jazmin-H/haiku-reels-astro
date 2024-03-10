@@ -1,5 +1,8 @@
 ---
 import HaikuSection from "@components/haiku-section.astro";
+import type { Props } from "@backgrounds/interfaces";
+
+const { autoria = "Mai Ledesma" } = Astro.props;
 ---
 
 <HaikuSection>
@@ -7,9 +10,15 @@ import HaikuSection from "@components/haiku-section.astro";
 		<div class="absolute h-full w-full" container-bg-origamis></div>
 		<div class="flex flex-col items-center h-full">
 			<div class="grow"></div>
-			<div class="relative z-10 prose prose-p:text-atomic_tangerine prose-p:font-bold">
+			<div
+				class="relative z-10 prose prose-p:text-atomic_tangerine prose-p:font-bold prose-p:text-4xl"
+			>
 				<slot />
 			</div>
+			<address class="text-atomic_tangerine">
+				By <a rel="author" href="/author/john-doe">{autoria}</a>
+			</address>
+			<!-- < !-- on <time pubdate datetime="2011-08-28" title="August 28th, 2011">8/28/11</time> -->
 			<div class="grow-[2]"></div>
 		</div>
 	</div>

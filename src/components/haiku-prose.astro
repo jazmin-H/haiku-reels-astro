@@ -1,0 +1,18 @@
+---
+export interface Props {
+	autoria: string;
+	pubDate?: string;
+	anio?: string;
+	escuela?: string;
+	curso?: string;
+}
+
+const { autoria } = Astro.props;
+---
+
+<div class="relative z-10 prose prose-p:text-atomic_tangerine prose-p:font-bold prose-p:text-4xl">
+	<slot />
+</div>
+<address class="text-atomic_tangerine">
+	Por <a rel="author" href="/author/john-doe">{autoria}</a>
+</address>
