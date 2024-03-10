@@ -21,9 +21,10 @@ const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.
 		{
 			haikusRenders.map(({ Content }, index) => {
 				const Background = backgrounds[index % backgrounds.length];
+				const { autoria, pubDate } = haikus[index].data;
 				return (
 					<Background>
-						<HaikuProse autoria={haikus[index].data.autoria}>
+						<HaikuProse autoria={autoria} pubDate={pubDate}>
 							<Content />
 						</HaikuProse>
 					</Background>

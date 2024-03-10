@@ -1,22 +1,25 @@
 ---
 export interface Props {
 	autoria: string;
-	pubDate?: string;
+	pubDate: Date;
 	anio?: string;
 	escuela?: string;
 	curso?: string;
 }
 
-const { autoria } = Astro.props;
+const { autoria, pubDate } = Astro.props;
 ---
 
 <div class="flex">
-	<div class="m-4">
+	<div class="m-4 text-atomic_tangerine">
 		<div class="prose prose-p:text-atomic_tangerine prose-p:font-bold prose-p:text-4xl mb-4">
 			<slot />
 		</div>
-		<address class="text-atomic_tangerine">
-			Por <a rel="author" href="/author/john-doe">{autoria}</a>
+		<address class="inline">
+			Por <a rel="author" href="/author/john-doe">{autoria}</a> -
 		</address>
+		<time class="italic" datetime={pubDate.toDateString()} title={pubDate.toDateString()}
+			>{pubDate.toLocaleDateString()}</time
+		>
 	</div>
 </div>
