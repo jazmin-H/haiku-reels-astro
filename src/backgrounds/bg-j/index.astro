@@ -1,17 +1,12 @@
 ---
 import HaikuSection from "@components/haiku-section.astro";
-import type { Props } from "@backgrounds/interfaces";
-
-const { autoria } = Astro.props;
 ---
 
 <HaikuSection>
 	<div class="relative h-full">
 		<div class="absolute h-full w-full" container-bg-j></div>
-		<div class="flex justify-start items-start h-full">
-			<div class="relative z-10 prose prose-p:text-atomic_tangerine m-4 prose-p:font-bold">
-				<slot />
-			</div>
+		<div class="relative z-10">
+			<slot />
 		</div>
 	</div>
 	<script>

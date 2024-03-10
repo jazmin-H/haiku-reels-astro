@@ -10,9 +10,13 @@ export interface Props {
 const { autoria } = Astro.props;
 ---
 
-<div class="relative z-10 prose prose-p:text-atomic_tangerine prose-p:font-bold prose-p:text-4xl">
-	<slot />
+<div class="flex">
+	<div class="m-4">
+		<div class="prose prose-p:text-atomic_tangerine prose-p:font-bold prose-p:text-4xl mb-4">
+			<slot />
+		</div>
+		<address class="text-atomic_tangerine">
+			Por <a rel="author" href="/author/john-doe">{autoria}</a>
+		</address>
+	</div>
 </div>
-<address class="text-atomic_tangerine">
-	Por <a rel="author" href="/author/john-doe">{autoria}</a>
-</address>

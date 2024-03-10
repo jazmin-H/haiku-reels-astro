@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 
+import HaikuProse from "@components/haiku-prose.astro";
 import HtmlLayout from "@layouts/basic-layout.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
 import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
@@ -22,7 +23,9 @@ const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.
 				const Background = backgrounds[index % backgrounds.length];
 				return (
 					<Background>
-						<Content />
+						<HaikuProse autoria={haikus[index].data.autoria}>
+							<Content />
+						</HaikuProse>
 					</Background>
 				);
 			})
