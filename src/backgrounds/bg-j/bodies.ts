@@ -34,23 +34,23 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		isStatic: true,
 	});
 
-	const delta = 750;
+	const DELTA = 750;
 	const bar = createRectangle({
 		x: bounds.width / 2,
-		y: 0 - delta,
+		y: 0 - DELTA,
 		width: bounds.width - wight,
 		height: bounds.height * 0.1,
 		fillColor: quinacridoneMagentaColor,
 	});
 	const disco = createCircle({
 		x: bounds.width / 4,
-		y: bounds.height / 2 - delta,
+		y: bounds.height / 2 - DELTA,
 		radio: bounds.width / 4 - wight,
 		fillColor: brightPinkCrayolaColor,
 	});
 	const column = createRectangle({
 		x: bounds.width * 0.75,
-		y: bounds.height / 2 - delta,
+		y: bounds.height / 2 - DELTA,
 		width: bounds.width / 2 - 2 * wight,
 		height: bounds.height - bounds.height / 4,
 		fillColor: atomicTangerineColor,

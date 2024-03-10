@@ -69,9 +69,7 @@ export class Engine {
 				}
 			});
 		};
-		// this.props.observer = new IntersectionObserver(checkEntries, options);
-		// this.props.observer.observe(this.props.canvas);
-    const observer = new IntersectionObserver(checkEntries, options)
-    observer.observe(this.props.canvas)
+		const observer = new IntersectionObserver(checkEntries, options);
+		observer.observe(this.props.canvas);
 	}
 }
