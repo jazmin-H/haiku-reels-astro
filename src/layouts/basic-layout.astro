@@ -23,6 +23,8 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION }: Props = Astro.prop
 		<link rel="icon" type="image/png" sizes="32x32" href={SITE_URL + "/favicon-32x32.png"} />
 		<link rel="icon" type="image/png" sizes="16x16" href={SITE_URL + "/favicon-16x16.png"} />
 		<link rel="manifest" href={SITE_URL + "/site.webmanifest"} />
+		<!-- theme color for mobile -->
+		<meta name="theme-color" content="#41436aff" />
 	</head>
 	<body class="bg-delft_blue tablet:bg-burnt_sienna"><slot /></body>
 </html>
