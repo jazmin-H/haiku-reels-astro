@@ -11,7 +11,7 @@ import BgLampara from "@backgrounds/bg-lampara/index.astro";
 import { getCollection } from "astro:content";
 
 // const backgrounds = [BgOrigamis,BgJ,BgM,BgLampara];
-const backgrounds = [BgOrigamis, BgJ];
+const backgrounds = [BgM, BgOrigamis, BgJ];
 const haikus = await getCollection("haikus");
 const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---

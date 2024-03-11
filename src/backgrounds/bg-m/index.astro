@@ -1,35 +1,38 @@
 ---
 import HaikuSection from "@components/haiku-section.astro";
-import Ave from "./icons/ave.astro";
-import Templo from "./icons/templo.astro";
-import Montania from "./icons/montaña.astro";
-import MontaniaDos from "./icons/montañaDos.astro";
 ---
 
 <HaikuSection>
-	<div class="bg-atomic_tangerine h-full tablet:rounded-tablet overflow-hidden">
-		<div class="relative h-full">
-			<div class="absolute -right-20 -top-16">
-				<div class="h-52 w-52 rounded-full bg-bright_pink_crayola"></div>
-			</div>
-			<div class="absolute right-20 top-20">
-				<Ave />
-			</div>
-			<div class="absolute right-5 top-24">
-				<Ave />
-			</div>
-			<div class="absolute -left-5 bottom-16">
-				<MontaniaDos />
-			</div>
-			<div class="absolute -bottom-36 -left-24">
-				<Montania />
-			</div>
-			<div class="absolute -left-80">
-				<Templo />
-			</div>
-			<div class="absolute prose prose-p:text-delft_blue prose-p:font-bold m-3">
-				<slot />
-			</div>
+	<div class="relative h-full">
+		<div class="absolute h-full w-full" container-bg-templo></div>
+		<div class="relative z-10">
+			<slot />
 		</div>
 	</div>
+	<script>
+		import { createBodies } from "./bodies";
+		import { createCanvasByContainer } from "@utils/matterjs/canvas";
+		import { Engine } from "@utils/matterjs/engine";
+		import Matter from "matter-js";
+
+		const containers = document.querySelectorAll(`[container-bg-templo]`);
+		containers.forEach((container) => {
+			const canvas = createCanvasByContainer(container);
+			const bodies = createBodies(canvas);
+			const updateEngine = Matter.Engine.create();
+			const engine = new Engine({
+				canvas,
+				bodies,
+				engine: updateEngine,
+			});
+
+			Matter.Events.on(updateEngine, "beforeUpdate", () => {
+				bodies.forEach((bodie) => {
+					Matter.Body.setVelocity(bodie, { x: 0, y: -0.3 });
+				});
+			});
+
+			engine.start();
+		});
+	</script>
 </HaikuSection>

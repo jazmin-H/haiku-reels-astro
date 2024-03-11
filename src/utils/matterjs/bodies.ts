@@ -1,4 +1,5 @@
-import { Bodies } from "matter-js";
+import { createBodies } from "@backgrounds/bg-j/bodies";
+import { Bodies, Composites } from "matter-js";
 
 interface ICircle {
 	x: number;
@@ -31,3 +32,44 @@ export const createRectangle = ({
 		isStatic,
 		render: { fillStyle: fillColor },
 	});
+
+interface ITrapezoid {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+	slope: number;
+	fillColor: string;
+	isStatic?: boolean;
+}
+
+export const createTrapezoid = ({
+	x,
+	y,
+	width,
+	height,
+	slope,
+	fillColor,
+	isStatic,
+}: ITrapezoid): Matter.Body =>
+	Bodies.trapezoid(x, y, width, height, slope, { isStatic, render: { fillStyle: fillColor } });
+
+interface IBodiesStacks {
+	x: number;
+	y: number;
+	rows?: number;
+	columns?: number;
+	columnGap?: number;
+	rowGap?: number;
+	create: (x: number, y: number) => Matter.Body;
+}
+
+export const createBodiesStacks = ({
+	x,
+	y,
+	rows = 1,
+	columns = 1,
+	columnGap = 0,
+	rowGap = 0,
+	create,
+}: IBodiesStacks) => Composites.stack(x, y, columns, rows, columnGap, rowGap, create);
