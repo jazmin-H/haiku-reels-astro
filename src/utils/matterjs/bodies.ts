@@ -1,4 +1,3 @@
-import { createBodies } from "@backgrounds/bg-j/bodies";
 import { Bodies, Composites } from "matter-js";
 
 interface ICircle {
@@ -72,4 +71,4 @@ export const createBodiesStacks = ({
 	columnGap = 0,
 	rowGap = 0,
 	create,
-}: IBodiesStacks) => Composites.stack(x, y, columns, rows, columnGap, rowGap, create);
+}: IBodiesStacks): Composites => Composites.stack(x, y, columns, rows, columnGap, rowGap, create);
