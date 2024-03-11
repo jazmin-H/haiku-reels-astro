@@ -6,12 +6,11 @@ import HtmlLayout from "@layouts/basic-layout.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
 import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
 import BgJ from "@backgrounds/bg-j/index.astro";
-import BgM from "@backgrounds/bg-m/index.astro";
-import BgLampara from "@backgrounds/bg-lampara/index.astro";
+import BgTemplo from "@backgrounds/bg-templo/index.astro";
+import BgLamparas from "@backgrounds/bg-lampara/index.astro";
 import { getCollection } from "astro:content";
 
-// const backgrounds = [BgOrigamis,BgJ,BgM,BgLampara];
-const backgrounds = [BgM, BgOrigamis, BgJ];
+const backgrounds = [BgLamparas, BgTemplo, BgOrigamis, BgJ];
 const haikus = await getCollection("haikus");
 const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---

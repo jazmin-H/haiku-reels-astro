@@ -17,6 +17,7 @@ interface IRectangle {
 	height: number;
 	fillColor: string;
 	isStatic?: boolean;
+	angle?: number;
 }
 
 export const createRectangle = ({
@@ -26,10 +27,12 @@ export const createRectangle = ({
 	height,
 	fillColor,
 	isStatic = false,
+	angle = 0,
 }: IRectangle): Matter.Body =>
 	Bodies.rectangle(x, y, width, height, {
 		isStatic,
 		render: { fillStyle: fillColor },
+		angle,
 	});
 
 interface ITrapezoid {

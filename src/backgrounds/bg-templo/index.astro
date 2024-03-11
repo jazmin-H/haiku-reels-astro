@@ -27,8 +27,8 @@ import HaikuSection from "@components/haiku-section.astro";
 			});
 
 			Matter.Events.on(updateEngine, "beforeUpdate", () => {
-				bodies.forEach((bodie) => {
-					Matter.Body.setVelocity(bodie, { x: 0, y: -0.3 });
+				bodies.forEach((body) => {
+					Matter.Body.setVelocity(body, { x: 0, y: -0.3 });
 				});
 			});
 

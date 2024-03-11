@@ -1,55 +1,36 @@
 ---
 import HaikuSection from "@components/haiku-section.astro";
-import Edificio from "./icons/edificio.astro";
-import Lampara from "./icons/lampara.astro";
-import Nube from "./icons/nube.astro";
-import Tierra from "./icons/tierra.astro";
-import Montania from "./icons/montania.astro";
 ---
 
 <HaikuSection>
-	<div
-		class="bg-gradient-to-b from-delft_blue to-quinacridone_magenta h-full tablet:rounded-tablet overflow-hidden"
-	>
-		<div class="relative h-full">
-			<div class="flex justify-end">
-				<div class="absolute h-40 w-40 rounded-full bg-bright_pink_crayola m-8"></div>
-			</div>
-			<div class="absolute top-0 right-0">
-				<Nube />
-			</div>
-			<div class="absolute top-28 left-0">
-				<Nube />
-			</div>
-			<div class="absolute bottom-3 -left-10 opacity-60">
-				<Montania />
-			</div>
-			<div class="flex justify-center">
-				<div class="absolute -bottom-60">
-					<Tierra />
-				</div>
-			</div>
-			<div class="absolute -right-10 -bottom-4">
-				<Edificio />
-			</div>
-			<div class="absolute top-40 right-20">
-				<Lampara />
-			</div>
-			<div class="absolute bottom-56 left-16">
-				<Lampara />
-			</div>
-			<div class="absolute top-72 left-20">
-				<Lampara />
-			</div>
-			<div class="absolute top-96 left-36">
-				<Lampara />
-			</div>
-			<div class="absolute top-80 right-10">
-				<Lampara />
-			</div>
-			<div class="absolute prose prose-p:text-atomic_tangerine prose-p:font-bold m-3">
-				<slot />
-			</div>
-		</div>
+	<div class="h-full flex flex-col">
+		<div class="grow" container-bg-lamparas></div>
+		<slot />
 	</div>
+	<script>
+		import { createBodies } from "./bodies";
+		import { createCanvasByContainer } from "@utils/matterjs/canvas";
+		import { Engine } from "@utils/matterjs/engine";
+		import Matter from "matter-js";
+
+		const containers = document.querySelectorAll(`[container-bg-lamparas]`);
+		containers.forEach((container) => {
+			const canvas = createCanvasByContainer(container);
+			const bodies = createBodies(canvas);
+			const updateEngine = Matter.Engine.create();
+			const engine = new Engine({
+				canvas,
+				bodies,
+				engine: updateEngine,
+			});
+
+			Matter.Events.on(updateEngine, "beforeUpdate", () => {
+				bodies.forEach((body) => {
+					Matter.Body.setVelocity(body, { x: 0, y: -0.3 });
+				});
+			});
+
+			engine.start();
+		});
+	</script>
 </HaikuSection>
