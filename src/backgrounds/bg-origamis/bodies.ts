@@ -48,14 +48,13 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		fillColor: "transparent",
 		isStatic: true,
 	});
-	const delta = -500;
-	const origamisToCreate = 30;
+	const ORIGAMIS_NUMBER = 30;
 	const origamis = [];
-	for (let i = 0; i < origamisToCreate; i++) {
+	for (let i = 0; i < ORIGAMIS_NUMBER; i++) {
 		origamis.push(
 			createOrigami({
 				x: Common.random(0, bounds.width),
-				y: Common.random(delta, 0),
+				y: Common.random(-bounds.height, 0),
 				size: bounds.width * 0.2,
 			}),
 		);

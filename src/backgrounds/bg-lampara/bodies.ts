@@ -1,12 +1,8 @@
-import { createCircle, createRectangle, createTrapezoid } from "@utils/matterjs/bodies";
+import { createRectangle } from "@utils/matterjs/bodies";
 import type { ICanvasBounds } from "@utils/matterjs/canvas";
 
-import {
-	atomicTangerineColor,
-	quinacridoneMagentaColor,
-	brightPinkCrayolaColor,
-} from "@utils/matterjs/colors";
-import Matter, { Body } from "matter-js";
+import { atomicTangerineColor, brightPinkCrayolaColor } from "@utils/matterjs/colors";
+import Matter, { Body, Common } from "matter-js";
 
 interface ILamp {
 	x: number;
@@ -36,11 +32,17 @@ const createLamp = ({ x, y, width }: ILamp): Matter.Body =>
 	});
 
 export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
-	return [
-		createLamp({
-			x: bounds.width * 0.5,
-			y: bounds.height * 0.5,
-			width: 0.1 * bounds.width,
-		}),
-	];
+	const LAMPS_NUMBER = 16;
+	const lamps = [];
+
+	for (let i = 0; i < LAMPS_NUMBER; i++) {
+		const lamp = createLamp({
+			x: Common.random(-bounds.width, 0),
+			y: Common.random(0, bounds.height),
+			width: 0.05 * bounds.width,
+		});
+		lamps.push(lamp);
+	}
+
+	return lamps;
 };

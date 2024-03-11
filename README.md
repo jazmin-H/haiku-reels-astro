@@ -21,7 +21,7 @@ Además la estructura básica de cualquier proyecto desarrollado con Astro🚀, 
 │   ├── content/
 │   ├── haiku/
 │   ├── layouts/
-│   └── pages/
+│   ├── pages/
 │   └── styles/
 ├── astro.config.mjs
 ├── tailwind.config.cjs
