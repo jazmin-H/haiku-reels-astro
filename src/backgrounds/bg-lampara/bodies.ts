@@ -39,7 +39,7 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		const lamp = createLamp({
 			x: Common.random(-bounds.width, 0),
 			y: Common.random(0, bounds.height),
-			width: 0.05 * bounds.width,
+			width: 0.05 * Math.min(bounds.width, bounds.height),
 		});
 		lamps.push(lamp);
 	}
