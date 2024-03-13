@@ -20,16 +20,18 @@ import HaikuSection from "@components/haiku-section.astro";
 			const canvas = createCanvasByContainer(container);
 			const bodies = createBodies(canvas);
 			const updateEngine = Matter.Engine.create();
+			const velocity = Matter.Vector.create(0, -0.5);
+
+			Matter.Events.on(updateEngine, "beforeUpdate", () => {
+				bodies.forEach((body) => {
+					Matter.Body.setVelocity(body, velocity);
+				});
+			});
+
 			const engine = new Engine({
 				canvas,
 				bodies,
 				engine: updateEngine,
-			});
-
-			Matter.Events.on(updateEngine, "beforeUpdate", () => {
-				bodies.forEach((body) => {
-					Matter.Body.setVelocity(body, { x: 0, y: -0.3 });
-				});
 			});
 
 			engine.start();
