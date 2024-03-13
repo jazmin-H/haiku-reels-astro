@@ -55,7 +55,7 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 			createOrigami({
 				x: Common.random(0, bounds.width),
 				y: Common.random(-bounds.height, 0),
-				size: Math.min(bounds.width, bounds.height) * 0.2,
+				size: Math.min(bounds.width, bounds.height) * 0.15,
 			}),
 		);
 	}
