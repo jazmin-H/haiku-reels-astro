@@ -65,23 +65,23 @@ const createTemple = ({ x, y, bounds }: ITemple): Matter.Body => {
 };
 
 export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
-	const DELTA = 0.25 * bounds.height;
-	const IN_FORMAT_PORTRAIT = bounds.width > 430;
-
-	const sun = createCircle({
-		x: IN_FORMAT_PORTRAIT ? bounds.width * 0.75 : bounds.width,
-		y: DELTA,
-		radio: 0.25 * Math.min(bounds.width, bounds.height),
-		fillColor: brightPinkCrayolaColor,
-	});
+	const IN_MOBILE_FORMAT = bounds.width <= 430;
+	const DELTA_X = IN_MOBILE_FORMAT ? bounds.width * 1.75 : bounds.width * 1.3;
 
 	const temple = createTemple({
-		x: IN_FORMAT_PORTRAIT ? bounds.width * 0.5 : 0,
-		y: IN_FORMAT_PORTRAIT ? bounds.height * 1.5 : bounds.height,
+		x: DELTA_X,
+		y: bounds.height * 0.75,
 		bounds: {
 			height: bounds.height,
-			width: IN_FORMAT_PORTRAIT ? bounds.width * 0.33 : bounds.width,
+			width: IN_MOBILE_FORMAT ? bounds.width : bounds.width * 0.33,
 		},
+	});
+
+	const sun = createCircle({
+		x: IN_MOBILE_FORMAT ? DELTA_X + bounds.width : DELTA_X + bounds.width * 0.3,
+		y: IN_MOBILE_FORMAT ? 0 : -0.5 * bounds.height,
+		radio: 0.2 * Math.min(bounds.width, bounds.height),
+		fillColor: brightPinkCrayolaColor,
 	});
 
 	return [sun, temple];

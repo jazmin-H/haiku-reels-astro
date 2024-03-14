@@ -26,7 +26,7 @@ module.exports = {
       screens: {
         tablet: "768px",
         laptop: "1024px",
-        desktop: "1280px",
+        desktop: "1366px",
       },
       boxShadow: {
         "3xl": "5px 35px 60px -15px rgba(0, 0, 0 )",
