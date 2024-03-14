@@ -1,4 +1,4 @@
-import { Bodies, Composites } from "matter-js";
+import { Bodies, Body, Composites, Vector } from "matter-js";
 
 interface ICircle {
 	x: number;

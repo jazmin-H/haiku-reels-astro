@@ -72,4 +72,8 @@ export class Engine {
 		const observer = new IntersectionObserver(checkEntries, options);
 		observer.observe(this.props.canvas);
 	}
+
+	beforeUpdate(callback: () => void): void {
+		Matter.Events.on(this.props.engine, "beforeUpdate", callback);
+	}
 }
