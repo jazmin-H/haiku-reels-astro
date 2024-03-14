@@ -6,24 +6,25 @@ import Matter, { Body } from "matter-js";
 
 interface ITemple {
 	x: number;
+	y: number;
 	bounds: ICanvasBounds;
 }
 
-const createTemple = ({ x, bounds }: ITemple): Matter.Body => {
-	const HEIGHT_FLOOR = 0.3 * Math.min(bounds.width, bounds.height);
+const createTemple = ({ x, y, bounds }: ITemple): Matter.Body => {
+	const HEIGHT_FLOOR = 0.2 * Math.min(bounds.width, bounds.height);
 
 	return Body.create({
 		parts: [
 			createRectangle({
 				x,
-				y: bounds.height,
+				y,
 				width: bounds.width,
 				height: HEIGHT_FLOOR,
 				fillColor: quinacridoneMagentaColor,
 			}),
 			createTrapezoid({
 				x,
-				y: bounds.height - HEIGHT_FLOOR,
+				y: y - HEIGHT_FLOOR,
 				width: 1.5 * bounds.width,
 				height: 0.25 * bounds.width,
 				slope: 0.5,
@@ -31,14 +32,14 @@ const createTemple = ({ x, bounds }: ITemple): Matter.Body => {
 			}),
 			createRectangle({
 				x,
-				y: bounds.height - 2 * HEIGHT_FLOOR,
+				y: y - 2 * HEIGHT_FLOOR,
 				width: 0.5 * bounds.width,
 				height: HEIGHT_FLOOR,
 				fillColor: quinacridoneMagentaColor,
 			}),
 			createTrapezoid({
 				x,
-				y: bounds.height - 3 * HEIGHT_FLOOR,
+				y: y - 3 * HEIGHT_FLOOR,
 				width: 1 * bounds.width,
 				height: 0.25 * bounds.width,
 				slope: 0.5,
@@ -46,14 +47,14 @@ const createTemple = ({ x, bounds }: ITemple): Matter.Body => {
 			}),
 			createRectangle({
 				x,
-				y: bounds.height - 4 * HEIGHT_FLOOR,
+				y: y - 4 * HEIGHT_FLOOR,
 				width: 0.25 * bounds.width,
 				height: HEIGHT_FLOOR,
 				fillColor: quinacridoneMagentaColor,
 			}),
 			createTrapezoid({
 				x,
-				y: bounds.height - 4.9 * HEIGHT_FLOOR,
+				y: y - 4.9 * HEIGHT_FLOOR,
 				width: 0.5 * bounds.width,
 				height: 0.25 * bounds.width,
 				slope: 1,
@@ -76,9 +77,10 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 
 	const temple = createTemple({
 		x: IN_FORMAT_PORTRAIT ? bounds.width * 0.5 : 0,
+		y: IN_FORMAT_PORTRAIT ? bounds.height * 1.5 : bounds.height,
 		bounds: {
 			height: bounds.height,
-			width: IN_FORMAT_PORTRAIT ? bounds.width * 0.5 : bounds.width,
+			width: IN_FORMAT_PORTRAIT ? bounds.width * 0.33 : bounds.width,
 		},
 	});
 
