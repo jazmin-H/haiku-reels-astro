@@ -1,34 +1,6 @@
 ---
-import "../styles/global.css";
 
-import HaikuProse from "@components/haiku-prose.astro";
-import HtmlLayout from "@layouts/basic-layout.astro";
-import HaikusLayout from "@layouts/haikus-layout.astro";
-import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
-import BgJ from "@backgrounds/bg-j/index.astro";
-import BgTemplo from "@backgrounds/bg-templo/index.astro";
-import BgLamparas from "@backgrounds/bg-lampara/index.astro";
-import { getCollection } from "astro:content";
-
-const backgrounds = [BgLamparas, BgTemplo, BgOrigamis, BgJ];
-const haikus = await getCollection("haikus");
-const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---
 
-<HtmlLayout>
-	<HaikusLayout>
-		{
-			haikusRenders.map(({ Content }, index) => {
-				const Background = backgrounds[index % backgrounds.length];
-				const { autoria, pubDate } = haikus[index].data;
-				return (
-					<Background>
-						<HaikuProse autoria={autoria} pubDate={pubDate}>
-							<Content />
-						</HaikuProse>
-					</Background>
-				);
-			})
-		}
-	</HaikusLayout>
-</HtmlLayout>
+<h1>Haiku Reels</h1>
+<p>Lorem ipsum blabla Lorem ipsum blablaLorem ipsum blabla</p>

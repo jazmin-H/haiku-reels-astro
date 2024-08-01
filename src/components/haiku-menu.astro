@@ -1,0 +1,43 @@
+---
+const toggleMenu = () => {
+	const menu = document.getElementById("menu");
+	if (menu) {
+		menu.classList.toggle("hidden");
+	}
+};
+document.addEventListener("DOMContentLoaded", () => {
+	const button = document.getElementById("menu-button");
+	if (button) {
+		button.addEventListener("click", () => {
+			const menu = document.getElementById("menu");
+			if (menu) {
+				menu.classList.toggle("hidden");
+			}
+		});
+	}
+});
+---
+
+<style>
+	.menu-button {
+		cursor: pointer;
+	}
+</style>
+
+<div class="relative">
+	<button id="menu-button" class="menu-button text-atomic_tangerine absolute top-0 right-0">
+		&#8942;
+	</button>
+	<div
+		id="menu"
+		class="hidden absolute right-0 mt-8 bg-indigo-900 text-atomic_tangerine rounded-lg shadow-lg"
+	>
+		<ul class="flex flex-col space-y-4 p-4">
+			<li class="hover:bg-gray-700 cursor-pointer p-2 rounded-md">Opción 1</li>
+			<li class="hover:bg-gray-700 cursor-pointer p-2 rounded-md">Opción 2</li>
+			<li class="hover:bg-gray-700 cursor-pointer p-2 rounded-md">Opción 3</li>
+			<li class="hover:bg-gray-700 cursor-pointer p-2 rounded-md">Opción 4</li>
+			<li class="hover:bg-gray-700 cursor-pointer p-2 rounded-md">Opción 5</li>
+		</ul>
+	</div>
+</div>
