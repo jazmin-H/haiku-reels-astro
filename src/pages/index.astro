@@ -1,7 +1,18 @@
 ---
-import HaikuMenu from "@components/haiku-menu.astro"
+import HaikuMenu from "@components/haiku-menu.astro";
+import HaikuSection from "@components/haiku-section.astro";
+import HaikusLayout from "@layouts/haikus-layout.astro";
 ---
 
-<h1>Haiku Reels</h1>
-<p>Lorem ipsum blabla Lorem ipsum blablaLorem ipsum blabla</p>
-<HaikuMenu/>
+<HaikusLayout>
+	<HaikuSection>
+		<HaikuMenu />
+		<h1 class="font-roboto-serif font-bold text-96 text-atomic_tangerine px-12 pt-16 leading-none">
+			Haiku Reels
+		</h1>
+
+		<p class="font-roboto-serif font-semibold text-20 text-atomic_tangerine px-12">
+			Lorem ipsum blabla<br /> ipsum blablaLorem
+		</p>
+	</HaikuSection>
+</HaikusLayout>

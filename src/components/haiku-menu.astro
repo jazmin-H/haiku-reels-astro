@@ -1,52 +1,57 @@
 ---
-
-
-
+import MenuDots from "./menu-dots.astro";
 ---
 
-<style>
-	.menu-button {
-		cursor: pointer;
-		font-size: 24px; /* Aumenta el tamaño del texto */
-        padding: 10px 20px; /* Aumenta el área de clic del botón */
-        border-radius: 8px; /* Bordes redondeados */	
-	}
-	
-</style>
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const button = document.getElementById("menu-button") as HTMLButtonElement | null;
-    
-    if (button) {
-        button.addEventListener("click", () => {
-            const menu = document.getElementById("menu") as HTMLElement | null;
-            
-            if (menu) {
-                menu.classList.toggle("hidden");
-                
-                button.style.display = "none";
-            }
-        });
-    }
-});
+	document.addEventListener("DOMContentLoaded", () => {
+		const button = document.getElementById("menu-button") as HTMLButtonElement | null;
 
+		if (button) {
+			button.addEventListener("click", () => {
+				const menu = document.getElementById("menu") as HTMLElement | null;
+
+				if (menu) {
+					menu.classList.toggle("hidden");
+
+					button.style.display = "none";
+				}
+			});
+		}
+	});
+	const options: string[] = ["Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5"];
+
+	// Selecciona el contenedor de la lista
+	const listContainer = document.getElementById("opciones") as HTMLUListElement;
+
+	// Función para crear y agregar elementos de la lista
+	const createListItems = (options: string[]): void => {
+		// Mapear las opciones a elementos <li>
+		const listItems: HTMLLIElement[] = options.map((option) => {
+			const li = document.createElement("li");
+			li.textContent = option;
+			li.className =
+				"text-atomic_tangerine bg-deft-blue hover:bg-atomic_tangerine hover:text-deft-blue cursor-pointer p-2 rounded-md";
+			return li;
+		});
+
+		// Agregar los elementos al contenedor de la lista
+		listContainer.append(...listItems);
+	};
+
+	// Ejecutar la función para crear y agregar elementos
+	createListItems(options);
 </script>
 
 <div class="relative">
-	<button id="menu-button" class="menu-button text-atomic_tangerine absolute top-0 right-0">
-		&#8942;
-	</button>
-	<div
-		id="menu"
-		class="hidden absolute right-0 mt-8 bg-indigo-900 text-atomic_tangerine rounded-lg shadow-lg"
+	<button
+		id="menu-button"
+		class="menu-button text-atomic_tangerine text-3xl w-12 h-12 absolute top-0 right-0"
+		onclick="toggleMenu()"
 	>
-		<ul class="flex flex-col space-y-4 p-4">
-			<li class="text-atomic_tangerine bg-indigo-900 hover:bg-atomic_tangerine hover:text-indigo-900 cursor-pointer p-2 rounded-md">Opción 1</li>	
-			<li class="text-atomic_tangerine bg-indigo-900 hover:bg-atomic_tangerine hover:text-indigo-900 cursor-pointer p-2 rounded-md">Opción 2</li>
-			<li class="text-atomic_tangerine bg-indigo-900 hover:bg-atomic_tangerine hover:text-indigo-900 cursor-pointer p-2 rounded-md">Opción 3</li>
-			<li class="text-atomic_tangerine bg-indigo-900 hover:bg-atomic_tangerine hover:text-indigo-900 cursor-pointer p-2 rounded-md">Opción 4</li>
-			<li class="text-atomic_tangerine bg-indigo-900 hover:bg-atomic_tangerine hover:text-indigo-900 cursor-pointer p-2 rounded-md">Opción 5</li>
-		</ul>
+		<MenuDots fill="#fd9678ff" />
+	</button>
+
+	<div id="menu" class="hidden absolute right-0 mt-8 bg-deft-blue text-atomic_tangerine rounded-lg">
+		<ul id="opciones" class="flex flex-col space-y-4"></ul>
 	</div>
 </div>
