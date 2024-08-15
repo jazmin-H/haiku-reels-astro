@@ -1,5 +1,10 @@
 ---
 import MenuDots from "./menu-dots.astro";
+import MenuInfo from "./menu-info.astro";
+import MenuMode from "./menu-mode.astro";
+import MenuSearch from "./menu-search.astro";
+import MenuBook from "./menu-book.astro";
+import MenuHome from "./menu-home.astro";
 ---
 
 <script>
@@ -11,47 +16,32 @@ import MenuDots from "./menu-dots.astro";
 				const menu = document.getElementById("menu") as HTMLElement | null;
 
 				if (menu) {
+					// Toggle visibility by adding or removing the 'hidden' class
 					menu.classList.toggle("hidden");
-
-					button.style.display = "none";
 				}
 			});
 		}
 	});
-	const options: string[] = ["Opción 1", "Opción 2", "Opción 3", "Opción 4", "Opción 5"];
-
-	// Selecciona el contenedor de la lista
-	const listContainer = document.getElementById("opciones") as HTMLUListElement;
-
-	// Función para crear y agregar elementos de la lista
-	const createListItems = (options: string[]): void => {
-		// Mapear las opciones a elementos <li>
-		const listItems: HTMLLIElement[] = options.map((option) => {
-			const li = document.createElement("li");
-			li.textContent = option;
-			li.className =
-				"text-atomic_tangerine bg-deft-blue hover:bg-atomic_tangerine hover:text-deft-blue cursor-pointer p-2 rounded-md";
-			return li;
-		});
-
-		// Agregar los elementos al contenedor de la lista
-		listContainer.append(...listItems);
-	};
-
-	// Ejecutar la función para crear y agregar elementos
-	createListItems(options);
 </script>
 
 <div class="relative">
 	<button
 		id="menu-button"
-		class="menu-button text-atomic_tangerine text-3xl w-12 h-12 absolute top-0 right-0"
-		onclick="toggleMenu()"
+		class="menu-button text-atomic_tangerine text-3xl w-12 h-12 absolute top-3 right-0"
 	>
 		<MenuDots fill="#fd9678ff" />
 	</button>
 
-	<div id="menu" class="hidden absolute right-0 mt-8 bg-deft-blue text-atomic_tangerine rounded-lg">
-		<ul id="opciones" class="flex flex-col space-y-4"></ul>
+	<div
+		id="menu"
+		class="hidden absolute right-3 top-8 mt-8 bg-deft-blue text-atomic_tangerine rounded-lg"
+	>
+		<ul id="opciones" class="flex flex-col space-y-4">
+			<li><MenuInfo fill="#fd9678ff" /></li>
+			<li><MenuMode fill="#fd9678ff" /></li>
+			<li><MenuSearch fill="#fd9678ff" /></li>
+			<li><MenuBook fill="#fd9678ff" /></li>
+			<li><MenuHome fill="#fd9678ff" /></li>
+		</ul>
 	</div>
 </div>

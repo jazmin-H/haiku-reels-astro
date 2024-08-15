@@ -2,17 +2,19 @@
 import HaikuMenu from "@components/haiku-menu.astro";
 import HaikuSection from "@components/haiku-section.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
+import Scroll from "@components/scroll.astro";
 ---
 
 <HaikusLayout>
 	<HaikuSection>
 		<HaikuMenu />
-		<h1 class="font-roboto-serif font-bold text-96 text-atomic_tangerine px-12 pt-16 leading-none">
+		<h1 class="font-roboto-serif font-bold text-96 text-atomic_tangerine px-12 pt-24 leading-none">
 			Haiku Reels
 		</h1>
 
 		<p class="font-roboto-serif font-semibold text-20 text-atomic_tangerine px-12">
 			Lorem ipsum blabla<br /> ipsum blablaLorem
 		</p>
+		<Scroll />
 	</HaikuSection>
 </HaikusLayout>
