@@ -5,6 +5,8 @@ import MenuMode from "./menu-mode.astro";
 import MenuSearch from "./menu-search.astro";
 import MenuBook from "./menu-book.astro";
 import MenuHome from "./menu-home.astro";
+
+const color = "#fd9678ff";
 ---
 
 <script>
@@ -25,23 +27,25 @@ import MenuHome from "./menu-home.astro";
 </script>
 
 <div class="relative">
-	<button
-		id="menu-button"
-		class="menu-button text-atomic_tangerine text-3xl w-12 h-12 absolute top-3 right-0"
-	>
-		<MenuDots fill="#fd9678ff" />
-	</button>
-
+	<div class="flex justify-end items-start pt-3 pb-3 pl-3 pr-0">
+		<button
+			id="menu-button"
+			class="menu-button text-atomic_tangerine text-3xl w-8 h-12"
+		>
+			<MenuDots fill={color} />
+		</button>
+	</div>
+	
 	<div
 		id="menu"
 		class="hidden absolute right-3 top-8 mt-8 bg-deft-blue text-atomic_tangerine rounded-lg"
 	>
 		<ul id="opciones" class="flex flex-col space-y-4">
-			<li><MenuInfo fill="#fd9678ff" /></li>
-			<li><MenuMode fill="#fd9678ff" /></li>
-			<li><MenuSearch fill="#fd9678ff" /></li>
-			<li><MenuBook fill="#fd9678ff" /></li>
-			<li><MenuHome fill="#fd9678ff" /></li>
+			<li><MenuInfo fill={color} /></li>
+			<li><MenuMode fill={color} /></li>
+			<li><MenuSearch fill={color} /></li>
+			<li><MenuBook fill={color} /></li>
+			<li><MenuHome fill={color} /></li>
 		</ul>
 	</div>
 </div>
