@@ -1,10 +1,10 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
-import ViewTransitions from "astro/components/ViewTransitions.astro";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
-    title?: string;
-    description?: string;
+	title?: string;
+	description?: string;
 }
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION }: Props = Astro.props;
@@ -19,23 +19,36 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 
 <!doctype html>
 <html lang="es">
-    <head>
-        <!-- Primary Meta Tags -->
-        <title>{title}</title>
-        <meta name="title" content={title} />
-        <meta name="description" content={description} />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Favicon -->
-        <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconUrl} />
-        <link rel="icon" type="image/png" sizes="32x32" href={favicon32x32Url} />
-        <link rel="icon" type="image/png" sizes="16x16" href={favicon16x16Url} />
-        <link rel="manifest" href={siteWebmanifestUrl} />
-        <!-- theme color for mobile -->
-        <meta name="theme-color" content="#41436aff" />
-        <!-- matter-wrap -->
-        <ViewTransitions/>
-    </head>
-    <body class="bg-delft_blue desktop:bg-burnt_sienna"><slot /></body>
-</html>
+	<head>
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconUrl} />
+		<link rel="icon" type="image/png" sizes="32x32" href={favicon32x32Url} />
+		<link rel="icon" type="image/png" sizes="16x16" href={favicon16x16Url} />
+		<link rel="manifest" href={siteWebmanifestUrl} />
+		<!-- theme color for mobile -->
+		<meta name="theme-color" content="#41436aff" />
+		<!-- matter-wrap -->
+		<ViewTransitions />
+	</head>
+	<body class="bg-delft_blue desktop:bg-burnt_sienna"><slot /></body>
 
+	<style is:global>
+		@keyframes smoothScroll {
+			from {
+				transform: translateY(0);
+			}
+			to {
+				transform: translateY(-100vh);
+			}
+		}
+		::view-transition(scroll) {
+			animate: smoothScroll 3s ease-in-out forwards;
+		}
+	</style>
+</html>
