@@ -4,3 +4,4 @@
 export const SITE_TITLE = "Haiku Reels";
 export const SITE_DESCRIPTION = "Haiku Reels";
 export const SITE_URL = "/haiku-reels-astro";
+export const BASE_URL = "/haiku-reels-astro";
