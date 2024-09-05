@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+
+// Carga los haikus
+const haikus = await getCollection('haikus');
+
+// Función para buscar haikus
+const search = (query) => {
+  return haikus.filter((haiku) =>
+    haiku.data.autoria.toLowerCase().includes(query.toLowerCase()) ||
+    haiku.data.pubDate.toDateString().includes(query) ||
+    (haiku.data.escuela && haiku.data.escuela.toLowerCase().includes(query.toLowerCase())) ||
+    (haiku.data.curso && haiku.data.curso.toLowerCase().includes(query.toLowerCase()))
+  );
+};
+
+// Obtén el término de búsqueda desde la URL
+const results = search(query);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Haikus</title>
+</head>
+<body>
+  <h1>Buscador de Haikus</h1>
+  <form method="GET">
+    <input
+      type="text"
+      name="query"
+      placeholder="Buscar por autor, fecha, escuela o curso"
+    />
+    <button type="submit">Buscar</button>
+  </form>
+  <ul>
+    {results.length > 0 ? (
+      results.map((haiku) => (
+        <li>
+          <strong>Autor:</strong> {haiku.data.autoria} <br />
+          <strong>Fecha de publicación:</strong> {new Date(haiku.data.pubDate).toDateString()} <br />
+          <strong>Año:</strong> {haiku.data.anio || 'N/A'} <br />
+          <strong>Escuela:</strong> {haiku.data.escuela || 'N/A'} <br />
+          <strong>Curso:</strong> {haiku.data.curso || 'N/A'} <br />
+          <p>{haiku.data.texto}</p>
+        </li>
+      ))
+    ) : (
+      <p>No se encontraron haikus que coincidan con tu búsqueda.</p>
+    )}
+  </ul>
+  
+</body>
+</html>
