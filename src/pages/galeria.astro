@@ -10,19 +10,20 @@ import BgTemplo from "@backgrounds/bg-templo/index.astro";
 import BgLamparas from "@backgrounds/bg-lampara/index.astro";
 import { getCollection } from "astro:content";
 
+
 const backgrounds = [BgLamparas, BgTemplo, BgOrigamis, BgJ];
 const haikus = await getCollection("haikus");
 const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---
 
-<HtmlLayout>
-	<HaikusLayout>
+<HtmlLayout transition:name="scroll">
+	<HaikusLayout >
 		{
 			haikusRenders.map(({ Content }, index) => {
 				const Background = backgrounds[index % backgrounds.length];
 				const { autoria, pubDate } = haikus[index].data;
 				return (
-					<Background>
+					<Background >
 						<HaikuProse autoria={autoria} pubDate={pubDate}>
 							<Content />
 						</HaikuProse>

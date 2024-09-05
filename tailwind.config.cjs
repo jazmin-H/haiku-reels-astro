@@ -13,7 +13,8 @@ module.exports = {
 			screens: {
 				tablet: "768px",
 				laptop: "1024px",
-				desktop: "1366px",
+				desktop: "1024px",
+				md: "1024px"
 			},
 			boxShadow: {
 				"3xl": "5px 35px 60px -15px rgba(0, 0, 0 )",
@@ -22,9 +23,9 @@ module.exports = {
 				"roboto-serif": ["Roboto Serif", "serif"], // Agregando la fuente Roboto Serif
 			},
 			fontSize: {
-				96: "6rem",
-				80: "5rem",
-				20: "1.5rem",
+				96: "6em",
+				80: "5em",
+				20: "1.5em",
 			},
 		},
 	},

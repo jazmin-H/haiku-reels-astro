@@ -1,31 +1,41 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config/consts";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
+import ViewTransitions from "astro/components/ViewTransitions.astro";
 
 export interface Props {
-	title?: string;
-	description?: string;
+    title?: string;
+    description?: string;
 }
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION }: Props = Astro.props;
+
+// Construir las URLs base para los recursos estáticos
+const base = "/haiku-reels-astro"; // Usa el valor de base configurado
+const appleTouchIconUrl = `${base}/apple-touch-icon.png`;
+const favicon32x32Url = `${base}/favicon-32x32.png`;
+const favicon16x16Url = `${base}/favicon-16x16.png`;
+const siteWebmanifestUrl = `${base}/site.webmanifest`;
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<!-- Primary Meta Tags -->
-		<title>{title}</title>
-		<meta name="title" content={title} />
-		<meta name="description" content={description} />
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href={SITE_URL + "/apple-touch-icon.png"} />
-		<link rel="icon" type="image/png" sizes="32x32" href={SITE_URL + "/favicon-32x32.png"} />
-		<link rel="icon" type="image/png" sizes="16x16" href={SITE_URL + "/favicon-16x16.png"} />
-		<link rel="manifest" href={SITE_URL + "/site.webmanifest"} />
-		<!-- theme color for mobile -->
-		<meta name="theme-color" content="#41436aff" />
-		<!-- matter-wrap -->
-	</head>
-	<body class="bg-delft_blue desktop:bg-burnt_sienna"><slot /></body>
+    <head>
+        <!-- Primary Meta Tags -->
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconUrl} />
+        <link rel="icon" type="image/png" sizes="32x32" href={favicon32x32Url} />
+        <link rel="icon" type="image/png" sizes="16x16" href={favicon16x16Url} />
+        <link rel="manifest" href={siteWebmanifestUrl} />
+        <!-- theme color for mobile -->
+        <meta name="theme-color" content="#41436aff" />
+        <!-- matter-wrap -->
+        <ViewTransitions/>
+    </head>
+    <body class="bg-delft_blue desktop:bg-burnt_sienna"><slot /></body>
 </html>
+

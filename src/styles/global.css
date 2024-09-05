@@ -14,3 +14,14 @@ body {
 p {
 	user-select: none;
 }
+@keyframes smoothScroll {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-100vh); 
+	}
+}
+::view-transition(scroll){
+	animation: smoothScroll 3s ease-in-out forwards;
+}
