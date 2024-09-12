@@ -9,6 +9,7 @@ import BgJ from "@backgrounds/bg-j/index.astro";
 import BgTemplo from "@backgrounds/bg-templo/index.astro";
 import BgLamparas from "@backgrounds/bg-lampara/index.astro";
 import { getCollection } from "astro:content";
+import HaikuMenu from "@components/haiku-menu.astro";
 
 const backgrounds = [BgLamparas, BgTemplo, BgOrigamis, BgJ];
 const haikus = await getCollection("haikus");
