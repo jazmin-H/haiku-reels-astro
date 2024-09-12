@@ -2,31 +2,34 @@
 import HaikuMenu from "@components/haiku-menu.astro";
 import HaikuSection from "@components/haiku-section.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
+const hello =()=>{console.log ("hello")}
 ---
 
 <HaikusLayout>
 	<HaikuSection class="overflow-hidden relative">
-		<div class="relative w-[100%] h-[6%]">
-			<div
-				class="flex items-center p-2 bg-[#FFFFFF] rounded-full absolute top-4 mx-2 w-[85%] h-[100%]"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-10 w-10 text-gray-600 ml-2"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-				>
-					<path
-						d="M9 14a5 5 0 100-10 5 5 0 000 10zm7.707 1.293a1 1 0 00-1.414 0L14 16.586 11.707 14.293a7 7 0 111.414-1.414L16.586 14l1.707 1.707a1 1 0 000 1.414z"
-					></path>
-				</svg>
-				<input
-					type="text"
-					placeholder="Buscar..."
-					class="ml-2 bg-transparent focus:outline-none text-gray-600 placeholder-gray-400 w-full h-full text-[3rem] md: text-[1rem]"
-				/>
-			</div>
-			<HaikuMenu />
+	  <div class="relative w-[100%] h-[7%]">
+		<div
+		  class="flex items-center p-2 bg-atomic_tangerine rounded-full absolute top-4 mx-2 w-[85%] h-[100%]"
+		>
+		  <svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-10 w-10 text-gray-600 ml-2"
+			viewBox="0 0 20 20"
+			fill="currentColor"
+		  >
+			<path
+			  d="M9 14a5 5 0 100-10 5 5 0 000 10zm7.707 1.293a1 1 0 00-1.414 0L14 16.586 11.707 14.293a7 7 0 111.414-1.414L16.586 14l1.707 1.707a1 1 0 000 1.414z"
+			></path>
+		  </svg>
+		  <input onclick={"hello"}
+			id="search-input"
+			type="text"
+			placeholder="Buscar..."
+			class="ml-2 bg-transparent focus:outline-none text-gray-600 placeholder-gray-400 w-full h-full text-[3rem] md:text-[1rem]"
+		  />
 		</div>
+		<HaikuMenu />
+	  </div>
+  
+  
 	</HaikuSection>
-</HaikusLayout>
