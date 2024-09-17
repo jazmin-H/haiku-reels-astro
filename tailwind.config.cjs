@@ -9,6 +9,7 @@ module.exports = {
 				quinacridone_magenta: "#974063ff",
 				delft_blue: "#41436A",
 				jet: "#3e3638ff",
+				rose_gold:"#C25E5E",
 			},
 			screens: {
 				tablet: "768px",
@@ -27,6 +28,7 @@ module.exports = {
 				80: "5em",
 				20: "1.5em",
 			},
+			
 		},
 	},
 	plugins: [require("@tailwindcss/typography")],
