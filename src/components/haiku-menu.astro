@@ -9,18 +9,15 @@ import MenuHome from "./menu-home.astro";
 
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-		const button = document.getElementById("menu-button") as HTMLButtonElement | null;
-
-		if (button) {
+		const button = document.querySelectorAll(".menu-button") as NodeListOf<HTMLButtonElement>;
+		button.forEach((button) => {
 			button.addEventListener("click", () => {
-				const menu = document.getElementById("menu") as HTMLElement | null;
-
+				const menu = document.getElementById("menu")
 				if (menu) {
-					// Toggle visibility by adding or removing the 'hidden' class
 					menu.classList.toggle("hidden");
 				}
 			});
-		}
+		});
 	});
 </script>
 

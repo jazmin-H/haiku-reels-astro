@@ -11,9 +11,10 @@ const { autoria, pubDate } = Astro.props;
 import HaikuMenu from "./haiku-menu.astro";
 ---
 
-<div class="flex">
+<div class="flex items-start h-screen">
+	
 	<div class="m-4 text-atomic_tangerine dark: text-rose_gold">
-		<HaikuMenu />
+		
 		<div
 			class="prose prose-p:text-atomic_tangerine prose-p:font-bold prose-p:text-4xl mb-4 prose-p:drop-shadow-lg dark: text-rose_gold"
 		>
@@ -26,4 +27,5 @@ import HaikuMenu from "./haiku-menu.astro";
 			>{pubDate.toLocaleDateString()}</time
 		>
 	</div>
+	<HaikuMenu />
 </div>

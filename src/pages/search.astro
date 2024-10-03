@@ -4,82 +4,55 @@ import "../styles/global.css";
 import HaikuProse from "@components/haiku-prose.astro";
 import HtmlLayout from "@layouts/basic-layout.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
-import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
-import BgJ from "@backgrounds/bg-j/index.astro";
-import BgTemplo from "@backgrounds/bg-templo/index.astro";
-import BgLamparas from "@backgrounds/bg-lampara/index.astro";
-import { getCollection } from "astro:content";
+import loadHaikus from '../pages/loadHaikus'; // Ajusta la ruta
 
-// Obtener la colección de haikus
-const backgrounds = [BgLamparas, BgTemplo, BgOrigamis, BgJ];
-const haikus = await getCollection("haikus");
+const haikus = loadHaikus(); // Carga los haikus al inicio
 
-// Filtrado inicial de haikus
-let filteredHaikus = haikus; // Inicialmente, mostramos todos los haikus
+const hello = () => {
+  console.log("hello");
+};
 
-// Renderizar los haikus filtrados
-const haikusToRender = await Promise.all(filteredHaikus.map(async (haiku, index) => {
-  const Background = backgrounds[index % backgrounds.length];
-  const { Content } = await haiku.render();
-  const { autoria, pubDate } = haiku.data;
+// Estado para los haikus filtrados
+let filteredHaikus = haikus;
 
-  return (
-    <Background>
-    <HaikuProse autoria={autoria} pubDate={pubDate}>
-      <Content/>
-      </HaikuProse>
-    </Background>
+function filterHaikus(searchTerm) {
+  const lowercasedTerm = searchTerm.toLowerCase();
+  filteredHaikus = haikus.filter(haiku => 
+    haiku.autoria.toLowerCase().includes(lowercasedTerm) || 
+    haiku.content.toLowerCase().includes(lowercasedTerm)
   );
-}));  
+}
+
+function handleInput(event) {
+  const searchTerm = event.target.value;
+  filterHaikus(searchTerm);
+}
+
+function handleKeyDown(event) {
+  if (event.key === 'Enter') {
+    const searchTerm = event.target.value;
+    filterHaikus(searchTerm);
+  }
+}
 ---
 
-<HtmlLayout>
-  <HaikusLayout>
-    <form id="search-form" class="mb-4 flex items-center justify-center">
-      <button type="submit" class="mr-2 p-2" data-search-button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-10 w-10 text-gray-600 cursor-pointer"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
+<HaikusLayout>
+  <HaikuSection class="overflow-hidden relative">
+    <div class="relative w-[100%] h-[7%]">
+      <div class="flex items-center p-2 bg-atomic_tangerine rounded-full absolute top-4 mx-2 w-[85%] h-[100%] z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-600 ml-2" viewBox="0 0 20 20" fill="currentColor">
           <path d="M9 14a5 5 0 100-10 5 5 0 000 10zm7.707 1.293a1 1 0 00-1.414 0L14 16.586 11.707 14.293a7 7 0 111.414-1.414L16.586 14l1.707 1.707a1 1 0 000 1.414z"></path>
         </svg>
-      </button>
-      <input
-        type="text"
-        name="author"
-        placeholder="Buscar por autor..."
-        class="p-2 border border-gray-300 rounded-lg w-1/2"
-        data-search-input
-      />
-    </form>
-
-    <!-- Renderizar los haikus filtrados -->
-    {haikusToRender.length > 0
-      ? haikusToRender
-      : <p>No se encontraron haikus para el autor buscado.</p>}
-  </HaikusLayout>
-
-  <!-- Script del lado del cliente para manejar eventos -->
-  <script>
-    const form = document.getElementById('search-form');
-
-    if (form instanceof HTMLFormElement) {
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();  // Prevenir el comportamiento por defecto
-
-        const formData = new FormData(form);
-        const authorValue = formData.get('author');
-
-        // Asegúrate de que authorValue sea un string
-        const searchAuthor = (typeof authorValue === 'string' ? authorValue : '').toLowerCase();
-
-        // Aquí puedes recargar los haikus filtrados o hacer algo con el resultado
-        console.log(searchAuthor); // Solo para verificar
-      });
-    } else {
-      console.error('Formulario no encontrado o no es un formulario HTML.');
-    }
-  </script>
-</HtmlLayout>
+        <input 
+          id="search-input" 
+          type="text" 
+          placeholder="Buscar..." 
+          class="ml-2 bg-transparent focus:outline-none text-gray-600 placeholder-gray-400 w-full h-full text-[3rem] md:text-[1rem]" 
+          onInput={handleInput}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+      <HaikuMenu haikus={filteredHaikus} />
+    </div>
+  </HaikuSection>
+</HaikusLayout>
