@@ -1,16 +1,26 @@
 * {
 	box-sizing: border-box;
-}
-
-body {
+  }
+  
+  body {
 	margin: 0;
 	padding: 0;
-}
-
-::-webkit-scrollbar {
-	width: 0;
-}
-
-p {
+  }
+  
+  p {
 	user-select: none;
-}
+  }
+  /* Ocultar scrollbar en navegadores basados en WebKit (Chrome, Safari, Edge) */
+.no-scrollbar::-webkit-scrollbar {
+	display: none; /* Ocultar scrollbar en WebKit */
+  }
+  
+  /* Ocultar scrollbar en Firefox */
+  .no-scrollbar {
+	scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+  }
+  
+  /* Asegúrate de que el contenido siga siendo desplazable, pero sin barra visible */
+  .no-scrollbar {
+	overflow-y: scroll;
+  }
