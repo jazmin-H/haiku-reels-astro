@@ -6,17 +6,8 @@ import HtmlLayout from "@layouts/basic-layout.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
 import HaikuMenu from "@components/haiku-menu.astro";
 import HaikuSection from "@components/haiku-section.astro";
-import { getCollection } from "astro:content";
-import { searchTerm } from "../store"; 
+import { filterHaikus } from "src/libs";
 
-const haikus = await getCollection("haikus");
-
-// Función para filtrar haikus
-function filterHaikus(term: string) {
-  return haikus.filter(({ data }) =>
-    data.autoria.toLowerCase().includes(term.toLowerCase())
-  );
-}
 ---
 
 <HtmlLayout>
@@ -45,12 +36,14 @@ function filterHaikus(term: string) {
     </HaikuSection>
 
     <script lang="ts">
+      
       // Agrega un event listener al botón de búsqueda
       document.getElementById('search-b')?.addEventListener('click', () => {
         const inputElement = document.getElementById('s-input');
         const value = inputElement.value;
-        searchTerm.set(value); // Actualiza el store con el valor del input
-
+        //searchTerm.set(value); // Actualiza el store con el valor del input
+        console.log(value);
+        
         // Filtrar y mostrar los haikus en la consola
         const filteredHaikus = filterHaikus(value);
         console.log(filteredHaikus);
