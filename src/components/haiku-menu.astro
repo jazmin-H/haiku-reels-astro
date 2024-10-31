@@ -6,21 +6,19 @@ import MenuSearch from "./menu-search.astro";
 import MenuBook from "./menu-book.astro";
 import MenuHome from "./menu-home.astro";
 ---
-
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-		const button = document.querySelectorAll(".menu-button") as NodeListOf<HTMLButtonElement>;
-		button.forEach((button) => {
+		const button = document.getElementById("menu-button") as HTMLButtonElement | null;
+		if (button) {
 			button.addEventListener("click", () => {
-				const menu = document.getElementById("menu")
+				const menu = document.getElementById("menu") as HTMLElement | null;
 				if (menu) {
 					menu.classList.toggle("hidden");
 				}
 			});
-		});
+		}
 	});
 </script>
-
 <div class="relative h-[7%]">
 	<div class="flex justify-end items-start pt-3 pb-3 pl-3 pr-0">
 		<button

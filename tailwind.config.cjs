@@ -19,7 +19,7 @@ module.exports = {
 			screens: {
 				tablet: "768px",
 				laptop: "1024px",
-				desktop: "1024px",
+				desktop: "1280px",
 				md: "1024px",
 			},
 			boxShadow: {
@@ -30,8 +30,15 @@ module.exports = {
 			},
 			fontSize: {
 				96: "6em",
-				80: "5em",
+				80: "4em",
 				20: "1.5em",
+				tablet: "1rem", // 20px para tablet
+				laptop: "1rem",  // 24px para laptop
+				desktop: "1.5rem",
+				tablettitle: "2rem",
+				laptoptitle: "2rem",
+				desktoptitle: "3.25rem",
+				laptopmain:"3.3rem"
 			},
 		},
 	},
