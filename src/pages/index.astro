@@ -8,21 +8,25 @@ import "../../public/assets/scroll-redirect";
 ---
 
 <HaikusLayout>
-	<HaikuSection class="flex flex-col h-screen">
+	<HaikuSection class="flex flex-col h-screen relative">
 		<HaikuMenu />
-		<h1 class="font-roboto-serif font-bold text-atomic_tangerine pb-[4%] pl-[10%] leading-none laptop:text-laptopmain px-12 pt-4 dark:text-rose_gold">
+		<h1
+			class="font-roboto-serif font-bold text-atomic_tangerine pb-[4%] pl-[10%] leading-none laptop:text-laptopmain px-12 pt-4 dark:text-rose_gold"
+		>
 			Haiku Reels
 		</h1>
-	
-		<p class="font-roboto-serif font-semibold text-atomic_tangerine text-[4rem] pb-[10%] pl-[10%] laptop:text-laptop px-12 dark:text-rose_gold">
+
+		<p
+			class="font-roboto-serif font-semibold text-atomic_tangerine text-[4rem] pb-[10%] pl-[10%] laptop:text-laptop px-12 dark:text-rose_gold"
+		>
 			Lorem ipsum blabla<br /> ipsum blablaLorem
 		</p>
-	
-		<div class="flex-grow"></div> <!-- Espacio flexible para empujar al Scroll abajo -->
-		<Grulla/>
+
+		<div class="flex-grow"></div>
+		<!-- Espacio flexible para empujar al Scroll abajo -->
+		<Grulla />
 		<Scroll />
 	</HaikuSection>
-	
 </HaikusLayout>
 <script>
 	console.log("Scroll redirect script loaded");
