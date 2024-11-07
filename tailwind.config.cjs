@@ -34,10 +34,10 @@ module.exports = {
 				20: "1.5em",
 				tablet: "1rem", // 20px para tablet
 				laptop: "1rem",  // 24px para laptop
-				desktop: "1.5rem",
-				tablettitle: "2rem",
-				laptoptitle: "2rem",
-				desktoptitle: "3.25rem",
+				desktop: "1rem",
+				tablettitle: "1.3rem",
+				laptoptitle: "1.5rem",
+				desktoptitle: "2.25rem",
 				laptopmain:"3.3rem"
 			},
 		},

@@ -24,3 +24,11 @@
   .no-scrollbar {
 	overflow-y: scroll;
   }
+
+  .text-haiku {
+    color: #FF9966; /* atomic_tangerine */
+}
+
+.dark .text-haiku {
+    color: #B76E79; /* rose_gold */
+}
