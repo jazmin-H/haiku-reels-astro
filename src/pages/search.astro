@@ -6,73 +6,89 @@ import HtmlLayout from "@layouts/basic-layout.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
 import HaikuMenu from "@components/haiku-menu.astro";
 import HaikuSection from "@components/haiku-section.astro";
-import { getCollection } from "astro:content";
-import { getSearchTerm, searchTerm } from "../store";
 
-const haikus = await getCollection("haikus");
+
 ---
 
 <HtmlLayout>
 	<HaikusLayout>
 		<HaikuSection>
-			<div class="relative w-[100%] h-[7%]">
-				<div
-					class="flex items-center p-2 bg-atomic_tangerine rounded-full absolute top-4 mx-2 w-[85%] h-[72%] z-10 dark:bg-rose_gold"
-				>
-					<button id="search-b">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512">
-							<path
-								d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-								class="h-10 w-10 text-delft_blue ml-2 dark:text-pinky_cream"
-								fill="currentColor"></path>
-						</svg>
-					</button>
-					<input
-						id="s-input"
-						type="text"
-						placeholder="Buscar..."
-						class="ml-2 bg-transparent focus:outline-none text-delft_blue placeholder-delft_blue w-full h-full text-[3rem] md:text-[1rem] dark:text-pinky_cream dark:placeholder-pinky_cream"
-					/>
-					<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-					<script src="/pagefind/pagefind-ui.js"></script>
-					<div id="search"></div>
-					<script>
-						window.addEventListener("DOMContentLoaded", (event) => {
-							new PagefindUI({ element: "#search", showSubResults: true });
-						});
-					</script>
-				</div>
-
-				<HaikuMenu />
+			<div class="relative w-[100%] h-[9%]">
+			  <div class="flex items-center p-2 bg-atomic_tangerine rounded-full absolute top-4 mx-2 w-[80%] h-[72%] z-10 dark:bg-rose_gold">
+				<button id="search-b">
+				  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512">
+					<path
+					  d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+					  class="h-10 w-10 text-delft_blue ml-2 dark:text-pinky_cream"
+					  fill="currentColor" />
+				  </svg>
+				</button>
+				<input
+				  id="s-input"
+				  type="text"
+				  placeholder="Buscar..."
+				  class="ml-2 bg-transparent focus:outline-none text-delft_blue placeholder-delft_blue w-full h-full text-[3rem] md:text-[1rem] dark:text-pinky_cream dark:placeholder-pinky_cream"
+				/>
+			  </div>
+	  
+			  <HaikuMenu />
 			</div>
-			<div haikus-filtrados>
-				{
-					haikus
-						.filter(async ({ data }) => {
-							const { getSearchTerm } = await import("../store");
-							console.log("termino de busqueda dentro del div:", getSearchTerm());
-							return data.autoria.toLowerCase().split(" ").includes(getSearchTerm().toLowerCase());
-						})
-						.map(({ data }) => {
-							return <h1>{data.autoria}</h1>;
-						})
-				}
-			</div>
-		</HaikuSection>
+			<div id="results-container"></div>
+		  </HaikuSection>
 
-		<script>
-			import { setSearchTerm } from "../store";
-			import { getSearchTerm } from "../store";
-			// Agrega un event listener al botón de búsqueda
+		<script is:inline>
+		
+			
 			document.getElementById("search-b")?.addEventListener("click", () => {
 				const inputElement = document.getElementById("s-input");
-				const value = inputElement?.value;
-				// Actualiza el store con el valor del input
+				const value = inputElement?.value.trim().toLowerCase();
+				if (value === "") {
+          document.getElementById("results-container").innerHTML = "<p>No se encontraron resultados.</p>";
+          return;
+        }
+				fetch("/haiku-reels-astro/data/haikus.json").then((response) => (
+					response.json()
+				)).then((data)=>{
+					const filteredHaikus = data.haikus.filter(item => {
+                    
+                    return item.autoria.toLowerCase().includes(value);
+                });
+				console.log(filteredHaikus);
+				renderHaikus(filteredHaikus);
+				});
 
-				setSearchTerm(value);
-				// Filtrar y mostrar los haikus en la consola
-				console.log("termino buscar:", getSearchTerm());
 			});
+			function renderHaikus(haikus) {
+        const resultsContainer = document.getElementById("results-container");
+        
+        
+        resultsContainer.innerHTML = "";
+		if (haikus.length === 0) {
+          // Si no se encuentran resultados, mostrar mensaje
+          resultsContainer.innerHTML = "<p>No se encontraron resultados.</p>";
+          return;
+        }
+        
+        const haikusRenders = haikus.map((haiku, index) => {
+            const { autoria, pubDate, content } = haiku;
+            return `
+                <div >
+                    <div >
+                        <h3>${autoria}</h3>
+                        <p><strong>Fecha de publicación:</strong> ${pubDate}</p>
+                        <div class="content">${content}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        
+        resultsContainer.innerHTML = `
+            <div class="haikus-layout">
+                ${haikusRenders.join('')}
+            </div>
+        `;
+    }
 		</script>
 	</HaikusLayout>
 </HtmlLayout>
