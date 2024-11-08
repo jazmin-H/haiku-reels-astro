@@ -72,8 +72,8 @@ import HaikuSection from "@components/haiku-section.astro";
         const haikusRenders = haikus.map((haiku, index) => {
             const { autoria, pubDate, content } = haiku;
             return `
-                <div >
-                    <div >
+			<div class="h-[50%] pt-2 pl-3 pb-3 mr-11 ml-1 mt-4 bg-atomic_tangerine dark:bg-rose_gold rounded-3xl border-4 border-delft_blue dark:border-pinky_cream shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <div class="mt-4 text-lg text-delft_blue dark:text-pinky_cream leading-relaxed" >
                         <h3>${autoria}</h3>
                         <p><strong>Fecha de publicación:</strong> ${pubDate}</p>
                         <div class="content">${content}</div>
