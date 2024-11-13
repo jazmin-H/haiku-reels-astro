@@ -7,15 +7,17 @@ import MenuBook from "./menu-book.astro";
 import MenuHome from "./menu-home.astro";
 ---
 <script>
+
 	document.addEventListener("DOMContentLoaded", () => {
-		const button = document.getElementById("menu-button") as HTMLButtonElement | null;
-		if (button) {
-			button.addEventListener("click", () => {
-				const menu = document.getElementById("menu") as HTMLElement | null;
-				if (menu) {
-					menu.classList.toggle("hidden");
-				}
-			});
+		const buttons = document.getElementsByClassName("menu-button");
+		for (let button of buttons) {
+			button.addEventListener("click", (ev: Event) => {
+					var d = ev.target as HTMLElement | null;
+					while (d && d.nodeName != "DIV")
+						d=d.parentElement;
+					const menu = d?.nextElementSibling;
+					menu?.classList.toggle("hidden");
+				});
 		}
 	});
 </script>
