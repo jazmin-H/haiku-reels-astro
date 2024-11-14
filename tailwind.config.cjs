@@ -1,3 +1,4 @@
+// tailwind.config.js
 module.exports = {
 	darkMode: "class",
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -26,21 +27,24 @@ module.exports = {
 				"3xl": "5px 35px 60px -15px rgba(0, 0, 0 )",
 			},
 			fontFamily: {
-				"roboto-serif": ["Roboto Serif", "serif"], // Agregando la fuente Roboto Serif
+				"roboto-serif": ["Roboto Serif", "serif"],
 			},
 			fontSize: {
 				96: "6em",
 				80: "4em",
 				20: "1.5em",
-				tablet: "1rem", // 20px para tablet
-				laptop: "1rem",  // 24px para laptop
+				tablet: "1rem",
+				laptop: "1rem",
 				desktop: "1rem",
 				tablettitle: "1.3rem",
 				laptoptitle: "1.5rem",
 				desktoptitle: "2.25rem",
-				laptopmain:"3.3rem"
+				laptopmain: "3.3rem"
 			},
 		},
 	},
-	plugins: [require("@tailwindcss/typography")],
+	plugins: [
+		require("@tailwindcss/typography"),
+		require("tailwind-scrollbar") // Agrega el plugin aquí
+	],
 };
