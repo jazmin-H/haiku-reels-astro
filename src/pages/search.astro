@@ -6,8 +6,6 @@ import HtmlLayout from "@layouts/basic-layout.astro";
 import HaikusLayout from "@layouts/haikus-layout.astro";
 import HaikuMenu from "@components/haiku-menu.astro";
 import HaikuSection from "@components/haiku-section.astro";
-
-
 ---
 
 <HtmlLayout>
@@ -33,63 +31,57 @@ import HaikuSection from "@components/haiku-section.astro";
 	  
 			  <HaikuMenu />
 			</div>
-			<div class="max-h-[500px] overflow-y-auto p-1 rounded-xl">
-			<div id="results-container"></div>
-		  </HaikuSection>
-		</div>
+			<div class="max-h-[480px] overflow-y-auto p-1 rounded-xl scrollbar dark:scrollbar-dark">
+			  <div id="results-container"></div>
+			</div>
+		</HaikuSection>
 		<script is:inline>
-		
-			
 			document.getElementById("search-b")?.addEventListener("click", () => {
 				const inputElement = document.getElementById("s-input");
 				const value = inputElement?.value.trim().toLowerCase();
 				if (value === "") {
-          document.getElementById("results-container").innerHTML = "<p>No se encontraron resultados.</p>";
-          return;
-        }
+					resultsContainer.innerHTML = `<p class="text-atomic_tangerine dark:text-rose_gold">No se encontraron resultados.</p>`;
+					return;  // Verifica si el HTML se inyecta correctamente
+
+				}
 				fetch("/haiku-reels-astro/data/haikus.json").then((response) => (
 					response.json()
-				)).then((data)=>{
+				)).then((data) => {
 					const filteredHaikus = data.haikus.filter(item => {
-                    
-                    return item.autoria.toLowerCase().includes(value);
-                });
-				console.log(filteredHaikus);
-				renderHaikus(filteredHaikus);
+						return item.autoria.toLowerCase().includes(value);
+					});
+					console.log(filteredHaikus);
+					renderHaikus(filteredHaikus);
+				});
+			});
+			
+			function renderHaikus(haikus) {
+				const resultsContainer = document.getElementById("results-container");
+				resultsContainer.innerHTML = "";
+				if (haikus.length === 0) {
+					resultsContainer.innerHTML = `<p class="text-atomic_tangerine dark:text-rose_gold">No se encontraron resultados.</p>`;
+					return;
+				}
+				
+				const haikusRenders = haikus.map((haiku, index) => {
+					const { autoria, pubDate, content } = haiku;
+					return `
+					<div class="pt-2 pl-3 pr-3 pb-3 mr-6 ml-0 mt-4 bg-atomic_tangerine dark:bg-rose_gold rounded-3xl border-4 border-delft_blue dark:border-pinky_cream shadow-xl hover:shadow-2xl transition-shadow duration-300">
+						<div class="mt-4 text-lg text-delft_blue dark:text-pinky_cream leading-relaxed">
+							<h3>${autoria}</h3>
+							<p class="text-s"><strong>Fecha de publicación:</strong> ${pubDate}</p>
+							<div class="content">${content}</div>
+						</div>
+					</div>
+					`;
 				});
 
-			});
-			function renderHaikus(haikus) {
-        const resultsContainer = document.getElementById("results-container");
-        
-        
-        resultsContainer.innerHTML = "";
-		if (haikus.length === 0) {
-          // Si no se encuentran resultados, mostrar mensaje
-          resultsContainer.innerHTML = "<p>No se encontraron resultados.</p>";
-          return;
-        }
-        
-        const haikusRenders = haikus.map((haiku, index) => {
-            const { autoria, pubDate, content } = haiku;
-            return `
-			<div class="pt-2 pl-3 pb-3 mr-10 ml-0 mt-4 bg-atomic_tangerine dark:bg-rose_gold rounded-3xl border-4 border-delft_blue dark:border-pinky_cream shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <div class="mt-4 text-lg text-delft_blue dark:text-pinky_cream leading-relaxed" >
-                        <h3>${autoria}</h3>
-                        <p><strong>Fecha de publicación:</strong> ${pubDate}</p>
-                        <div class="content">${content}</div>
-                    </div>
-                </div>
-            `;
-        });
-
-        
-        resultsContainer.innerHTML = `
-            <div class="haikus-layout">
-                ${haikusRenders.join('')}
-            </div>
-        `;
-    }
+				resultsContainer.innerHTML = `
+					<div class="haikus-layout">
+						${haikusRenders.join('')}
+					</div>
+				`;
+			}
 		</script>
 	</HaikusLayout>
 </HtmlLayout>
