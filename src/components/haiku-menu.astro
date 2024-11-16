@@ -6,21 +6,7 @@ import MenuSearch from "./menu-search.astro";
 import MenuBook from "./menu-book.astro";
 import MenuHome from "./menu-home.astro";
 ---
-<script>
 
-	document.addEventListener("DOMContentLoaded", () => {
-		const buttons = document.getElementsByClassName("menu-button");
-		for (let button of buttons) {
-			button.addEventListener("click", (ev: Event) => {
-					var d = ev.target as HTMLElement | null;
-					while (d && d.nodeName != "DIV")
-						d=d.parentElement;
-					const menu = d?.nextElementSibling;
-					menu?.classList.toggle("hidden");
-				});
-		}
-	});
-</script>
 <div class="relative h-[7%]">
 	<div class="flex justify-end items-start pt-3 pb-3 pl-3 pr-0">
 		<button
@@ -44,3 +30,16 @@ import MenuHome from "./menu-home.astro";
 		</ul>
 	</div>
 </div>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const buttons = document.getElementsByClassName("menu-button");
+		for (let button of buttons) {
+			button.addEventListener("click", (ev: Event) => {
+				var d = ev.target as HTMLElement | null;
+				while (d && d.nodeName != "DIV") d = d.parentElement;
+				const menu = d?.nextElementSibling;
+				menu?.classList.toggle("hidden");
+			});
+		}
+	});
+</script>

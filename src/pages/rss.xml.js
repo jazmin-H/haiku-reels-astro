@@ -12,7 +12,9 @@ export async function GET(context) {
 		items: haikus.map((haiku) => ({
 			...haiku.data,
 			title: haiku.body,
+			description: `autoria: ${haiku.autoria}, escuela: ${haiku.escuela}, curso: ${haiku.curso}`,
 			link: `${SITE_URL}/haikus/${haiku.slug}/`,
+			pubDate: haiku.pubDate,
 		})),
 	});
 	return new Response(JSON.stringify(rssResponse));
