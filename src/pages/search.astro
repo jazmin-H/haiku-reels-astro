@@ -1,10 +1,7 @@
 ---
-// src/pages/haikus.astro
-import HaikuProse from "@components/articulo-para-cada-haiku/haiku-prose.astro";
-import HtmlLayout from "@layouts/basic-layout.astro";
-import HaikusLayout from "@layouts/haikus-layout.astro";
-import HaikuMenu from "@components/haiku-menu.astro";
-import HaikuSection from "@components/haiku-section.astro";
+import HtmlLayout from "@layouts/estructura-base-para-todo-el-sitio.astro";
+import HaikusLayout from "@layouts/estructura-para-efecto-reel.astro";
+import HaikuSection from "@layouts/estructura-para-cada-tarjeta-reel.astro";
 ---
 
 <HtmlLayout>
@@ -29,8 +26,6 @@ import HaikuSection from "@components/haiku-section.astro";
 						class="ml-2 bg-transparent focus:outline-none text-delft_blue placeholder-delft_blue w-full h-full text-[3rem] md:text-[1rem] dark:text-pinky_cream dark:placeholder-pinky_cream"
 					/>
 				</div>
-
-				<HaikuMenu />
 			</div>
 			<div class="max-h-[480px] overflow-y-auto p-1 rounded-xl scrollbar dark:scrollbar-dark">
 				<div id="results-container"></div>
