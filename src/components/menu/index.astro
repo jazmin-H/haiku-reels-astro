@@ -29,6 +29,7 @@ import MenuHome from "./menu-home.astro";
 		boton.addEventListener("click", () => {
 			const menu = boton.nextElementSibling;
 			menu?.classList.toggle("hidden");
+			menu?.classList.add("fade-in");
 		});
 	});
 </script>
