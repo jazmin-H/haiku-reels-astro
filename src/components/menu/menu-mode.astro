@@ -17,30 +17,25 @@
 
 <script>
 	// Encuentra nuestro SVG en la página
-	const svgToggle = document.querySelector("[data-theme-toggle]");
-
-	// Función para cambiar entre modo claro y oscuro
-	function toggleDarkMode() {
-		const htmlElement = document.documentElement;
-
-		// Cambia entre las clases 'dark' y 'light'
-		if (htmlElement.classList.contains("dark")) {
-			htmlElement.classList.remove("dark");
-			localStorage.setItem("theme", "light");
-		} else {
-			htmlElement.classList.add("dark");
-			localStorage.setItem("theme", "dark");
-		}
-	}
-
-	// Agrega un event listener al SVG para cambiar de modo cuando se haga clic
-	if (svgToggle) {
-		svgToggle.addEventListener("click", toggleDarkMode);
-	}
+	const botonesParaElCambioDeTema = document.querySelectorAll("[data-theme-toggle]");
+	botonesParaElCambioDeTema.forEach((boton) => {
+		boton.addEventListener("click", () => {
+			// Encuentra el elemento HTML
+			const htmlElement = document.documentElement;
+			// Cambia entre las clases 'dark' y 'light'
+			if (htmlElement.classList.contains("dark")) {
+				htmlElement.classList.remove("dark");
+				localStorage.setItem("theme", "light");
+			} else {
+				htmlElement.classList.add("dark");
+				localStorage.setItem("theme", "dark");
+			}
+		});
+	});
 
 	// Cargar el tema almacenado en el localStorage al cargar la página
-	const savedTheme = localStorage.getItem("theme");
-	if (savedTheme) {
-		document.documentElement.classList.add(savedTheme);
+	const ultimoTemaGuardado = localStorage.getItem("theme");
+	if (ultimoTemaGuardado) {
+		document.documentElement.classList.add(ultimoTemaGuardado);
 	}
 </script>
