@@ -1,0 +1,48 @@
+---
+import MenuDots from "./menu-dots.astro";
+import MenuInfo from "./menu-info.astro";
+import MenuMode from "./menu-mode.astro";
+import MenuSearch from "./menu-search.astro";
+import MenuBook from "./menu-book.astro";
+import MenuHome from "./menu-home.astro";
+---
+
+<div class="relative">
+	<div class="absolute w-full z-20">
+		<div class="flex justify-end p-3">
+			<button
+				id="menu-button"
+				class="menu-button text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold"
+			>
+				<MenuDots />
+			</button>
+		</div>
+
+		<div
+			id="menu"
+			class="hidden absolute right-3 top-8 mt-8 bg-deft-blue text-atomic_tangerine rounded-lg dark: text-rose_gold"
+		>
+			<ul id="opciones" class="flex flex-col space-y-4">
+				<li><MenuInfo /></li>
+				<li><MenuMode /></li>
+				<li><MenuSearch /></li>
+				<li><MenuBook /></li>
+				<li><MenuHome /></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+	// document.addEventListener("DOMContentLoaded", () => {
+	// 	const buttons = document.getElementsByClassName("menu-button");
+	// 	for (let button of buttons) {
+	// 		button.addEventListener("click", (ev: Event) => {
+	// 			var d = ev.target as HTMLElement | null;
+	// 			while (d && d.nodeName != "DIV") d = d.parentElement;
+	// 			const menu = d?.nextElementSibling;
+	// 			menu?.classList.toggle("hidden");
+	// 		});
+	// 	}
+	// });
+</script>

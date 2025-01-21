@@ -1,0 +1,17 @@
+---
+import Menu from "@components/menu/index.astro";
+---
+
+<!-- efecto para que la seccion se "pegue" a la parte superior de la pantalla -->
+<section class="h-full snap-start snap-always">
+	<!-- disposicion de la tarjeta -->
+	<div class="h-full tablet:flex tablet:flex-col tablet:justify-center tablet:items-center">
+		<!-- tarjeta -->
+		<div
+			class="h-full tablet:w-[41.5vh] tablet:h-[90vh] tablet:rounded-[2rem] tablet:shadow-3xl bg-indigo-900 dark:bg-pinky_cream"
+		>
+			<Menu />
+			<slot />
+		</div>
+	</div>
+</section>

@@ -1,47 +1,52 @@
 * {
 	box-sizing: border-box;
-  }
-  
-  body {
-	margin: 0;
-	padding: 0;
-  }
-  
-  p {
-	user-select: none;
-  }
-  /* Ocultar scrollbar en navegadores basados en WebKit (Chrome, Safari, Edge) */
-.no-scrollbar::-webkit-scrollbar {
-	display: none; /* Ocultar scrollbar en WebKit */
-  }
-  
-  /* Ocultar scrollbar en Firefox */
-  .no-scrollbar {
-	scrollbar-width: none; /* Ocultar scrollbar en Firefox */
-  }
-  
-  /* Asegúrate de que el contenido siga siendo desplazable, pero sin barra visible */
-  .no-scrollbar {
-	overflow-y: scroll;
-  }
-
-  .text-haiku {
-    color: #FF9966; /* atomic_tangerine */
 }
 
-.dark .text-haiku {
-    color: #B76E79; /* rose_gold */
-}
-/* Ocultar la barra de desplazamiento pero permitir desplazamiento */
-html, body {
-  overflow-y: scroll; /* Habilita el desplazamiento */
-}
-
-::-webkit-scrollbar {
-  display: none; /* Oculta la barra de desplazamiento en navegadores Webkit (Chrome, Safari) */
+html {
+	font-size: 16px;
 }
 
 body {
-  -ms-overflow-style: none;  /* Oculta la barra de desplazamiento en IE y Edge */
-  scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	user-select: none;
+}
+/* Ocultar scrollbar en navegadores basados en WebKit (Chrome, Safari, Edge) */
+.no-scrollbar::-webkit-scrollbar {
+	display: none; /* Ocultar scrollbar en WebKit */
+}
+
+/* Ocultar scrollbar en Firefox */
+.no-scrollbar {
+	scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+}
+
+/* Asegúrate de que el contenido siga siendo desplazable, pero sin barra visible */
+.no-scrollbar {
+	overflow-y: scroll;
+}
+
+.text-haiku {
+	color: #ff9966; /* atomic_tangerine */
+}
+
+.dark .text-haiku {
+	color: #b76e79; /* rose_gold */
+}
+/* Ocultar la barra de desplazamiento pero permitir desplazamiento */
+html,
+body {
+	overflow-y: scroll; /* Habilita el desplazamiento */
+}
+
+::-webkit-scrollbar {
+	display: none; /* Oculta la barra de desplazamiento en navegadores Webkit (Chrome, Safari) */
+}
+
+body {
+	-ms-overflow-style: none; /* Oculta la barra de desplazamiento en IE y Edge */
+	scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
 }

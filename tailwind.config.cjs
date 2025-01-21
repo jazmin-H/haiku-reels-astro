@@ -21,7 +21,6 @@ module.exports = {
 				tablet: "768px",
 				laptop: "1024px",
 				desktop: "1280px",
-				md: "1024px",
 			},
 			boxShadow: {
 				"3xl": "5px 35px 60px -15px rgba(0, 0, 0 )",
@@ -39,12 +38,12 @@ module.exports = {
 				tablettitle: "1.3rem",
 				laptoptitle: "1.5rem",
 				desktoptitle: "2.25rem",
-				laptopmain: "3.3rem"
+				laptopmain: "3.3rem",
 			},
 		},
 	},
 	plugins: [
 		require("@tailwindcss/typography"),
-		require("tailwind-scrollbar") // Agrega el plugin aquí
+		require("tailwind-scrollbar"), // Agrega el plugin aquí
 	],
 };
