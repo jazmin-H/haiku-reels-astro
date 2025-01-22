@@ -16,6 +16,21 @@
 </svg>
 
 <script>
+	// Cargar el tema almacenado en el localStorage al cargar la página
+	const ultimoTemaGuardado = localStorage.getItem("theme");
+	if (ultimoTemaGuardado) {
+		document.documentElement.classList.add(ultimoTemaGuardado);
+	}
+
+	// Cambiar el color propuesto en meta tag contents
+	const colorParaElDecoradorEnElTemaOscuro = "#FBE2D0";
+	const colorParaElDecoradorEnElTemaClaro = "#312e81";
+	const metaThemeColor = document.querySelector("meta[name=theme-color]");
+	metaThemeColor?.setAttribute(
+		"content",
+		`${ultimoTemaGuardado === "light" ? colorParaElDecoradorEnElTemaClaro : colorParaElDecoradorEnElTemaOscuro}`,
+	);
+
 	// Encuentra nuestro SVG en la página
 	const botonesParaElCambioDeTema = document.querySelectorAll("[data-theme-toggle]");
 	botonesParaElCambioDeTema.forEach((boton) => {
@@ -26,16 +41,13 @@
 			if (htmlElement.classList.contains("dark")) {
 				htmlElement.classList.remove("dark");
 				localStorage.setItem("theme", "light");
+				metaThemeColor?.setAttribute("content", colorParaElDecoradorEnElTemaClaro);
 			} else {
 				htmlElement.classList.add("dark");
 				localStorage.setItem("theme", "dark");
+				console.log(metaThemeColor?.nodeName);
+				metaThemeColor?.setAttribute("content", colorParaElDecoradorEnElTemaOscuro);
 			}
 		});
 	});
-
-	// Cargar el tema almacenado en el localStorage al cargar la página
-	const ultimoTemaGuardado = localStorage.getItem("theme");
-	if (ultimoTemaGuardado) {
-		document.documentElement.classList.add(ultimoTemaGuardado);
-	}
 </script>
