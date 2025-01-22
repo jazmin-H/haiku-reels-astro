@@ -52,4 +52,31 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 			animate: smoothScroll 3s ease-in-out forwards;
 		}
 	</style>
+
+	<script>
+		const establecerTemaClaroPorDefectoSiNoHayTemaAlmacenado = (): void => {
+			const colorParaElDecoradorEnElTemaClaro = "#312e81";
+			const temaActual = localStorage.getItem("theme");
+			if (temaActual === null || temaActual === "light") {
+				localStorage.setItem("theme", "light");
+				document.documentElement.classList.remove("dark");
+				document
+					.querySelector("meta[name=theme-color]")
+					?.setAttribute("content", colorParaElDecoradorEnElTemaClaro);
+			}
+		};
+
+		const establecerTemaOscuroSiEsteSeEncuentraAlmacenado = (): void => {
+			const colorParaElDecoradorEnElTemaOscuro = "#FBE2D0";
+			const temaActual = localStorage.getItem("theme");
+			if (temaActual === "dark") {
+				document.documentElement.classList.add("dark");
+				document
+					.querySelector("meta[name=theme-color]")
+					?.setAttribute("content", colorParaElDecoradorEnElTemaOscuro);
+			}
+		};
+		establecerTemaClaroPorDefectoSiNoHayTemaAlmacenado();
+		establecerTemaOscuroSiEsteSeEncuentraAlmacenado();
+	</script>
 </html>

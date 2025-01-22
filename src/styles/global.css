@@ -11,7 +11,14 @@ body {
 	padding: 0;
 }
 
-p {
+p,
+h1,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	user-select: none;
 }
 /* Ocultar scrollbar en navegadores basados en WebKit (Chrome, Safari, Edge) */
