@@ -1,4 +1,5 @@
 ---
+import TemaAAplicarEnTodoElSitio from "./tema/tema-a-implementar.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
 import "../styles/global.css";
 
@@ -37,33 +38,9 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 		<meta name="theme-color" />
 		<!-- matter-wrap -->
 	</head>
-	<body><slot /></body>
+	<body>
+		<TemaAAplicarEnTodoElSitio />
 
-	<script>
-		const establecerTemaClaroPorDefectoSiNoHayTemaAlmacenado = (): void => {
-			const colorParaElDecoradorEnElTemaClaro = "#312e81";
-			const temaActual = localStorage.getItem("theme");
-			if (!temaActual || temaActual === "light") {
-				localStorage.setItem("theme", "light");
-				document.documentElement.classList.remove("dark");
-				document
-					.querySelector("meta[name=theme-color]")
-					?.setAttribute("content", colorParaElDecoradorEnElTemaClaro);
-			}
-		};
-
-		const establecerTemaOscuroSiEsteSeEncuentraAlmacenado = (): void => {
-			const colorParaElDecoradorEnElTemaOscuro = "#FBE2D0";
-			const temaActual = localStorage.getItem("theme");
-			if (temaActual === "dark") {
-				document.documentElement.classList.add("dark");
-				document
-					.querySelector("meta[name=theme-color]")
-					?.setAttribute("content", colorParaElDecoradorEnElTemaOscuro);
-			}
-		};
-
-		establecerTemaClaroPorDefectoSiNoHayTemaAlmacenado();
-		establecerTemaOscuroSiEsteSeEncuentraAlmacenado();
-	</script>
+		<slot /></body
+	>
 </html>
