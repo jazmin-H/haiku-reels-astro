@@ -1,6 +1,6 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
-import { ViewTransitions } from "astro:transitions";
+// import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 
 export interface Props {
@@ -15,6 +15,7 @@ const base = "/haiku-reels-astro"; // Usa el valor de base configurado
 const appleTouchIconUrl = `${base}/apple-touch-icon.png`;
 const favicon32x32Url = `${base}/favicon-32x32.png`;
 const favicon16x16Url = `${base}/favicon-16x16.png`;
+const favicon = `${base}/favicon.ico`;
 const siteWebmanifestUrl = `${base}/site.webmanifest`;
 ---
 
@@ -31,16 +32,17 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 		<link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconUrl} />
 		<link rel="icon" type="image/png" sizes="32x32" href={favicon32x32Url} />
 		<link rel="icon" type="image/png" sizes="16x16" href={favicon16x16Url} />
+		<link rel="icon" type="image/ico" href={favicon} />
 		<link rel="manifest" href={siteWebmanifestUrl} />
 		<!-- theme color for mobile -->
 		<meta name="theme-color" />
 		<!-- matter-wrap -->
-		<ViewTransitions />
+		<!-- <ViewTransitions /> -->
 	</head>
 	<body class="bg-delft_blue desktop:bg-burnt_sienna"><slot /></body>
 
 	<style is:global>
-		@keyframes smoothScroll {
+		/* @keyframes smoothScroll {
 			from {
 				transform: translateY(0);
 			}
@@ -50,7 +52,7 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 		}
 		::view-transition(scroll) {
 			animate: smoothScroll 3s ease-in-out forwards;
-		}
+		} */
 	</style>
 
 	<script>

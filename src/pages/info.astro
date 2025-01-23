@@ -1,14 +1,12 @@
 ---
-import HaikuSection from "@layouts/estructura-para-efecto-reel.astro";
+import HaikuSection from "@layouts/estructura-para-cada-tarjeta-reel.astro";
 import HaikusLayout from "@layouts/estructura-para-efecto-reel.astro";
 import HtmlLayout from "@layouts/estructura-base-para-todo-el-sitio.astro";
 ---
 
 <HtmlLayout>
-	<HaikusLayout
-		class="mr-8 h-screen w-screen bg-[#fa9f84] flex justify-center items-center overflow-hidden"
-	>
-		<HaikuSection class="h-[80vh] w-full max-w-md bg-[#432997] p-6 rounded-2xl">
+	<HaikusLayout>
+		<HaikuSection>
 			<h1
 				class="font-roboto-serif font-bold tablet:text-tablettitle laptop:text-laptoptitle desktop:text-desktoptitle text-atomic_tangerine px-6 leading-none dark:text-rose_gold mb-4"
 			>

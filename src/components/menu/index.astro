@@ -6,6 +6,21 @@ import MenuSearch from "./menu-search.astro";
 import MenuHome from "./menu-home.astro";
 ---
 
+<style>
+	.fade-in {
+		animation: fadeIn 0.5s ease-in-out;
+	}
+
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+</style>
+
 <div class="relative">
 	<div class="absolute w-full z-20 flex flex-col items-end p-3">
 		<button boton-de-menu class="text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold">

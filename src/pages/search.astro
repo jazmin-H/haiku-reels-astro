@@ -31,52 +31,53 @@ import HaikuSection from "@layouts/estructura-para-cada-tarjeta-reel.astro";
 				<div id="results-container"></div>
 			</div>
 		</HaikuSection>
-		<script is:inline>
-			document.getElementById("search-b")?.addEventListener("click", () => {
-				const inputElement = document.getElementById("s-input");
-				const value = inputElement?.value.trim().toLowerCase();
-				if (value === "") {
-					resultsContainer.innerHTML = `<p class="text-atomic_tangerine dark:text-rose_gold">No se encontraron resultados.</p>`;
-					return; // Verifica si el HTML se inyecta correctamente
-				}
-				fetch("/haiku-reels-astro/data/haikus.json")
-					.then((response) => response.json())
-					.then((data) => {
-						const filteredHaikus = data.haikus.filter((item) => {
-							return item.autoria.toLowerCase().includes(value);
-						});
-						console.log(filteredHaikus);
-						renderHaikus(filteredHaikus);
-					});
-			});
-
-			function renderHaikus(haikus) {
-				const resultsContainer = document.getElementById("results-container");
-				resultsContainer.innerHTML = "";
-				if (haikus.length === 0) {
-					resultsContainer.innerHTML = `<p class="text-atomic_tangerine dark:text-rose_gold">No se encontraron resultados.</p>`;
-					return;
-				}
-
-				const haikusRenders = haikus.map((haiku, index) => {
-					const { autoria, pubDate, content } = haiku;
-					return `
-					<div class="pt-2 pl-3 pr-3 pb-3 md:mr-8 ml-0 mt-4 bg-atomic_tangerine dark:bg-rose_gold rounded-3xl border-4 border-delft_blue dark:border-pinky_cream shadow-xl hover:shadow-2xl transition-shadow duration-300">
-						<div class="mt-4 text-lg text-delft_blue dark:text-pinky_cream leading-relaxed">
-							<h3>${autoria}</h3>
-							<p class="text-s"><strong>Fecha de publicación:</strong> ${pubDate}</p>
-							<div class="content">${content}</div>
-						</div>
-					</div>
-					`;
-				});
-
-				resultsContainer.innerHTML = `
-					<div class="haikus-layout">
-						${haikusRenders.join("")}
-					</div>
-				`;
-			}
+		// <script is:inline>
+			// 	document.getElementById("search-b")?.addEventListener("click", () => {
+			// 		const inputElement = document.getElementById("s-input");
+			// 		const value = inputElement?.value.trim().toLowerCase();
+			// 		if (value === "") {
+			// 			resultsContainer.innerHTML = `<p class="text-atomic_tangerine dark:text-rose_gold">No se encontraron resultados.</p>`;
+			// 			return; // Verifica si el HTML se inyecta correctamente
+			// 		}
+			// 		fetch("/haiku-reels-astro/data/haikus.json")
+			// 			.then((response) => response.json())
+			// 			.then((data) => {
+			// 				const filteredHaikus = data.haikus.filter((item) => {
+			// 					return item.autoria.toLowerCase().includes(value);
+			// 				});
+			// 				console.log(filteredHaikus);
+			// 				renderHaikus(filteredHaikus);
+			// 			});
+			// 	});
+			//
+			// 	function renderHaikus(haikus) {
+			// 		const resultsContainer = document.getElementById("results-container");
+			// 		resultsContainer.innerHTML = "";
+			// 		if (haikus.length === 0) {
+			// 			resultsContainer.innerHTML = `<p class="text-atomic_tangerine dark:text-rose_gold">No se encontraron resultados.</p>`;
+			// 			return;
+			// 		}
+			//
+			// 		const haikusRenders = haikus.map((haiku, index) => {
+			// 			const { autoria, pubDate, content } = haiku;
+			// 			return `
+			// 			<div class="pt-2 pl-3 pr-3 pb-3 md:mr-8 ml-0 mt-4 bg-atomic_tangerine dark:bg-rose_gold rounded-3xl border-4 border-delft_blue dark:border-pinky_cream shadow-xl hover:shadow-2xl transition-shadow duration-300">
+			// 				<div class="mt-4 text-lg text-delft_blue dark:text-pinky_cream leading-relaxed">
+			// 					<h3>${autoria}</h3>
+			// 					<p class="text-s"><strong>Fecha de publicación:</strong> ${pubDate}</p>
+			// 					<div class="content">${content}</div>
+			// 				</div>
+			// 			</div>
+			// 			`;
+			// 		});
+			//
+			// 		resultsContainer.innerHTML = `
+			// 			<div class="haikus-layout">
+			// 				${haikusRenders.join("")}
+			// 			</div>
+			// 		`;
+			// 	}
+			//
 		</script>
 	</HaikusLayout>
 </HtmlLayout>
