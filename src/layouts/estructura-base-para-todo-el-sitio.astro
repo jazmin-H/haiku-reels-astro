@@ -1,6 +1,5 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
-// import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 
 export interface Props {
@@ -37,29 +36,14 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 		<!-- theme color for mobile -->
 		<meta name="theme-color" />
 		<!-- matter-wrap -->
-		<!-- <ViewTransitions /> -->
 	</head>
-	<body class="bg-delft_blue desktop:bg-burnt_sienna"><slot /></body>
-
-	<style is:global>
-		/* @keyframes smoothScroll {
-			from {
-				transform: translateY(0);
-			}
-			to {
-				transform: translateY(-100vh);
-			}
-		}
-		::view-transition(scroll) {
-			animate: smoothScroll 3s ease-in-out forwards;
-		} */
-	</style>
+	<body><slot /></body>
 
 	<script>
 		const establecerTemaClaroPorDefectoSiNoHayTemaAlmacenado = (): void => {
 			const colorParaElDecoradorEnElTemaClaro = "#312e81";
 			const temaActual = localStorage.getItem("theme");
-			if (temaActual === null || temaActual === "light") {
+			if (!temaActual || temaActual === "light") {
 				localStorage.setItem("theme", "light");
 				document.documentElement.classList.remove("dark");
 				document
@@ -78,6 +62,7 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 					?.setAttribute("content", colorParaElDecoradorEnElTemaOscuro);
 			}
 		};
+
 		establecerTemaClaroPorDefectoSiNoHayTemaAlmacenado();
 		establecerTemaOscuroSiEsteSeEncuentraAlmacenado();
 	</script>

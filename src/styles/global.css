@@ -36,13 +36,14 @@ h6 {
 	overflow-y: scroll;
 }
 
-.text-haiku {
-	color: #ff9966; /* atomic_tangerine */
-}
+/* .text-haiku { */
+/* 	color: #ff9966; /* atomic_tangerine */
+/* } */
 
-.dark .text-haiku {
-	color: #b76e79; /* rose_gold */
-}
+/* .dark .text-haiku { */
+/* 	color: #b76e79; /* rose_gold */
+/* } */
+
 /* Ocultar la barra de desplazamiento pero permitir desplazamiento */
 html,
 body {
