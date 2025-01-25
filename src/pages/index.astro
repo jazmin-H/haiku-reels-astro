@@ -1,16 +1,16 @@
 ---
 import EstructuraHTMLBase from "@layouts/estructura-base-para-todo-el-sitio.astro";
-import TarjetaParaCadaHaikuReel from "@layouts/estructura-para-cada-tarjeta-reel.astro";
-import TableroParaEfectoReel from "@layouts/estructura-para-efecto-reel.astro";
+import EstructuraTipoTarjetaParaReel from "@layouts/estructura-para-cada-tarjeta-reel.astro";
+import EstructuraParaEfectoReel from "@layouts/estructura-para-efecto-reel.astro";
 import PortadaDelSitio from "@components/portada-del-sitio/index.astro";
 import GaleriaDeHaikus from "@components/galeria-de-haikus/index.astro";
 ---
 
 <EstructuraHTMLBase>
-	<TableroParaEfectoReel>
-		<TarjetaParaCadaHaikuReel>
+	<EstructuraParaEfectoReel>
+		<EstructuraTipoTarjetaParaReel>
 			<PortadaDelSitio />
-		</TarjetaParaCadaHaikuReel>
+		</EstructuraTipoTarjetaParaReel>
 		<GaleriaDeHaikus />
-	</TableroParaEfectoReel>
+	</EstructuraParaEfectoReel>
 </EstructuraHTMLBase>
