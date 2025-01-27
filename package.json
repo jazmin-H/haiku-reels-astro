@@ -13,7 +13,7 @@
     "generate-haikus-json": "bun run src/utils/generate-haikus-json.ts",
     "tests:e2e": "bun run build && bunx playwright test",
     "tests:e2e:without-build": "bunx playwright test",
-    "tests": "bun test **/*.test.ts",
+    "tests": "bun test",
     "test:create:e2e": "bunx playwright codegen"
   },
   "dependencies": {
@@ -44,7 +44,6 @@
     "eslint-plugin-astro": "^0.31.4",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "playwright": "^1.48.2",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "^0.12.2",
     "ts-node": "^10.9.2",

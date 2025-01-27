@@ -5,7 +5,7 @@ export default defineConfig({
 	// testDir: "tests-e2e",
 	//
 	// Glob patterns or regular expressions that match test files.
-	testMatch: "/*.spec.ts",
+	testMatch: "**/*.spec.ts",
 
 	// Run all tests in parallel.
 	fullyParallel: true,
