@@ -55,7 +55,6 @@ jobs:
         run: |
           bunx pagefind \
           --site dist \
-          --output-path ./public/pagefind
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
