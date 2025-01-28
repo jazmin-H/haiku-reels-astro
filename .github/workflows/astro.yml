@@ -51,6 +51,12 @@ jobs:
           --site "${{ steps.pages.outputs.origin }}" \
           --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Post build with pagefind
+        run: |
+          bunx pagefind \
+          --site dist \
+          --output-path ./public/pagefind
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
