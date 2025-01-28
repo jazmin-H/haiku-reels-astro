@@ -1,0 +1,57 @@
+---
+import EstructuraBaseParaTodoElSitio from "@layouts/estructura-base-para-todo-el-sitio.astro";
+import EstructuraParaEfectoReel from "@layouts/estructura-para-efecto-reel.astro";
+import EstructuraParaCadaTarjetaReel from "@layouts/estructura-para-cada-tarjeta-reel.astro";
+---
+
+<EstructuraBaseParaTodoElSitio>
+	<EstructuraParaEfectoReel>
+		<EstructuraParaCadaTarjetaReel>
+			<div class="relative h-full">
+				<div id="search" class="w-5/6 h-full absolute z-30 px-4 py-3 overflow-auto"></div>
+			</div>
+		</EstructuraParaCadaTarjetaReel>
+	</EstructuraParaEfectoReel>
+</EstructuraBaseParaTodoElSitio>
+<script>
+	declare class PagefindUI {
+		constructor(options: {
+			element: string;
+			showSubResults: boolean;
+			resetStyles: boolean;
+			autofocus: boolean;
+		});
+	}
+	window.addEventListener("DOMContentLoaded", () => {
+		new PagefindUI({
+			element: "#search",
+			showSubResults: true,
+			resetStyles: false,
+			autofocus: true,
+		});
+	});
+</script>
+<style is:global>
+	:root {
+		--pagefind-ui-scale: 1;
+		--pagefind-ui-primary: #c25e5e;
+		--pagefind-ui-text: #c25e5e;
+		--pagefind-ui-background: transparent;
+		--pagefind-ui-border: none;
+		--pagefind-ui-tag: #c25e5e;
+		--pagefind-ui-border-width: 0px;
+		--pagefind-ui-border-radius: 8px;
+		--pagefind-ui-image-border-radius: 8px;
+		--pagefind-ui-image-box-ratio: 3 / 2;
+		--pagefind-ui-font: sans-serif;
+	}
+
+	#search > div.pagefind-ui > form > input::placeholder {
+		opacity: 0.5;
+		color: #c25e5e;
+	}
+
+	#search > div.pagefind-ui > form > input:focus-visible {
+		outline: none;
+	}
+</style>

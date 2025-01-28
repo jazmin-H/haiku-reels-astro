@@ -32,12 +32,7 @@
 		evento.preventDefault();
 		const parametrosDeBusqueda = new URLSearchParams();
 		parametrosDeBusqueda.set("palabras-clave", campoDeTextoDelBuscador.value);
+		parametrosDeBusqueda.set("estado-de-la-busqueda", "cargando");
 		document.location.search = parametrosDeBusqueda.toString();
-	});
-
-	document.addEventListener("DOMContentLoaded", () => {
-		const urlParams = new URLSearchParams(document.location.search);
-		const palabrasClave = urlParams.get("palabras-clave");
-		console.log(palabrasClave);
 	});
 </script>

@@ -1,0 +1,47 @@
+---
+// interface Props {
+// 	estado:
+// 		| "buscando"
+// 		| "se encontraron resultados"
+// 		| "no se encontraron resultados"
+// 		| "hubo un problema";
+// 	consulta: string;
+// }
+//
+// const { estado, consulta } = Astro.props;
+---
+
+<div class="h-full flex flex-col justify-center">
+	<div class="text-2xl">
+		Cargando resultados para: <span id="espacios-para-ratificar-la-busqueda-del-usuario"></span>
+	</div>
+</div>
+<script>
+	const consulta = document.getElementById(
+		"espacios-para-ratificar-la-busqueda-del-usuario",
+	) as HTMLSpanElement;
+
+	const mostrarIconoDeBusquedaSiNoExistenConsultasRealizadas = (): void => {
+		const urlParams = new URLSearchParams(document.location.search);
+		const palabrasClave = urlParams.get("palabras-clave");
+		if (!palabrasClave) {
+			consulta.textContent = "No se ha realizado ninguna consulta.";
+		}
+	};
+
+	const ratificarConsultaAtravesDeUnMensajeSiEsQueLaConsultaFueraRealizada = (): void => {
+		const urlParams = new URLSearchParams(document.location.search);
+		const palabrasClave = urlParams.get("palabras-clave");
+		if (palabrasClave) {
+			consulta.textContent = palabrasClave;
+		}
+	};
+
+	document.addEventListener("DOMContentLoaded", () => {
+		// const urlParams = new URLSearchParams(document.location.search);
+		// const palabrasClave = urlParams.get("palabras-clave");
+
+		mostrarIconoDeBusquedaSiNoExistenConsultasRealizadas();
+		ratificarConsultaAtravesDeUnMensajeSiEsQueLaConsultaFueraRealizada();
+	});
+</script>

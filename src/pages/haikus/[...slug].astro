@@ -1,0 +1,35 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import { render } from "astro:content";
+import EstructuraBaseParaTodoElSitio from "@layouts/estructura-base-para-todo-el-sitio.astro";
+import EstructuraParaEfectoReel from "@layouts/estructura-para-efecto-reel.astro";
+import EstructuraParaCadaTarjetaReel from "@layouts/estructura-para-cada-tarjeta-reel.astro";
+import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
+import TarjetaParaCadaHaiku from "@components/tarjeta-para-cada-haiku/index.astro";
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export async function getStaticPaths() {
+	const posts = await getCollection("haikus");
+	return posts.map((post) => ({
+		params: { slug: post.id.replace(/\.md$/, "") },
+		props: post,
+	}));
+}
+
+type Props = CollectionEntry<"haikus">;
+
+const post = Astro.props;
+const { Content: Haiku } = await render(post);
+---
+
+<EstructuraBaseParaTodoElSitio>
+	<EstructuraParaEfectoReel>
+		<EstructuraParaCadaTarjetaReel>
+			<BgOrigamis>
+				<TarjetaParaCadaHaiku {...post.data}>
+					<Haiku />
+				</TarjetaParaCadaHaiku>
+			</BgOrigamis>
+		</EstructuraParaCadaTarjetaReel>
+	</EstructuraParaEfectoReel>
+</EstructuraBaseParaTodoElSitio>
