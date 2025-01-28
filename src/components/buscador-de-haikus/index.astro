@@ -8,7 +8,7 @@
 <script>
 	import { SITE_URL } from "@config/consts";
 	const seleccionarUnaImagenAlAzar = (): string => {
-		const imagenes = ["origami.png"];
+		const imagenes = ["origami.png", "pez-koi.png", "tanuki.png"];
 		const imagen = imagenes[Math.floor(Math.random() * imagenes.length)];
 		return `${SITE_URL}/imgs/${imagen}`;
 	};

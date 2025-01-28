@@ -1,7 +1,3 @@
----
-
----
-
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 512 512"
@@ -17,7 +13,7 @@
 
 <script>
 	const colorParaElDecoradorEnElTemaOscuro = "#FBE2D0";
-	const colorParaElDecoradorEnElTemaClaro = "#312e81";
+	const colorParaElDecoradorEnElTemaClaro = "#41436A";
 
 	const cambiarElTemaDelDecorador = (): void => {
 		const usandoTemaOscuro = localStorage.getItem("theme") === "dark";
@@ -25,7 +21,7 @@
 			.querySelector("meta[name=theme-color]")
 			?.setAttribute(
 				"content",
-				usandoTemaOscuro ? colorParaElDecoradorEnElTemaClaro : colorParaElDecoradorEnElTemaOscuro,
+				usandoTemaOscuro ? colorParaElDecoradorEnElTemaClaro : colorParaElDecoradorEnElTemaOscuro
 			);
 	};
 
