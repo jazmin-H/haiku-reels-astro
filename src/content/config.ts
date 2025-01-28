@@ -6,10 +6,13 @@ const haikus = defineCollection({
 		anio: z.string().optional(),
 		escuela: z.string().optional(),
 		curso: z.string().optional(),
-		pubDate: z
-			.string()
-			.or(z.date())
-			.transform((val) => new Date(val)),
+		pubDate: z.string().transform((date) => {
+			const fechaEnCrudo = new Date(date);
+			if (fechaEnCrudo.toString() === "Invalid Date") {
+				throw new Error(`La fecha ${date} no es válida`);
+			}
+			return fechaEnCrudo;
+		}),
 	}),
 });
 

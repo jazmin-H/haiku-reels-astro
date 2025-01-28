@@ -1,6 +1,6 @@
 ---
 import TemaAAplicarEnTodoElSitio from "./tema/tema-a-implementar.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
 import "../styles/global.css";
 
 export interface Props {
@@ -10,13 +10,11 @@ export interface Props {
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION }: Props = Astro.props;
 
-// Construir las URLs base para los recursos estáticos
-const base = "/haiku-reels-astro"; // Usa el valor de base configurado
-const appleTouchIconUrl = `${base}/apple-touch-icon.png`;
-const favicon32x32Url = `${base}/favicon-32x32.png`;
-const favicon16x16Url = `${base}/favicon-16x16.png`;
-const favicon = `${base}/favicon.ico`;
-const siteWebmanifestUrl = `${base}/site.webmanifest`;
+const appleTouchIconUrl = `${SITE_URL}/apple-touch-icon.png`;
+const favicon32x32Url = `${SITE_URL}/favicon-32x32.png`;
+const favicon16x16Url = `${SITE_URL}/favicon-16x16.png`;
+const favicon = `${SITE_URL}/favicon.ico`;
+const siteWebmanifestUrl = `${SITE_URL}/site.webmanifest`;
 ---
 
 <!doctype html>
@@ -39,8 +37,8 @@ const siteWebmanifestUrl = `${base}/site.webmanifest`;
 		<!-- matter-wrap -->
 
 		<!-- pagefind -->
-		<link href=`${base}/pagefind/pagefind-ui.css` rel="stylesheet" />
-		<script is:inline src=`${base}/pagefind/pagefind-ui.js`></script>
+		<link href=`${SITE_URL}/pagefind/pagefind-ui.css` rel="stylesheet" />
+		<script is:inline src=`${SITE_URL}/pagefind/pagefind-ui.js`></script>
 	</head>
 	<body data-pagefind-body>
 		<TemaAAplicarEnTodoElSitio />

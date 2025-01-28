@@ -1,0 +1,87 @@
+<div class="relative h-full">
+	<div
+		id="sector-dedicado-al-buscador-y-sus-resultados"
+		class="w-11/12 h-full absolute z-30 px-3 py-6 overflow-auto"
+	>
+	</div>
+</div>
+<script>
+	import { SITE_URL } from "@config/consts";
+	const seleccionarUnaImagenAlAzar = (): string => {
+		const imagenes = ["origami.png"];
+		const imagen = imagenes[Math.floor(Math.random() * imagenes.length)];
+		return `${SITE_URL}/imgs/${imagen}`;
+	};
+	const configuracion = {
+		element: "#sector-dedicado-al-buscador-y-sus-resultados",
+		showSubResults: true,
+		resetStyles: false,
+		autofocus: true,
+		highlightParam: "highlight",
+		processResult: (result: { meta: { image: string } }): { meta: { image: string } } => {
+			result.meta.image = seleccionarUnaImagenAlAzar();
+			return result;
+		},
+	};
+	declare class PagefindUI {
+		constructor(options: typeof configuracion);
+	}
+	window.addEventListener("DOMContentLoaded", () => {
+		new PagefindUI(configuracion);
+	});
+</script>
+<style is:global>
+	:root {
+		--pagefind-ui-scale: 1;
+		--pagefind-ui-primary: #c25e5e;
+		--pagefind-ui-text: #c25e5e;
+		--pagefind-ui-background: transparent;
+		--pagefind-ui-border: none;
+		--pagefind-ui-tag: transparent;
+		--pagefind-ui-border-width: 0px;
+		--pagefind-ui-border-radius: 8px;
+		--pagefind-ui-image-border-radius: 0px;
+		--pagefind-ui-image-box-ratio: 3 / 2;
+		--pagefind-ui-font: sans-serif;
+	}
+	#sector-dedicado-al-buscador-y-sus-resultados > div > form > input {
+		background-color: transparent;
+		outline: none;
+		border: none;
+	}
+
+	#sector-dedicado-al-buscador-y-sus-resultados > div.pagefind-ui > form > input::placeholder {
+		opacity: 0.5;
+		color: #c25e5e;
+	}
+
+	#sector-dedicado-al-buscador-y-sus-resultados > div.pagefind-ui > form > input:focus-visible {
+		outline: none;
+	}
+	#sector-dedicado-al-buscador-y-sus-resultados
+		> div
+		> form
+		> div
+		> div
+		> ol
+		> li
+		> div.pagefind-ui__result-inner.svelte-4xnkmf
+		> p.pagefind-ui__result-excerpt.svelte-4xnkmf
+		> mark {
+		background-color: transparent;
+		color: #c25e5e;
+		font-weight: 900;
+	}
+	#sector-dedicado-al-buscador-y-sus-resultados
+		> div
+		> form
+		> div
+		> div
+		> ol
+		> li
+		> div.pagefind-ui__result-inner.svelte-4xnkmf
+		> ul
+		> li {
+		font-weight: 700;
+	}
+</style>

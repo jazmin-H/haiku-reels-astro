@@ -16,8 +16,8 @@ const { autoria, pubDate } = Astro.props;
 	>
 		<slot />
 	</div>
-	<address class="inline">
-		Por <a rel="author" href="/author/john-doe">{autoria}</a> -
+	<address data-pagefind-meta="title" class="inline">
+		Por {autoria}
 	</address>
 	<time class="italic" datetime={pubDate.toDateString()} title={pubDate.toDateString()}>
 		{pubDate.toLocaleDateString()}
