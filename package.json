@@ -10,10 +10,10 @@
 		"astro": "astro",
 		"format": "prettier -w --cache .",
 		"lint": "eslint .",
-		"tests:e2e": "bun run build && bunx playwright test",
+		"tests:e2e": "bun run build:dev && bunx playwright test",
 		"tests:e2e:without-build": "bunx playwright test",
 		"tests": "bun test",
-		"test:create:e2e": "bunx playwright codegen"
+		"tests:e2e:create": "bunx playwright codegen"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^2.1.0",
