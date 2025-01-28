@@ -1,0 +1,47 @@
+<style>
+	.fade-in {
+		animation: fadeIn 0.5s ease-in-out;
+	}
+
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+</style>
+
+<div class="relative">
+	<div class="absolute w-full z-20 flex flex-col items-end px-3 py-6">
+		<button boton-de-menu class="text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 128 512"
+				class="mx-auto h-full fill-current text-atomic_tangerine dark:text-rose_gold"
+				><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+				<path
+					d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"
+				></path></svg
+			>
+		</button>
+
+		<div class="hidden mt-4 text-atomic_tangerine rounded-lg dark:text-rose_gold">
+			<ul id="opciones" class="flex flex-col space-y-4">
+				<slot />
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+	const botonesParaMenuPrincipal = document.querySelectorAll("[boton-de-menu]");
+	botonesParaMenuPrincipal.forEach((boton) => {
+		boton.addEventListener("click", () => {
+			const menu = boton.nextElementSibling;
+			menu?.classList.toggle("hidden");
+			menu?.classList.toggle("fade-in");
+		});
+	});
+</script>

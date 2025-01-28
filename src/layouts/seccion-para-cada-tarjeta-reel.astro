@@ -1,0 +1,12 @@
+---
+import MenuPrincipal from "@components/menu-principal/index.astro";
+import SeccionInstantanea from "@layouts/componentes/seccion-instantanea.astro";
+import TarjetaAdaptable from "@layouts/componentes/tarjeta-adaptable.astro";
+---
+
+<SeccionInstantanea>
+	<TarjetaAdaptable>
+		<MenuPrincipal />
+		<slot />
+	</TarjetaAdaptable>
+</SeccionInstantanea>

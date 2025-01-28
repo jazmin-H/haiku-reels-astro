@@ -2,8 +2,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { render } from "astro:content";
 import EstructuraBaseParaTodoElSitio from "@layouts/estructura-base-para-todo-el-sitio.astro";
-import EstructuraParaEfectoReel from "@layouts/estructura-para-efecto-reel.astro";
-import EstructuraParaCadaTarjetaReel from "@layouts/estructura-para-cada-tarjeta-reel.astro";
+import EstructuraParaEfectoReel from "@layouts/estructura-principal-para-efecto-reel.astro";
+import SeccionParaCadaTarjetaReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
 import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
 import TarjetaParaCadaHaiku from "@components/tarjeta-para-cada-haiku/index.astro";
 
@@ -24,12 +24,12 @@ const { Content: Haiku } = await render(post);
 
 <EstructuraBaseParaTodoElSitio>
 	<EstructuraParaEfectoReel>
-		<EstructuraParaCadaTarjetaReel>
+		<SeccionParaCadaTarjetaReel>
 			<BgOrigamis>
 				<TarjetaParaCadaHaiku {...post.data}>
 					<Haiku />
 				</TarjetaParaCadaHaiku>
 			</BgOrigamis>
-		</EstructuraParaCadaTarjetaReel>
+		</SeccionParaCadaTarjetaReel>
 	</EstructuraParaEfectoReel>
 </EstructuraBaseParaTodoElSitio>

@@ -1,14 +1,14 @@
 ---
 import EstructuraBaseParaTodoElSitio from "@layouts/estructura-base-para-todo-el-sitio.astro";
-import EstructuraParaEfectoReel from "@layouts/estructura-para-efecto-reel-ignorado-por-motor-de-busqueda.astro";
-import EstructuraParaCadaTarjetaReel from "@layouts/estructura-para-cada-tarjeta-reel-ignorado-por-motor-de-busqueda.astro";
+import EstructuraPrincipalParaEfectoReel from "@layouts/estructura-principal-para-efecto-reel-ignorado-por-motor-de-busqueda.astro";
+import SeccionParaCadaTarjetaReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
 import BuscadorDeHaikus from "@components/buscador-de-haikus/index.astro";
 ---
 
 <EstructuraBaseParaTodoElSitio>
-	<EstructuraParaEfectoReel>
-		<EstructuraParaCadaTarjetaReel>
+	<EstructuraPrincipalParaEfectoReel>
+		<SeccionParaCadaTarjetaReel>
 			<BuscadorDeHaikus />
-		</EstructuraParaCadaTarjetaReel>
-	</EstructuraParaEfectoReel>
+		</SeccionParaCadaTarjetaReel>
+	</EstructuraPrincipalParaEfectoReel>
 </EstructuraBaseParaTodoElSitio>

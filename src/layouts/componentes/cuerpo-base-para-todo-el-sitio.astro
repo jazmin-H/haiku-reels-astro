@@ -1,0 +1,43 @@
+---
+import { SITE_URL } from "@config/consts"; // Puedes mantener esta importación si estás usando las constantes en otro lugar
+import "@styles/global.css";
+
+export interface Props {
+	titulo: string;
+	descripcion: string;
+}
+
+const { titulo, descripcion }: Props = Astro.props;
+
+const appleTouchIconUrl = `${SITE_URL}/apple-touch-icon.png`;
+const favicon32x32Url = `${SITE_URL}/favicon-32x32.png`;
+const favicon16x16Url = `${SITE_URL}/favicon-16x16.png`;
+const favicon = `${SITE_URL}/favicon.ico`;
+const siteWebmanifestUrl = `${SITE_URL}/site.webmanifest`;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<!-- Primary Meta Tags -->
+		<title>{titulo}</title>
+		<meta name="title" content={titulo} />
+		<meta name="description" content={descripcion} />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconUrl} />
+		<link rel="icon" type="image/png" sizes="32x32" href={favicon32x32Url} />
+		<link rel="icon" type="image/png" sizes="16x16" href={favicon16x16Url} />
+		<link rel="icon" type="image/ico" href={favicon} />
+		<link rel="manifest" href={siteWebmanifestUrl} />
+		<!-- theme color for mobile -->
+		<meta name="theme-color" />
+		<!-- matter-wrap -->
+
+		<!-- pagefind -->
+		<link href=`${SITE_URL}/pagefind/pagefind-ui.css` rel="stylesheet" />
+		<script is:inline src=`${SITE_URL}/pagefind/pagefind-ui.js`></script>
+	</head>
+	<body data-pagefind-body> <slot /></body>
+</html>

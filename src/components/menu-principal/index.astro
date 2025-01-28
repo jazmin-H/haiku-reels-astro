@@ -1,50 +1,14 @@
 ---
-import MenuDots from "./menu-dots.astro";
+import MenuPrincipal from "@components/menu-principal/menu.astro";
 import MenuInfo from "./menu-info.astro";
 import MenuMode from "./menu-mode.astro";
 import MenuSearch from "./menu-search.astro";
 import MenuHome from "./menu-home.astro";
 ---
 
-<style>
-	.fade-in {
-		animation: fadeIn 0.5s ease-in-out;
-	}
-
-	@keyframes fadeIn {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
-</style>
-
-<div class="relative">
-	<div class="absolute w-full z-20 flex flex-col items-end px-3 py-6">
-		<button boton-de-menu class="text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold">
-			<MenuDots />
-		</button>
-
-		<div class="hidden mt-4 text-atomic_tangerine rounded-lg dark:text-rose_gold">
-			<ul id="opciones" class="flex flex-col space-y-4">
-				<li><MenuInfo /></li>
-				<li><MenuMode /></li>
-				<li><MenuSearch /></li>
-				<li><MenuHome /></li>
-			</ul>
-		</div>
-	</div>
-</div>
-
-<script>
-	const botonesParaMenuPrincipal = document.querySelectorAll("[boton-de-menu]");
-	botonesParaMenuPrincipal.forEach((boton) => {
-		boton.addEventListener("click", () => {
-			const menu = boton.nextElementSibling;
-			menu?.classList.toggle("hidden");
-			menu?.classList.add("fade-in");
-		});
-	});
-</script>
+<MenuPrincipal>
+	<MenuInfo />
+	<MenuMode />
+	<MenuSearch />
+	<MenuHome />
+</MenuPrincipal>

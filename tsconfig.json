@@ -9,7 +9,8 @@
 			"@content/*": ["src/content/*"],
 			"@backgrounds/*": ["src/backgrounds/*"],
 			"@components/*": ["src/components/*"],
-			"@utils/*": ["src/utils/*"]
+			"@utils/*": ["src/utils/*"],
+			"@styles/*": ["src/styles/*"]
 		}
 	},
 	"include": ["src/**/*", "generate-haikus-json.ts"]
