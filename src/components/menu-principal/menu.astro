@@ -14,7 +14,7 @@
 </style>
 
 <div class="relative">
-	<div class="absolute w-full z-20 flex flex-col items-end px-3 py-6">
+	<div class="absolute right-0 z-20 flex flex-col px-3 py-6 rounded-md">
 		<button boton-de-menu class="text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -42,6 +42,13 @@
 			const menu = boton.nextElementSibling;
 			menu?.classList.toggle("hidden");
 			menu?.classList.toggle("fade-in");
+			const fondo = boton.parentElement;
+			fondo?.classList.toggle("fade-in");
+			fondo?.classList.toggle("bg-delft_blue");
+			fondo?.classList.toggle("dark:bg-pinky_cream");
+			fondo?.classList.toggle("bg-opacity-30");
+			fondo?.classList.toggle("dark:bg-opacity-30");
+			fondo?.classList.toggle("shadow-sm");
 		});
 	});
 </script>
