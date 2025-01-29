@@ -1,21 +1,64 @@
 <style>
 	.fade-in {
-		animation: fadeIn 0.5s ease-in-out;
+		animation: fadeIn ease-in 0.3s;
+		-webkit-animation: fadeIn ease-in 0.3s;
+		-moz-animation: fadeIn ease-in 0.3s;
+		-o-animation: fadeIn ease-in 0.3s;
+		-ms-animation: fadeIn ease-in 0.3s;
 	}
 
 	@keyframes fadeIn {
-		0% {
+		from {
 			opacity: 0;
 		}
-		100% {
+		to {
 			opacity: 1;
+		}
+	}
+
+	.fade-out {
+		animation: fadeOut ease-out 0.3s;
+		-webkit-animation: fadeOut ease-out 0.3s;
+		-moz-animation: fadeOut ease-out 0.3s;
+		-o-animation: fadeOut ease-out 0.3s;
+		-ms-animation: fadeOut ease-out 0.3s;
+	}
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
 		}
 	}
 </style>
 
 <div class="relative">
-	<div class="absolute right-0 z-20 flex flex-col px-3 py-6 rounded-md">
-		<button boton-de-menu class="text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold">
+	<div fondo-del-menu-cerrado class="absolute z-20 right-0 px-3 py-6">
+		<button
+			boton-de-menu-cerrado
+			class="text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 128 512"
+				class="mx-auto h-full fill-current text-atomic_tangerine dark:text-rose_gold"
+				><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+				<path
+					d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"
+				></path></svg
+			>
+		</button>
+	</div>
+
+	<div
+		fondo-del-menu-abierto
+		class="absolute z-30 h-svh tablet:w-[41.5vh] tablet:h-[90vh] tablet:rounded-[2rem] w-full hidden flex-col items-end px-3 py-6 bg-gradient-to-bl from-delft_blue dark:from-pinky_cream to-[#0000]"
+	>
+		<button
+			boton-de-menu-abierto
+			class="text-atomic_tangerine text-3xl w-8 h-12 dark:text-rose_gold"
+		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 128 512"
@@ -27,8 +70,8 @@
 			>
 		</button>
 
-		<div class="hidden mt-4 text-atomic_tangerine rounded-lg dark:text-rose_gold">
-			<ul id="opciones" class="flex flex-col space-y-4">
+		<div class="mt-4 text-atomic_tangerine dark:text-rose_gold">
+			<ul class="flex flex-col space-y-4">
 				<slot />
 			</ul>
 		</div>
@@ -36,19 +79,28 @@
 </div>
 
 <script>
-	const botonesParaMenuPrincipal = document.querySelectorAll("[boton-de-menu]");
-	botonesParaMenuPrincipal.forEach((boton) => {
-		boton.addEventListener("click", () => {
-			const menu = boton.nextElementSibling;
-			menu?.classList.toggle("hidden");
-			menu?.classList.toggle("fade-in");
-			const fondo = boton.parentElement;
-			fondo?.classList.toggle("fade-in");
-			fondo?.classList.toggle("bg-delft_blue");
-			fondo?.classList.toggle("dark:bg-pinky_cream");
-			fondo?.classList.toggle("bg-opacity-30");
-			fondo?.classList.toggle("dark:bg-opacity-30");
-			fondo?.classList.toggle("shadow-sm");
+	const botonesDeMenuCerrado = document.querySelectorAll("[boton-de-menu-cerrado]");
+	botonesDeMenuCerrado.forEach((botonDeMenuCerrado) => {
+		botonDeMenuCerrado.addEventListener("click", () => {
+			const fondoDeMenuAbiertoMasCercano = botonDeMenuCerrado.parentElement?.nextElementSibling;
+			fondoDeMenuAbiertoMasCercano?.classList.toggle("hidden");
+			fondoDeMenuAbiertoMasCercano?.classList.toggle("flex");
+			fondoDeMenuAbiertoMasCercano?.classList.toggle("fade-in");
+		});
+	});
+
+	const botonesDeMenuAbierto = document.querySelectorAll("[boton-de-menu-abierto]");
+	botonesDeMenuAbierto.forEach((botonDeMenuAbierto) => {
+		botonDeMenuAbierto.addEventListener("click", () => {
+			const fondoDeMenuAbierto = botonDeMenuAbierto.parentElement;
+
+			fondoDeMenuAbierto?.classList.toggle("fade-out");
+			setTimeout(() => {
+				fondoDeMenuAbierto?.classList.toggle("hidden");
+				fondoDeMenuAbierto?.classList.toggle("flex");
+				fondoDeMenuAbierto?.classList.toggle("fade-in");
+				fondoDeMenuAbierto?.classList.toggle("fade-out");
+			}, 250);
 		});
 	});
 </script>
