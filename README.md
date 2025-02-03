@@ -1,13 +1,19 @@
-# Haikus ETEC
+# Haiku Reels - ETEC
+
+## Descripción
+
+Haiku Reels es un sitio web dedicado a compartir y preservar la creatividad de los estudiantes a través de haikus, breves poemas de origen japonés que buscan capturar en solo tres líneas un instante fugaz, una emoción profunda o la belleza de la naturaleza.
+
+Este proyecto es parte de una iniciativa impulsada en el colegio desde hace varios años, donde los estudiantes crean haikus como parte de su aprendizaje y expresión artística.
+
+Esta plataforma permite explorar esos poemas organizados por autoría, fecha, año, escuela y curso, ofreciendo una forma única de seguir la evolución de cada generación de estudiantes en su desarrollo poético. La web ha sido construida con tecnologías modernas y optimizada para dispositivos móviles, creando un entorno agradable y limpio que permite concentrarse en los haikus y las ideas que expresan.
+
+Este proyecto también está vinculado a la Fundación Borges, una organización que trabaja por la promoción del arte y la cultura en el contexto educativo. Gracias a su apoyo, el proyecto ha crecido y hoy se extiende a la comunidad.
+
+Si deseas conocer más sobre su labor, visita la Fundación Borges. Este espacio no solo es una plataforma para los haikus, sino también un archivo vivo del esfuerzo colectivo por promover la poesía y el arte en el ámbito educativo.
 
 | ![primer-estilo](./assets/primer-estilo.png) | ![segundo-estilo](./assets/segundo-estilo.png) | ![tercer-estilo](./assets/tercer-estilo.png) |
 | -------------------------------------------- | ---------------------------------------------- | -------------------------------------------- |
-
-
-
-
-
-
 
 Características:
 
