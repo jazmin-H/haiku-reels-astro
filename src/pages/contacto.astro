@@ -4,26 +4,60 @@ import EstructuraPrincipalParaEfectoReel from "@layouts/estructura-principal-par
 import SeccionParaCadaTarjetaReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
 import BuscadorDeHaikus from "@components/buscador-de-haikus/index.astro";
 ---
+
 <EstructuraBaseParaTodoElSitio>
 	<EstructuraPrincipalParaEfectoReel>
 		<SeccionParaCadaTarjetaReel>
 			<div class="flex flex-col justify-center h-full items-center">
+				<div
+					class="mb-3 text-1xl font-roboto-serif font-medium text-atomic_tangerine dark:text-rose_gold"
+				>
+					<h1
+						class="text-center text-2xl font-roboto-serif font-semibold text-atomic_tangerine dark:text-rose_gold"
+					>
+						Equipo de Trabajo
+					</h1>
+					<ul class="text-center">
+						<li
+							class="text-1xl font-roboto-serif font-medium text-atomic_tangerine dark:text-rose_gold"
+						>
+							<a href="mailto:nferreiros@etec.uba.ar">Nicolas Ferreiros</a>
+						</li>
+						<li class="mailto:aacunamarichal@etec.uba.ar">Agostina Acuña</li>
+						<li class="mailto:fscigliano@etec.uba.ar">Facundo Scigliano</li>
+					</ul>
+				</div>
 
-                <h1 class="text-center text-2xl font-roboto-serif font-semibold text-atomic_tangerine dark:text-rose_gold">
-                    Equipo de Trabajo
-                </h1>
-                
-                <ul class=" text-center">
-                    <li>Nicolas Ferreiros - nferreiros@etec.uba.ar</li>
-                    <li>Agostina Acuña - aacunamarichal@etec.uba.ar</li>
-                    <li>Facundo Scigliano - fscigliano@etec.uba.ar</li>
-                    <p class="text-center text-2xl font-roboto-serif font-semibold text-atomic_tangerine dark:text-rose_gold">Lider de equipo</p>
-                    <li>Joaquín Blanco - jblanco@etec.uba.ar</li>
-                    <p class="text-center text-2xl font-roboto-serif font-semibold text-atomic_tangerine dark:text-rose_gold">Promotora de Proyecto</p>
-                    <li>Veronica Pena - vpena@etec.uba.ar</li>
-                </ul>
-            </div>
+				<div
+					class="mb-3 text-1xl font-roboto-serif font-medium text-atomic_tangerine dark:text-rose_gold"
+				>
+					<p
+						class="text-center text-2xl font-roboto-serif font-semibold text-atomic_tangerine dark:text-rose_gold"
+					>
+						Lider de equipo
+					</p>
+					<ul class="text-center">
+						<li><a href="mailto:jblanco@etec.uba.ar">Joaquín Blanco</a></li>
+					</ul>
+				</div>
 
+				<div
+					class="mb-3 text-1xl font-roboto-serif font-medium text-atomic_tangerine dark:text-rose_gold"
+				>
+					<p
+						class="text-center text-2xl font-roboto-serif font-semibold text-atomic_tangerine dark:text-rose_gold"
+					>
+						Promotora de Proyecto
+					</p>
+					<ul class="text-center">
+						<li
+							class="text-1xl font-roboto-serif font-medium text-atomic_tangerine dark:text-rose_gold"
+						>
+							<a href="mailto:vpena@etec.uba.ar">Veronica Pena</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</SeccionParaCadaTarjetaReel>
 	</EstructuraPrincipalParaEfectoReel>
 </EstructuraBaseParaTodoElSitio>
