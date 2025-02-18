@@ -13,7 +13,7 @@ const createKoiFish = ({ x, y, size }: IKoiFish): Matter.Body => {
     return Bodies.circle(x, y, size / 2, {
         render: {
             sprite: {
-                texture: `${SITE_URL}/imgs/koi-fish.png`,
+                texture: `${SITE_URL}/imgs/pez-koi.png`,
                 xScale: size / DIM_KOI_PNG,
                 yScale: size / DIM_KOI_PNG,
             },
@@ -37,11 +37,15 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 };
 
 // Aplicar fondo con CSS
+
 document.addEventListener("DOMContentLoaded", () => {
     const containers = document.querySelectorAll(`[container-bg-pez-koi]`);
     containers.forEach((container) => {
-        container.style.backgroundImage = `url('${SITE_URL}/imgs/koi-background.png')`;
-        container.style.backgroundSize = "cover";
-        container.style.backgroundPosition = "center";
+        if (container instanceof HTMLElement) {
+            container.style.backgroundImage = `url('${SITE_URL}/imgs/koi-background.png')`;
+            container.style.backgroundSize = "cover";
+            container.style.backgroundPosition = "center";
+        }
     });
 });
+

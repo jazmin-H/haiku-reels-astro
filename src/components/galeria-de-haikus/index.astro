@@ -6,8 +6,9 @@ import BgJ from "@backgrounds/bg-j/index.astro";
 import BgTemplo from "@backgrounds/bg-templo/index.astro";
 import BgLamparas from "@backgrounds/bg-lampara/index.astro";
 import { getCollection } from "astro:content";
+import BgPezKoi from "@backgrounds/bg-pez-koi/index.astro";
 
-const fondosArtisticos = [BgLamparas, BgTemplo, BgOrigamis, BgJ];
+const fondosArtisticos = [BgLamparas, BgTemplo, BgOrigamis, BgJ, BgPezKoi];
 const haikus = await getCollection("haikus");
 const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---
