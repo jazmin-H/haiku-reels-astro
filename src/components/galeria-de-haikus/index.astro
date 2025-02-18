@@ -5,9 +5,10 @@ import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
 import BgJ from "@backgrounds/bg-j/index.astro";
 import BgTemplo from "@backgrounds/bg-templo/index.astro";
 import BgLamparas from "@backgrounds/bg-lampara/index.astro";
+import BgTanuki from "@backgrounds/bg-tanuki/index.astro";
 import { getCollection } from "astro:content";
 
-const fondosArtisticos = [BgLamparas, BgTemplo, BgOrigamis, BgJ];
+const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ];
 const haikus = await getCollection("haikus");
 const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---
