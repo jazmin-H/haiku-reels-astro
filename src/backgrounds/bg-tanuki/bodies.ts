@@ -2,7 +2,6 @@ import { Bodies, Common } from "matter-js";
 import { createRectangle } from "@utils/matterjs/bodies";
 import type { ICanvasBounds } from "@utils/matterjs/canvas";
 import { SITE_URL } from "@config/consts";
-import { Interface } from "readline";
 
 interface ITanuki {
 	x: number;
@@ -55,7 +54,7 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 		tanuki.push(
 			createTanuki({
 				x: Common.random(0, bounds.width),
-				y: Common.random(0, bounds.height),
+				y: Common.random(-bounds.height, 0),
 				size: Math.min(bounds.width, bounds.height) * 0.18,
 			}),
 		);
