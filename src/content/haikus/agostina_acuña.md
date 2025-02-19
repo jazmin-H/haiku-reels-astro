@@ -4,6 +4,7 @@ pubDate: "Jun 28 2019"
 anio: "2019"
 escuela: "Escuela Técnica de la Universidad de Buenos Aires"
 curso: "1B"
+tags: ["felicidad", "familia", "amigos"] 
 ---
 
 Pasto mojado\
