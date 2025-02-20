@@ -5,9 +5,10 @@ export interface Props {
 	anio?: string;
 	escuela?: string;
 	curso?: string;
+	tags?: string[];
 }
 
-const { autoria, pubDate } = Astro.props;
+const { autoria, pubDate, tags } = Astro.props;
 ---
 
 <div class="p-4 text-atomic_tangerine dark:text-rose_gold">
@@ -20,6 +21,11 @@ const { autoria, pubDate } = Astro.props;
 		Por {autoria}
 	</address>
 	<time class="italic" datetime={pubDate.toDateString()} title={pubDate.toDateString()}>
-		{pubDate.toLocaleDateString()}
+		{pubDate.toLocaleDateString()} 
 	</time>
+	<div class="mb-3 text-1xl font-roboto-negrita font-medium text-atomic_tangerine dark:text-rose_gold">
+		<address data-pagefind-meta="title" class="inline">
+			Etiquetas: {tags}
+		</address>
+	</div>
 </div>

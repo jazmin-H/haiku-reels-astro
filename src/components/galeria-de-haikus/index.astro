@@ -8,6 +8,7 @@ import BgLamparas from "@backgrounds/bg-lampara/index.astro";
 import BgTanuki from "@backgrounds/bg-tanuki/index.astro";
 import BgPezKoi from "@backgrounds/bg-pez-koi/index.astro";
 import { getCollection } from "astro:content";
+import { string } from "astro:schema";
 
 const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ];
 const haikus = await getCollection("haikus");
@@ -17,11 +18,11 @@ const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.
 {
 	haikusRenders.map(({ Content: Haiku }, index) => {
 		const FondoArtistico = fondosArtisticos[index % fondosArtisticos.length];
-		const { autoria, pubDate } = haikus[index].data;
+		const { autoria, pubDate, tags} = haikus[index].data;
 		return (
 			<SeccionParaCadaHaikuReel>
 				<FondoArtistico>
-					<TarjetaParaCadaHaiku autoria={autoria} pubDate={pubDate}>
+					<TarjetaParaCadaHaiku autoria={autoria} pubDate={pubDate} tags={tags}>
 						<Haiku />
 					</TarjetaParaCadaHaiku>
 				</FondoArtistico>
