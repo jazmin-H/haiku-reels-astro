@@ -7,7 +7,7 @@ import BgTemplo from "@backgrounds/bg-templo/index.astro";
 import BgLamparas from "@backgrounds/bg-lampara/index.astro";
 import BgTanuki from "@backgrounds/bg-tanuki/index.astro";
 import BgPezKoi from "@backgrounds/bg-pez-koi/index.astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { set, string } from "astro:schema";
 
 export async function getStaticPaths() {
@@ -19,6 +19,8 @@ export async function getStaticPaths() {
 		props: haikus.filter((haiku) => haiku.data.autoria === autor),
 	}));
 }
+type Props = CollectionEntry<"haikus">[];
+
 
 const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ];
 const haikus = Astro.props;
