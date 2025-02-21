@@ -1,0 +1,42 @@
+---
+import SeccionParaCadaHaikuReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
+import TarjetaParaCadaHaiku from "@components/tarjeta-para-cada-haiku/index.astro";
+import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
+import BgJ from "@backgrounds/bg-j/index.astro";
+import BgTemplo from "@backgrounds/bg-templo/index.astro";
+import BgLamparas from "@backgrounds/bg-lampara/index.astro";
+import BgTanuki from "@backgrounds/bg-tanuki/index.astro";
+import BgPezKoi from "@backgrounds/bg-pez-koi/index.astro";
+import { getCollection } from "astro:content";
+import { set, string } from "astro:schema";
+
+export async function getStaticPaths() {
+	const haikus = await getCollection("haikus");
+	const autores = [...new Set(haikus.map((haiku) => haiku.data.autoria))];
+
+	return autores.map((autor) => ({
+		params: { autor },
+		props: haikus.filter((haiku) => haiku.data.autoria === autor),
+	}));
+}
+
+const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ];
+const haikus = Astro.props;
+const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
+---
+
+{
+	haikusRenders.map(({ Content: Haiku }, index) => {
+		const FondoArtistico = fondosArtisticos[index % fondosArtisticos.length];
+		const { autoria, pubDate, tags} = haikus[index].data;
+		return (
+			<SeccionParaCadaHaikuReel>
+				<FondoArtistico>
+					<TarjetaParaCadaHaiku autoria={autoria} pubDate={pubDate} tags={tags}>
+						<Haiku />
+					</TarjetaParaCadaHaiku>
+				</FondoArtistico>
+			</SeccionParaCadaHaikuReel>
+		);
+	})
+}
