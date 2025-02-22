@@ -12,13 +12,13 @@ import { string } from "astro:schema";
 
 const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ];
 const haikus = await getCollection("haikus");
-const haikusRenders = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
+const HaikusComponents = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---
 
 {
-	haikusRenders.map(({ Content: Haiku }, index) => {
+	HaikusComponents.map(({ Content: Haiku }, index) => {
 		const FondoArtistico = fondosArtisticos[index % fondosArtisticos.length];
-		const { autoria, pubDate, tags} = haikus[index].data;
+		const { autoria, pubDate, tags } = haikus[index].data;
 		return (
 			<SeccionParaCadaHaikuReel>
 				<FondoArtistico>

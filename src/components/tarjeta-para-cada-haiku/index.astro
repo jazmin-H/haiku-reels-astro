@@ -20,12 +20,19 @@ const { autoria, pubDate, tags } = Astro.props;
 	<address data-pagefind-meta="title" class="inline">
 		Por {autoria}
 	</address>
-	<time class="italic" datetime={pubDate.toDateString()} title={pubDate.toDateString()}>
-		{pubDate.toLocaleDateString()} 
-	</time>
-	<div class="mb-3 text-1xl font-roboto-negrita font-medium text-atomic_tangerine dark:text-rose_gold">
-		<address data-pagefind-meta="title" class="inline">
-			Etiquetas: {tags}
-		</address>
+	<div>
+		<time class="italic" datetime={pubDate.toDateString()} title={pubDate.toDateString()}>
+			{pubDate.toLocaleDateString()}
+		</time>
 	</div>
+	{
+		tags && tags.length > 0 && (
+			<div class="font-bold">
+				Etiquetas:{" "}
+				{tags.map((tag) => (
+					<span class="mr-1">#{tag}</span>
+				))}
+			</div>
+		)
+	}
 </div>

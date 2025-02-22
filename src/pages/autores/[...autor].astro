@@ -1,0 +1,49 @@
+---
+import EstructuraBaseParaTodoElSitio from "@layouts/estructura-base-para-todo-el-sitio.astro";
+import EstructuraParaEfectoReel from "@layouts/estructura-principal-para-efecto-reel-ignorado-por-motor-de-busqueda.astro";
+import SeccionParaCadaHaikuReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
+import TarjetaParaCadaHaiku from "@components/tarjeta-para-cada-haiku/index.astro";
+import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
+import BgJ from "@backgrounds/bg-j/index.astro";
+import BgTemplo from "@backgrounds/bg-templo/index.astro";
+import BgLamparas from "@backgrounds/bg-lampara/index.astro";
+import BgTanuki from "@backgrounds/bg-tanuki/index.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const haikus = await getCollection("haikus");
+	const autores = [...new Set(haikus.map((haiku) => haiku.data.autoria))];
+
+	return autores.map((autor) => ({
+		params: { autor },
+		props: { haikus: haikus.filter((haiku) => haiku.data.autoria === autor) },
+	}));
+};
+
+type Props = { haikus: CollectionEntry<"haikus">[] };
+
+const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ];
+const { haikus } = Astro.props;
+const HaikusComponents = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
+---
+
+<EstructuraBaseParaTodoElSitio>
+	<EstructuraParaEfectoReel>
+		{
+			HaikusComponents.map(({ Content: Haiku }, index) => {
+				const FondoArtistico = fondosArtisticos[index % fondosArtisticos.length];
+				const { autoria, pubDate, tags } = haikus[index].data;
+				return (
+					<SeccionParaCadaHaikuReel>
+						<FondoArtistico>
+							<TarjetaParaCadaHaiku autoria={autoria} pubDate={pubDate} tags={tags}>
+								<Haiku />
+							</TarjetaParaCadaHaiku>
+						</FondoArtistico>
+					</SeccionParaCadaHaikuReel>
+				);
+			})
+		}
+	</EstructuraParaEfectoReel>
+</EstructuraBaseParaTodoElSitio>
