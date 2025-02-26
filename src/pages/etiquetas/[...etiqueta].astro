@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const haikus = await getCollection("haikus");
 	const etiquetas = [
 		...new Set(
-			haikus.flatMap((haiku) => haiku.data.tags).filter((etiqueta) => etiqueta !== undefined)
+			haikus.flatMap((haiku) => haiku.data.tags).filter((etiqueta) => etiqueta !== undefined),
 		),
 	];
 

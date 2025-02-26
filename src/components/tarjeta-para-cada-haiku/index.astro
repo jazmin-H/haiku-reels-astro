@@ -28,10 +28,14 @@ const { autoria, pubDate, tags } = Astro.props;
 	{
 		tags && tags.length > 0 && (
 			<div class="font-bold">
-				Etiquetas:{" "}
-				{tags.map((tag) => (
-					<span class="mr-1">#{tag}</span>
-				))}
+				<button>
+					Etiquetas:{" "}
+					{tags.map((tag) => (
+						<span class="mr-1">
+							<a href={`http://localhost:4321/haiku-reels-astro/etiquetas/${tag}`}>#{tag}</a>
+						</span>
+					))}
+				</button>
 			</div>
 		)
 	}
