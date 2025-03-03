@@ -5,7 +5,7 @@ import EstructuraBaseParaTodoElSitio from "@layouts/estructura-base-para-todo-el
 import EstructuraParaEfectoReel from "@layouts/estructura-principal-para-efecto-reel.astro";
 import SeccionParaCadaTarjetaReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
 import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
-import TarjetaParaCadaHaiku from "@components/tarjeta-para-cada-haiku/index.astro";
+import ArticuloParaCadaHaiku from "@components/articulo-para-cada-haiku/index.astro";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export async function getStaticPaths() {
@@ -26,9 +26,9 @@ const { Content: Haiku } = await render(post);
 	<EstructuraParaEfectoReel>
 		<SeccionParaCadaTarjetaReel>
 			<BgOrigamis>
-				<TarjetaParaCadaHaiku {...post.data}>
+				<ArticuloParaCadaHaiku {...post.data}>
 					<Haiku />
-				</TarjetaParaCadaHaiku>
+				</ArticuloParaCadaHaiku>
 			</BgOrigamis>
 		</SeccionParaCadaTarjetaReel>
 	</EstructuraParaEfectoReel>

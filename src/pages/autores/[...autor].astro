@@ -2,7 +2,7 @@
 import EstructuraBaseParaTodoElSitio from "@layouts/estructura-base-para-todo-el-sitio.astro";
 import EstructuraParaEfectoReel from "@layouts/estructura-principal-para-efecto-reel-ignorado-por-motor-de-busqueda.astro";
 import SeccionParaCadaHaikuReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
-import TarjetaParaCadaHaiku from "@components/tarjeta-para-cada-haiku/index.astro";
+import ArticuloParaCadaHaiku from "@components/articulo-para-cada-haiku/index.astro";
 import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
 import BgJ from "@backgrounds/bg-j/index.astro";
 import BgTemplo from "@backgrounds/bg-templo/index.astro";
@@ -37,9 +37,9 @@ const HaikusComponents = await Promise.all(haikus.map(async (haiku) => await hai
 				return (
 					<SeccionParaCadaHaikuReel>
 						<FondoArtistico>
-							<TarjetaParaCadaHaiku autoria={autoria} pubDate={pubDate} tags={tags}>
+							<ArticuloParaCadaHaiku autoria={autoria} pubDate={pubDate} tags={tags}>
 								<Haiku />
-							</TarjetaParaCadaHaiku>
+							</ArticuloParaCadaHaiku>
 						</FondoArtistico>
 					</SeccionParaCadaHaikuReel>
 				);

@@ -1,6 +1,6 @@
 ---
 import SeccionParaCadaHaikuReel from "@layouts/seccion-para-cada-tarjeta-reel.astro";
-import TarjetaParaCadaHaiku from "@components/tarjeta-para-cada-haiku/index.astro";
+import ArticuloParaCadaHaiku from "@components/articulo-para-cada-haiku/index.astro";
 import BgOrigamis from "@backgrounds/bg-origamis/index.astro";
 import BgJ from "@backgrounds/bg-j/index.astro";
 import BgTemplo from "@backgrounds/bg-templo/index.astro";
@@ -8,9 +8,8 @@ import BgLamparas from "@backgrounds/bg-lampara/index.astro";
 import BgTanuki from "@backgrounds/bg-tanuki/index.astro";
 import BgPezKoi from "@backgrounds/bg-pez-koi/index.astro";
 import { getCollection } from "astro:content";
-import { string } from "astro:schema";
 
-const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ];
+const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ, BgPezKoi];
 const haikus = await getCollection("haikus");
 const HaikusComponents = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---
@@ -22,9 +21,9 @@ const HaikusComponents = await Promise.all(haikus.map(async (haiku) => await hai
 		return (
 			<SeccionParaCadaHaikuReel>
 				<FondoArtistico>
-					<TarjetaParaCadaHaiku autoria={autoria} pubDate={pubDate} tags={tags}>
+					<ArticuloParaCadaHaiku autoria={autoria} pubDate={pubDate} tags={tags}>
 						<Haiku />
-					</TarjetaParaCadaHaiku>
+					</ArticuloParaCadaHaiku>
 				</FondoArtistico>
 			</SeccionParaCadaHaikuReel>
 		);
