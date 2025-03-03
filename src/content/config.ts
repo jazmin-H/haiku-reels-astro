@@ -6,7 +6,7 @@ const haikus = defineCollection({
 		anio: z.string().optional(),
 		escuela: z.string().optional(),
 		curso: z.string().optional(),
-		tags : z.array(z.string()).optional(),
+		tags: z.array(z.string().min(3)).optional(),
 		pubDate: z.string().transform((date) => {
 			const fechaEnCrudo = new Date(date);
 			if (fechaEnCrudo.toString() === "Invalid Date") {

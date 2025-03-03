@@ -14,10 +14,8 @@ import type { GetStaticPaths } from "astro";
 export const getStaticPaths: GetStaticPaths = async () => {
 	const haikus = await getCollection("haikus");
 	const etiquetas = [
-		...new Set(
-			haikus.flatMap((haiku) => haiku.data.tags).filter((etiqueta) => etiqueta !== undefined),
-		),
-	];
+		...new Set(haikus.map((haiku) => haiku.data.tags).flatMap((etiquetas) => etiquetas)),
+	].filter((etiqueta) => etiqueta !== undefined);
 
 	return etiquetas.map((etiqueta) => ({
 		params: { etiqueta },
