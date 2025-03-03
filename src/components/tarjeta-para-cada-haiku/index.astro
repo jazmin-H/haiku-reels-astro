@@ -1,4 +1,5 @@
 ---
+import { BASE_URL } from "@config/consts";
 export interface Props {
 	autoria: string;
 	pubDate: Date;
@@ -28,14 +29,9 @@ const { autoria, pubDate, tags } = Astro.props;
 	{
 		tags && tags.length > 0 && (
 			<div class="font-bold">
-				<button>
-					Etiquetas:{" "}
-					{tags.map((tag) => (
-						<span class="mr-1">
-							<a href={`http://localhost:4321/haiku-reels-astro/etiquetas/${tag}`}>#{tag}</a>
-						</span>
-					))}
-				</button>
+				{tags.map((tag) => (
+					<a href={`${BASE_URL}/etiquetas/${tag}`}>#{tag} </a>
+				))}
 			</div>
 		)
 	}
