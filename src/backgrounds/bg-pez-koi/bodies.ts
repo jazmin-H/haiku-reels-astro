@@ -1,4 +1,4 @@
-import { Bodies, Common } from "matter-js";
+import { Bodies, Body } from "matter-js";
 import type { ICanvasBounds } from "@utils/matterjs/canvas";
 import { SITE_URL } from "@config/consts";
 
@@ -11,6 +11,9 @@ interface IKoiFish {
 const DIM_KOI_PNG = 256;
 const createKoiFish = ({ x, y, size }: IKoiFish): Matter.Body => {
 	return Bodies.circle(x, y, size / 2, {
+		frictionAir: 0,
+		friction: 0,
+		inertia: Infinity,
 		render: {
 			sprite: {
 				texture: `${SITE_URL}/imgs/pez-koi.png`,
@@ -22,27 +25,8 @@ const createKoiFish = ({ x, y, size }: IKoiFish): Matter.Body => {
 };
 
 export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
-	const KOI_NUMBER = 30;
-	const koiFishes = [];
-	for (let i = 0; i < KOI_NUMBER; i++) {
-		koiFishes.push(
-			createKoiFish({
-				x: Common.random(0, bounds.width),
-				y: Common.random(-bounds.height, 0),
-				size: Math.min(bounds.width, bounds.height) * 0.18,
-			}),
-		);
-	}
-	return koiFishes;
+	const koi = createKoiFish({ x: -bounds.width / 4, y: bounds.height / 2, size: bounds.width / 4 });
+	Body.rotate(koi, (3 * Math.PI) / 4);
+	Body.setAngularVelocity(koi, -0.002);
+	return [koi];
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-	const containers = document.querySelectorAll(`[container-bg-pez-koi]`);
-	containers.forEach((container) => {
-		if (container instanceof HTMLElement) {
-			container.style.backgroundImage = `url('${SITE_URL}/imgs/pez-koi.png')`;
-			container.style.backgroundSize = "cover";
-			container.style.backgroundPosition = "center";
-		}
-	});
-});

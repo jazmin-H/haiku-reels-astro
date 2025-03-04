@@ -9,7 +9,7 @@ import BgTanuki from "@backgrounds/bg-tanuki/index.astro";
 import BgPezKoi from "@backgrounds/bg-pez-koi/index.astro";
 import { getCollection } from "astro:content";
 
-const fondosArtisticos = [BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ, BgPezKoi];
+const fondosArtisticos = [BgPezKoi, BgTanuki, BgLamparas, BgTemplo, BgOrigamis, BgJ, BgPezKoi];
 const haikus = await getCollection("haikus");
 const HaikusComponents = await Promise.all(haikus.map(async (haiku) => await haiku.render()));
 ---

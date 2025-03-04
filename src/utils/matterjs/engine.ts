@@ -76,4 +76,8 @@ export class Engine {
 	beforeUpdate(callback: () => void): void {
 		Matter.Events.on(this.props.engine, "beforeUpdate", callback);
 	}
+
+	afterUpdate(callback: () => void): void {
+		Matter.Events.on(this.props.engine, "afterUpdate", callback);
+	}
 }
