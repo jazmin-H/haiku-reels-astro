@@ -9,10 +9,11 @@
 	</div>
 </div>
 <script>
-    import { Engine } from "@utils/matterjs/engine";
+	import { Engine } from "@utils/matterjs/engine";
 	import { createBodies } from "./bodies";
 	import { createCanvasByContainer } from "@utils/matterjs/canvas";
-    const containers = document.querySelectorAll(`[container-bg-pez-koi]`);
+
+	const containers = document.querySelectorAll(`[container-bg-pez-koi]`);
 	containers.forEach((container) => {
 		const canvas = createCanvasByContainer(container);
 		const bodies = createBodies(canvas);
@@ -20,6 +21,6 @@
 			canvas,
 			bodies,
 		});
-        engine.start();
+		engine.start();
 	});
 </script>

@@ -36,8 +36,6 @@ export const createBodies = (bounds: ICanvasBounds): Matter.Body[] => {
 	return koiFishes;
 };
 
-// Aplicar fondo con CSS
-
 document.addEventListener("DOMContentLoaded", () => {
 	const containers = document.querySelectorAll(`[container-bg-pez-koi]`);
 	containers.forEach((container) => {
