@@ -13,7 +13,7 @@ test.describe("Como lector, deseo un buscador que me permita encontrar haikus po
 		await page.getByRole("link").nth(1).click();
 		await page.getByRole("textbox", { name: "Buscar" }).click();
 		await page.getByRole("textbox", { name: "Buscar" }).fill("nico");
-		await expect(page.getByRole("link", { name: "Por Nicolás Ferreiros" })).toBeVisible();
-		await expect(page.getByRole("link", { name: "Por Nicole Silva" })).toBeVisible();
+		await expect(page.getByText("Por Nicolás Ferreiros")).toBeVisible();
+		await expect(page.getByText("Por Nicole Silva")).toBeVisible();
 	});
 });
