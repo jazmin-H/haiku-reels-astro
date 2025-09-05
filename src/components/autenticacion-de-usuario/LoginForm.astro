@@ -1,0 +1,41 @@
+---
+import TarjetaAdaptable from '../../layouts/componentes/tarjeta-adaptable.astro';
+---
+
+<TarjetaAdaptable>
+	<div
+		class="h-full flex flex-col justify-center items-center p-8 bg-delft_blue dark:bg-pinky_cream text-rose_gold dark:text-delft_blue"
+	>
+		<h2 class="text-3xl font-bold mb-6">Iniciar Sesión</h2>
+		<form class="w-full max-w-xs">
+			<div class="mb-4">
+				<label for="email" class="block text-sm font-semibold mb-2"
+					>Correo Electrónico</label
+				>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					class="w-full px-4 py-2 rounded-lg bg-transparent border-2 border-rose_gold dark:border-delft_blue focus:outline-none focus:ring-2 focus:ring-atomic_tangerine text-rose_gold dark:text-delft_blue"
+				/>
+			</div>
+			<div class="mb-6">
+				<label for="password" class="block text-sm font-semibold mb-2"
+					>Contraseña</label
+				>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					class="w-full px-4 py-2 rounded-lg bg-transparent border-2 border-rose_gold dark:border-delft_blue focus:outline-none focus:ring-2 focus:ring-atomic_tangerine text-rose_gold dark:text-delft_blue"
+				/>
+			</div>
+			<button
+				type="submit"
+				class="w-full px-6 py-3 rounded-full text-lg font-semibold bg-rose_gold text-white dark:bg-delft_blue dark:text-white transition-colors hover:bg-atomic_tangerine dark:hover:bg-atomic_tangerine"
+			>
+				Iniciar Sesión
+			</button>
+		</form>
+	</div>
+</TarjetaAdaptable>

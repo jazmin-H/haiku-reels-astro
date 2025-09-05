@@ -1,0 +1,95 @@
+---
+import SeccionInstantanea from '../../layouts/componentes/seccion-instantanea.astro';
+import TarjetaAdaptable from '../../layouts/componentes/tarjeta-adaptable.astro';
+
+interface Props {
+	mostrarLogin?: boolean;
+}
+
+const { mostrarLogin = false } = Astro.props;
+---
+
+<SeccionInstantanea>
+	<TarjetaAdaptable>
+		<div
+			class="relative h-full w-full tablet:flex tablet:flex-col tablet:justify-center tablet:items-center bg-transparent"
+		>
+			<div
+				class="h-full w-full tablet:w-[41.5vh] tablet:h-[90vh] tablet:rounded-[2rem] bg-delft_blue dark:bg-pinky_cream flex flex-col items-center justify-between p-8 text-rose_gold dark:text-delft_blue"
+			>
+				<!-- Título y eslogan -->
+				<div class="flex flex-col items-center justify-center h-full text-center">
+					<h1 class="text-5xl font-bold tablet:text-7xl">Haiku Reels</h1>
+					<p class="mt-4 text-sm font-semibold tablet:text-base">
+						La poesía es un estado del alma,
+						<br />no una forma literaria
+					</p>
+
+					<!-- Pájaro de origami (SVG) -->
+					<div class="my-8">
+						<svg
+							class="w-32 h-32 tablet:w-48 tablet:h-48"
+							viewBox="0 0 200 200"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M100 100 L50 150 L150 150 Z"
+								fill="#FBE2D0"
+								class="dark:fill-[#41436A]"
+							></path>
+							<path
+								d="M100 100 L150 150 L150 50 Z"
+								fill="#E84F66"
+								class="dark:fill-[#FBE2D0]"
+							></path>
+							<path
+								d="M100 100 L50 150 L50 50 Z"
+								fill="#FBE2D0"
+								class="dark:fill-[#41436A]"
+							></path>
+							<path
+								d="M150 50 L100 100 L150 150 Z"
+								fill="#E84F66"
+								class="dark:fill-[#FBE2D0]"
+							></path>
+							<path
+								d="M50 50 L100 100 L150 50 Z"
+								fill="#FBE2D0"
+								class="dark:fill-[#41436A]"
+							></path>
+							<circle cx="155" cy="45" r="5" fill="#3D3B43"></circle>
+						</svg>
+					</div>
+				</div>
+
+				<!-- Botones de bienvenida -->
+				<div class="flex flex-col items-center justify-center p-8 text-rose_gold dark:text-delft_blue">
+					<p class="text-xl font-semibold text-center mb-4">
+						¡Hola!
+						<br />
+						Bienvenido a Haiku Reels.
+					</p>
+					<div class="flex flex-col space-y-4 w-full">
+						<a
+							href="/autenticacion/register"
+							class="w-full text-center px-6 py-3 rounded-full text-lg font-semibold border-2 border-rose_gold text-rose_gold dark:border-delft_blue dark:text-delft_blue transition-colors hover:bg-rose_gold hover:text-white dark:hover:bg-delft_blue dark:hover:text-white"
+						>
+							Registrarte
+						</a>
+						<span
+							class="text-center text-sm font-semibold text-rose_gold dark:text-delft_blue"
+						>
+							o
+						</span>
+						<a
+							href="/autenticacion/login"
+							class="w-full text-center px-6 py-3 rounded-full text-lg font-semibold border-2 border-rose_gold text-rose_gold dark:border-delft_blue dark:text-delft_blue transition-colors hover:bg-rose_gold hover:text-white dark:hover:bg-delft_blue dark:hover:text-white"
+						>
+							Iniciar Sesión
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</TarjetaAdaptable>
+</SeccionInstantanea>

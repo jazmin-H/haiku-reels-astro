@@ -1,0 +1,15 @@
+---
+import EstructuraHTMLBase from '../../layouts/estructura-base-para-todo-el-sitio.astro';
+import SeccionTipoTarjetaParaReel from '../../layouts/seccion-para-cada-tarjeta-reel.astro';
+import EstructuraPrincipalParaEfectoReel from '../../layouts/estructura-principal-para-efecto-reel.astro';
+import LoginForm from '../../components/autenticacion-de-usuario/LoginForm.astro';
+---
+<EstructuraHTMLBase>
+	<EstructuraPrincipalParaEfectoReel>
+		<SeccionTipoTarjetaParaReel>
+			<div class="h-full flex items-center justify-center">
+				<LoginForm />
+			</div>
+		</SeccionTipoTarjetaParaReel>
+	</EstructuraPrincipalParaEfectoReel>
+</EstructuraHTMLBase>
