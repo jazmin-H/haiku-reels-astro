@@ -26,7 +26,7 @@ export default function RegisterForm() {
   const onSubmit = async (data) => {
     // Aquí es donde enviarías los datos a tu backend.
     try {
-      console.log(data);
+      
       const response = await axios.post(
         "http://localhost:4321/haiku-reels-astro/api/autenticacion/registro",
         data,
@@ -37,7 +37,11 @@ export default function RegisterForm() {
         }
       );
       console.log(response.data);
+      if (response.data.status=="success"){
+         //redurect en caso de registro exitoso
+          window.location.href='http://localhost:4321/haiku-reels-astro';
 
+      }
       /*setError('username', {
         type: 'manual',
         message: 'Este nombre de usuario ya está en uso. ¡Prueba otro!',
