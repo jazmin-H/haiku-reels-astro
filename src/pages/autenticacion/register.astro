@@ -2,13 +2,14 @@
 import EstructuraHTMLBase from '../../layouts/estructura-base-para-todo-el-sitio.astro';
 import SeccionTipoTarjetaParaReel from '../../layouts/seccion-para-cada-tarjeta-reel.astro';
 import EstructuraPrincipalParaEfectoReel from '../../layouts/estructura-principal-para-efecto-reel.astro';
-import RegisterForm from '../../components/autenticacion-de-usuario/RegisterForm.astro';
+//import RegisterForm from '../../components/autenticacion-de-usuario/RegisterForm.astro';
+import RegisterForm from '../../components/formularioRegistro.jsx';
 ---
 <EstructuraHTMLBase>
 	<EstructuraPrincipalParaEfectoReel>
 		<SeccionTipoTarjetaParaReel>
 			<div class="h-full flex items-center justify-center">
-				<RegisterForm />
+				<RegisterForm client:load />
 			</div>
 		</SeccionTipoTarjetaParaReel>
 	</EstructuraPrincipalParaEfectoReel>

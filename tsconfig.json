@@ -1,17 +1,36 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"compilerOptions": {
-		"strictNullChecks": true,
-		"baseUrl": ".",
-		"paths": {
-			"@layouts/*": ["src/layouts/*"],
-			"@config/*": ["src/config/*"],
-			"@content/*": ["src/content/*"],
-			"@backgrounds/*": ["src/backgrounds/*"],
-			"@components/*": ["src/components/*"],
-			"@utils/*": ["src/utils/*"],
-			"@styles/*": ["src/styles/*"]
-		}
-	},
-	"include": ["src/**/*", "generate-haikus-json.ts"]
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@content/*": [
+        "src/content/*"
+      ],
+      "@backgrounds/*": [
+        "src/backgrounds/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": [
+    "src/**/*",
+    "generate-haikus-json.ts"
+  ]
 }
