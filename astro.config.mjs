@@ -11,5 +11,13 @@ export default defineConfig({
     base: "/haiku-reels-astro",
     integrations: [mdx(), sitemap(), tailwind(), react()],
     output: 'server',
+    session: {
+       cookie: {
+     name: "my-session-cookie",
+     //sameSite: "lax",
+     secure: true,
+     ttl: 60 * 60 * 24 * 7, // 7 days
+   }
+    },
   
 });

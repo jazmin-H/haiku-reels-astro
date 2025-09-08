@@ -89,6 +89,8 @@ erroresArray.forEach((error) => {
     const authData = await pb.collection('users').authWithPassword(email, password);
     locals.pb.authStore.save(authData.token, authData.record);
 
+    await context.session?.set('user', authData.record);
+    
     // 9. Devuelve una respuesta de éxito con los datos del usuario
     return new Response(JSON.stringify({
       status: 'success',

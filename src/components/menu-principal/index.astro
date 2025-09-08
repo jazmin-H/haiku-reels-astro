@@ -4,6 +4,10 @@ import MenuInfo from "./menu-info.astro";
 import MenuMode from "./menu-mode.astro";
 import MenuSearch from "./menu-search.astro";
 import MenuHome from "./menu-home.astro";
+import MenuLogout from "./menu-logout.astro";
+import MenuLogin from "./menu-login.astro";
+import MenuPerfil from "./menu-perfil.astro";
+const user  = Astro.locals.pb.authStore.baseModel
 ---
 
 <MenuPrincipal>
@@ -11,4 +15,6 @@ import MenuHome from "./menu-home.astro";
 	<MenuMode />
 	<MenuSearch />
 	<MenuHome />
+{user ?   <MenuLogout user={user} />  : <MenuLogin user={user} />}
+{user && <MenuPerfil />}
 </MenuPrincipal>
