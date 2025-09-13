@@ -1,16 +1,18 @@
-<li>
-    <a href="/haiku-reels-astro/autenticacion/login/">
-  <svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 448 512"
-  style="width: 2rem; height: 2rem;"
-  class="fill-current text-atomic_tangerine dark:text-rose_gold w-8 h-8"
->
-  <!--!Font Awesome Free - https://fontawesome.com/ License: https://fontawesome.com/license/free -->
-  <path
-    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm89.6 32h-11.7c-22.2 10.3-46.9 16-73.9 16s-51.7-5.7-73.9-16h-11.7C64.5 288 0 352.5 0 432v16c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64v-16c0-79.5-64.5-144-144.4-144z"
-  />
-</svg>
+---
+const { user } = Astro.props;
+---
 
-    </a>
+{user && (
+<li>
+  <a href="/haiku-reels-astro/perfil/">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512"
+      style="width: 2rem; height: 2rem;"
+      class="fill-current text-atomic_tangerine dark:text-rose_gold w-8 h-8"
+    >
+      <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm89.6 32h-11.7c-22.2 10.3-46.9 16-73.9 16s-51.7-5.7-73.9-16h-11.7C64.5 288 0 352.5 0 432v16c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64v-16c0-79.5-64.5-144-144.4-144z" />
+    </svg>
+  </a>
 </li>
+)}

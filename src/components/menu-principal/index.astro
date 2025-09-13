@@ -7,14 +7,22 @@ import MenuHome from "./menu-home.astro";
 import MenuLogout from "./menu-logout.astro";
 import MenuLogin from "./menu-login.astro";
 import MenuPerfil from "./menu-perfil.astro";
-const user  = Astro.locals.pb.authStore.baseModel
+
+// Obtenemos el usuario logueado desde PocketBase
+const user = Astro.locals.pb.authStore.baseModel;
 ---
 
 <MenuPrincipal>
-	<MenuInfo />
-	<MenuMode />
-	<MenuSearch />
-	<MenuHome />
-{user ?   <MenuLogout user={user} />  : <MenuLogin user={user} />}
-{user && <MenuPerfil />}
+  <MenuInfo />
+  <MenuMode />
+  <MenuSearch />
+
+  <!-- Logo del home / perfil dinámico según sesión -->
+  <MenuHome user={user} />
+
+  <!-- Botón login o logout -->
+  {user ? <MenuLogout user={user} /> : <MenuLogin user={user} />}
+
+  <!-- Icono de perfil solo si hay usuario -->
+  {user && <MenuPerfil user={user} />}
 </MenuPrincipal>
