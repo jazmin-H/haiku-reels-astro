@@ -15,81 +15,140 @@ const { mostrarLogin = false } = Astro.props;
 			class="relative h-full w-full tablet:flex tablet:flex-col tablet:justify-center tablet:items-center bg-transparent"
 		>
 			<div
-				class="h-full w-full tablet:w-[41.5vh] tablet:h-[90vh] tablet:rounded-[2rem] bg-delft_blue dark:bg-pinky_cream flex flex-col items-center justify-between p-8 text-rose_gold dark:text-delft_blue"
+				class="relative h-full w-full tablet:w-[41.5vh] tablet:h-[90vh] tablet:rounded-[2rem] bg-delft_blue dark:#fd9678ff flex flex-col items-center justify-between p-8 text-rose_gold dark:text-delft_blue overflow-hidden"
 			>
-				<!-- Título y eslogan -->
-				<div class="flex flex-col items-center justify-center h-full text-center">
-					<h1 class="text-5xl font-bold tablet:text-7xl">Haiku Reels</h1>
-					<p class="mt-4 text-sm font-semibold tablet:text-base">
-						La poesía es un estado del alma,
-						<br />no una forma literaria
-					</p>
+                <div class="animacion-fondo">
+                    <img src="/haiku-reels-astro/imgs/arbol-cerezos.png" alt="Rama de cerezo" class="arbol-cerezo-svg" />
 
-					<!-- Pájaro de origami (SVG) -->
-					<div class="my-8">
-						<svg
-							class="w-32 h-32 tablet:w-48 tablet:h-48"
-							viewBox="0 0 200 200"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M100 100 L50 150 L150 150 Z"
-								fill="#FBE2D0"
-								class="dark:fill-[#41436A]"
-							></path>
-							<path
-								d="M100 100 L150 150 L150 50 Z"
-								fill="#E84F66"
-								class="dark:fill-[#FBE2D0]"
-							></path>
-							<path
-								d="M100 100 L50 150 L50 50 Z"
-								fill="#FBE2D0"
-								class="dark:fill-[#41436A]"
-							></path>
-							<path
-								d="M150 50 L100 100 L150 150 Z"
-								fill="#E84F66"
-								class="dark:fill-[#FBE2D0]"
-							></path>
-							<path
-								d="M50 50 L100 100 L150 50 Z"
-								fill="#FBE2D0"
-								class="dark:fill-[#41436A]"
-							></path>
-							<circle cx="155" cy="45" r="5" fill="#3D3B43"></circle>
-						</svg>
-					</div>
-				</div>
+                    <div class="petalos-container">
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                        <div class="petalo"></div>
+                    </div>
+                </div>
+                <div class="contenido-frontal">
+                    <div class="flex flex-col items-center justify-center h-full text-center">
+                        <h1 class="text-xl font-bold tablet:text-4xl">
+                        ¡Hola! 
+                        Bienvenido a Haiku Reels</h1>
+                    </div>
 
-				<!-- Botones de bienvenida -->
-				<div class="flex flex-col items-center justify-center p-8 text-rose_gold dark:text-delft_blue">
-					<p class="text-xl font-semibold text-center mb-4">
-						¡Hola!
-						<br />
-						Bienvenido a Haiku Reels.
-					</p>
-					<div class="flex flex-col space-y-4 w-full">
-						<a
-							href="/autenticacion/register"
-							class="w-full text-center px-6 py-3 rounded-full text-lg font-semibold border-2 border-rose_gold text-rose_gold dark:border-delft_blue dark:text-delft_blue transition-colors hover:bg-rose_gold hover:text-white dark:hover:bg-delft_blue dark:hover:text-white"
-						>
-							Registrarte
-						</a>
-						<span
-							class="text-center text-sm font-semibold text-rose_gold dark:text-delft_blue"
-						>
-							o
-						</span>
-						<a
-							href="/autenticacion/login"
-							class="w-full text-center px-6 py-3 rounded-full text-lg font-semibold border-2 border-rose_gold text-rose_gold dark:border-delft_blue dark:text-delft_blue transition-colors hover:bg-rose_gold hover:text-white dark:hover:bg-delft_blue dark:hover:text-white"
-						>
-							Iniciar Sesión
-						</a>
-					</div>
-				</div>
+                    <div class="flex flex-col items-center justify-center p-20 text-rose_gold dark:text-delft_blue">
+                        <div class="flex flex-col space-y-4 w-full">
+                            <a
+                                href="/haiku-reels-astro/autenticacion/register"
+                                class="w-full text-center px-8 py-2 rounded-full text-lg font-semibold border-2 border-rose_gold text-rose_gold dark:border-delft_blue dark:text-delft_blue transition-colors hover:bg-rose_gold hover:text-white dark:hover:bg-delft_blue dark:hover:text-white"
+                            >
+                                Registrarte 
+                            </a>
+                            <a
+                                href="/haiku-reels-astro/autenticacion/login"
+                                class="w-full text-center px8 py-2 rounded-full text-lg font-semibold border-2 border-rose_gold text-rose_gold dark:border-delft_blue dark:text-delft_blue transition-colors hover:bg-rose_gold hover:text-white dark:hover:bg-delft_blue dark:hover:text-white"
+                            >
+                                Iniciar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</TarjetaAdaptable>
 </SeccionInstantanea>
+
+<style>
+/* Contenedor principal de la animación */
+.animacion-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Estilo y posición del árbol */
+.arbol-cerezo-svg {
+    position: absolute;
+    top: -10%;
+    left: -25%;
+    width: 150%;
+    max-width: none;
+    opacity: 0.15;
+    animation: viento 10s ease-in-out infinite alternate;
+}
+@keyframes viento {
+    from {
+        /* Estado inicial: rota un poco a la izquierda */
+        transform: rotate(-15deg);
+    }
+    to {
+        /* Estado final: rota un poco a la derecha */
+        transform: rotate(-10deg) translateX(-5%);
+    }
+}
+
+/* Contenedor que abarca el área donde caen los pétalos */
+.petalos-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo base de cada pétalo */
+.petalo {
+    position: absolute;
+    top: -10%;
+    background-color: #ffb6b5ff;
+    width: 8px;
+    height: 12px;
+    border-radius: 40% 70% / 70% 40%;
+    opacity: 0.7;
+    animation: caer linear infinite;
+}
+
+/* Definición de la animación de caída */
+@keyframes caer {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(110vh) translateX(50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Hacemos que cada pétalo sea único usando :nth-child */
+.petalo:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 0s; }
+.petalo:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 3s; width: 6px; height: 9px; }
+.petalo:nth-child(3) { left: 30%; animation-duration: 18s; animation-delay: 5s; }
+.petalo:nth-child(4) { left: 40%; animation-duration: 14s; animation-delay: 8s; width: 7px; height: 11px; }
+.petalo:nth-child(5) { left: 50%; animation-duration: 20s; animation-delay: 1s; }
+.petalo:nth-child(6) { left: 60%; animation-duration: 13s; animation-delay: 4s; width: 6px; height: 9px; }
+.petalo:nth-child(7) { left: 70%; animation-duration: 16s; animation-delay: 7s; }
+.petalo:nth-child(8) { left: 80%; animation-duration: 11s; animation-delay: 2s; width: 7px; height: 11px; }
+.petalo:nth-child(9) { left: 90%; animation-duration: 19s; animation-delay: 6s; }
+.petalo:nth-child(10) { left: 15%; animation-duration: 17s; animation-delay: 9s; }
+
+/* Contenedor para el texto y botones */
+.contenido-frontal {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+</style>
