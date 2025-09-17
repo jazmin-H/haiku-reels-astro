@@ -13,9 +13,9 @@ async function globalSetup(config?: FullConfig) {
 
     // 2. Crea usuarios de prueba
     const testUsers = [
-        { email: "test1@example.com", password: "password123" },
-        { email: "test2@example.com", password: "password456" },
-        { email: "test3@example.com", password: "password789" },
+        { username: "shotoTodoroki", email: "shoto@gmail.com", password: "shoto123", passwordConfirm: "shoto123" },
+        { username: "izukuMidoriya", email: "izuku@gmail.com", password: "izuku123", passwordConfirm: "izuku123" },
+        { username: "katsukiBakugo", email: "katsuki@gmail.com", password: "katsuki123", passwordConfirm: "katsuki123" },
 
 
     ];

@@ -6,63 +6,69 @@ import SeccionTipoTarjetaParaReel from "@layouts/seccion-para-cada-tarjeta-reel.
 const user = Astro.locals.pb.authStore.model;
 
 if (!user) {
-    return Astro.redirect("/haiku-reels-astro/autenticacion/login");
+	return Astro.redirect("/haiku-reels-astro/autenticacion/login");
 }
 
 // Función para generar un color de fondo dinámico basado en el nombre de usuario
 function stringToColor(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    let color = '#';
-    for (let i = 0; i < 3; i++) {
-        let value = (hash >> (i * 8)) & 0xFF;
-        color += ('00' + value.toString(16)).substr(-2);
-    }
-    return color;
+	let hash = 0;
+	for (let i = 0; i < str.length; i++) {
+		hash = str.charCodeAt(i) + ((hash << 5) - hash);
+	}
+	let color = "#";
+	for (let i = 0; i < 3; i++) {
+		let value = (hash >> (i * 8)) & 0xff;
+		color += ("00" + value.toString(16)).substr(-2);
+	}
+	return color;
 }
 
 const avatarBgColor = stringToColor(user.username);
 ---
 
 <EstructuraHTMLBase>
-    <EstructuraPrincipalParaEfectoReel>
-        <SeccionTipoTarjetaParaReel>
-            <div class="h-full flex flex-col justify-start items-center p-8 bg-delft_blue">
-                <section class="seccion-perfil w-full max-w-lg mb-8 p-6 text-atomic_tangerine">
-                    <div class="perfil-info py-6">
-                        <div class="flex flex-col items-center">
-                            <div 
-                                class="rounded-full w-32 h-32 flex items-center justify-center mb-4"
-                                style={`background-color: ${avatarBgColor};`}
-                            >
-                                <span class="text-white text-4xl font-bold">
-                                    {user.username.charAt(0).toUpperCase()}
-                                </span>
-                            </div>
-                            <h1 class="text-3xl font-bold text-atomic_tangerine">
-                                {user.username}
-                            </h1>
-                        </div>
-                    </div>
-                </section>
+	<EstructuraPrincipalParaEfectoReel>
+		<SeccionTipoTarjetaParaReel>
+			<div class="h-full flex flex-col justify-start items-center p-8 bg-delft_blue">
+				<section class="seccion-perfil w-full max-w-lg mb-8 p-6 text-atomic_tangerine">
+					<div class="perfil-info py-6">
+						<div class="flex flex-col items-center">
+							<div
+								class="rounded-full w-32 h-32 flex items-center justify-center mb-4"
+								style={`background-color: ${avatarBgColor};`}
+							>
+								<span class="text-white text-4xl font-bold">
+									{user.username.charAt(0).toUpperCase()}
+								</span>
+							</div>
+							<h1 class="text-3xl font-bold text-atomic_tangerine">
+								{user.username}
+							</h1>
+						</div>
+					</div>
+				</section>
 
-                <section class="seccion-contenido w-full max-w-lg flex flex-col tablet:flex-row tablet:justify-center tablet:space-x-4 space-y-4 tablet:space-y-0 text-rose_gold">
-                    <div class="favoritos flex-1 p-2 border rounded-lg bg-paynes_grey border-rose_gold">
-                        <h2 class="text-xl font-semibold text-atomic_tangerine mb-2">Favoritos</h2>
-                        <div class="haikus-list border border-dashed border-gray-400 p-4 rounded-md h-32 flex items-center justify-center">
-                            <p class="text-gray-400">Tus Haikus favoritos aparecerán aquí.</p>
-                        </div>
-                    </div>
-                    <div class="mis-haikus flex-1 p-2 border rounded-lg bg-paynes_grey border-rose_gold">
-                        <h2 class="text-xl font-semibold text-atomic_tangerine mb-2">Mis Haikus</h2>
-                        <div class="haikus-list border border-dashed border-gray-400 p-4 rounded-md h-32 flex items-center justify-center">
-                            <p class="text-gray-400">Los Haikus que has creado aparecerán aquí.</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </SeccionTipoTarjetaParaReel>
-    </EstructuraPrincipalParaEfectoReel>
+				<section
+					class="seccion-contenido w-full max-w-lg flex flex-col tablet:flex-row tablet:justify-center tablet:space-x-4 space-y-4 tablet:space-y-0 text-rose_gold"
+				>
+					<div class="favoritos flex-1 p-2 border rounded-lg bg-paynes_grey border-rose_gold">
+						<h2 class="text-xl font-semibold text-atomic_tangerine mb-2">Favoritos</h2>
+						<div
+							class="haikus-list border border-dashed border-gray-400 p-4 rounded-md h-32 flex items-center justify-center"
+						>
+							<p class="text-gray-400">Tus Haikus favoritos aparecerán aquí.</p>
+						</div>
+					</div>
+					<div class="mis-haikus flex-1 p-2 border rounded-lg bg-paynes_grey border-rose_gold">
+						<h2 class="text-xl font-semibold text-atomic_tangerine mb-2">Mis Haikus</h2>
+						<div
+							class="haikus-list border border-dashed border-gray-400 p-4 rounded-md h-32 flex items-center justify-center"
+						>
+							<p class="text-gray-400">Los Haikus que has creado aparecerán aquí.</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</SeccionTipoTarjetaParaReel>
+	</EstructuraPrincipalParaEfectoReel>
 </EstructuraHTMLBase>
