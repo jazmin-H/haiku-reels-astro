@@ -18,7 +18,7 @@ export default function RegisterForm() {
   const [submissionStatus, setSubmissionStatus] = useState(null);
 
   // 2. Inicializa react-hook-form con el esquema de Zod
-  const { register, handleSubmit,setError, formState: { errors } } = useForm({
+  const { register, handleSubmit, setError, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });
 
@@ -26,7 +26,7 @@ export default function RegisterForm() {
   const onSubmit = async (data) => {
     // Aquí es donde enviarías los datos a tu backend.
     try {
-      
+
       const response = await axios.post(
         "http://localhost:4321/haiku-reels-astro/api/autenticacion/registro",
         data,
@@ -37,9 +37,9 @@ export default function RegisterForm() {
         }
       );
       console.log(response.data);
-      if (response.data.status=="success"){
-         //redurect en caso de registro exitoso
-          window.location.href='http://localhost:4321/haiku-reels-astro';
+      if (response.data.status == "success") {
+        //redurect en caso de registro exitoso
+        window.location.href = 'http://localhost:4321/haiku-reels-astro';
 
       }
       /*setError('username', {
@@ -48,17 +48,17 @@ export default function RegisterForm() {
       }, { shouldFocus: true }); // Opcional: enfocar el campo*/
     } catch (error) {
       console.log(error.response.data);
-      for (let key in error.response.data.errors){
-         setError(key , {
-        type: 'manual',
-        message: error.response.data.errors[key],
-      }, { shouldFocus: true }); // Opcional: enfocar el campo */
-      console.log(key);
+      for (let key in error.response.data.errors) {
+        setError(key, {
+          type: 'manual',
+          message: error.response.data.errors[key],
+        }, { shouldFocus: true }); // Opcional: enfocar el campo */
+        console.log(key);
       }
-     
-      
+
+
     }
-    
+
     // Por ahora, solo mostraremos una alerta de éxito.
     console.log('Datos del formulario:', data);
     setSubmissionStatus('success');
@@ -74,9 +74,8 @@ export default function RegisterForm() {
             Nombre de usuario
           </label>
           <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 -700 leading-tight focus:outline-none focus:shadow-outline ${
-              errors.username ? 'border-red-500' : ''
-            }`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 -700 leading-tight focus:outline-none focus:shadow-outline ${errors.username ? 'border-red-500' : ''
+              }`}
             id="username"
             type="text"
             placeholder="Nombre de usuario"
@@ -91,9 +90,8 @@ export default function RegisterForm() {
             Correo electrónico
           </label>
           <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 -700 leading-tight focus:outline-none focus:shadow-outline ${
-              errors.email ? 'border-red-500' : ''
-            }`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 -700 leading-tight focus:outline-none focus:shadow-outline ${errors.email ? 'border-red-500' : ''
+              }`}
             id="email"
             type="email"
             placeholder="correo@ejemplo.com"
@@ -108,9 +106,8 @@ export default function RegisterForm() {
             Contraseña
           </label>
           <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 -700 leading-tight focus:outline-none focus:shadow-outline ${
-              errors.password ? 'border-red-500' : ''
-            }`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 -700 leading-tight focus:outline-none focus:shadow-outline ${errors.password ? 'border-red-500' : ''
+              }`}
             id="password"
             type="password"
             placeholder="********"
