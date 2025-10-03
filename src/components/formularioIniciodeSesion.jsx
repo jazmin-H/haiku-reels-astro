@@ -30,7 +30,6 @@ export default function LoginForm() {
       data,
       { headers: { 'Content-Type': 'application/json' } }
     );
-
     // home
     window.location.href = "/haiku-reels-astro/";
 

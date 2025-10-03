@@ -10,7 +10,7 @@ export default defineConfig({
     site: "https://joackob.github.io",
     base: "/haiku-reels-astro",
     integrations: [mdx(), sitemap(), tailwind(), react()],
-    output: 'server',
+    output: 'static',
     session: {
        cookie: {
      name: "my-session-cookie",

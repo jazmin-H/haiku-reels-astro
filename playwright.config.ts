@@ -1,6 +1,5 @@
 // playwright.config.ts
 import { defineConfig, devices } from "@playwright/test";
-import "dotenv/config"; // 👈 importante: carga .env automáticamente
 
 
 export default defineConfig({
@@ -24,10 +23,10 @@ export default defineConfig({
 
 
 	projects: [
+
 		{
-			name: "chromium",
-			use: { ...devices["Desktop Chrome"] },
-		},
+			name: "firefox", use: { headless: true}
+		}
 	],
 
 
