@@ -24,45 +24,34 @@ export default function RegisterForm() {
 
   // 3. Define la función que se ejecuta al enviar el formulario
   const onSubmit = async (data) => {
-    // Aquí es donde enviarías los datos a tu backend.
     try {
-
       const response = await axios.post(
-        "http://localhost:4321/haiku-reels-astro/api/autenticacion/registro",
-        data,
+        "http://127.0.0.1:8090/api/collections/users/records",
         {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
+          username: data.username,
+          email: data.email,
+          password: data.password,
+          passwordConfirm: data.password,
+        },
+        { headers: { "Content-Type": "application/json" } }
       );
-      console.log(response.data);
-      if (response.data.status == "success") {
-        //redurect en caso de registro exitoso
-        window.location.href = 'http://localhost:4321/haiku-reels-astro';
 
-      }
-      /*setError('username', {
-        type: 'manual',
-        message: 'Este nombre de usuario ya está en uso. ¡Prueba otro!',
-      }, { shouldFocus: true }); // Opcional: enfocar el campo*/
+      console.log("✅ Registro exitoso:", response.data);
+      window.location.href = 'http://localhost:4321/haiku-reels-astro';
+
     } catch (error) {
-      console.log(error.response.data);
-      for (let key in error.response.data.errors) {
-        setError(key, {
-          type: 'manual',
-          message: error.response.data.errors[key],
-        }, { shouldFocus: true }); // Opcional: enfocar el campo */
-        console.log(key);
+      console.error("❌ Error en registro:", error.response?.data);
+      if (error.response?.data?.data) {
+        for (let key in error.response.data.data) {
+          setError(key, {
+            type: "manual",
+            message: error.response.data.data[key].message,
+          });
+        }
       }
-
-
     }
-
-    // Por ahora, solo mostraremos una alerta de éxito.
-    console.log('Datos del formulario:', data);
-    setSubmissionStatus('success');
   };
+
 
   return (
     <div className="p-8 rounded-lg max-w-sm mx-auto">
