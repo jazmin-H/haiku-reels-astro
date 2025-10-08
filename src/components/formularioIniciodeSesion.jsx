@@ -41,6 +41,8 @@ export default function LoginForm() {
     }
   };
 
+
+  
   return (
     <div className="p-8 rounded-lg max-w-sm mx-auto">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Iniciar Sesion</h2>

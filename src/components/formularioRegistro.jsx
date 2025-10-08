@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import axios from "axios";
+import pb from '../utils/matterjs/pocketbase.js'; // ✅ usamos PocketBase directamente, no axios
 
-// 1. Define el esquema de validación con Zod
+// 1. Esquema de validación con Zod
 const schema = z.object({
   username: z.string().min(3, 'El nombre de usuario debe tener al menos 3 caracteres.'),
   email: z.string().email('Ingresa un correo electrónico válido.'),
@@ -17,41 +17,49 @@ const schema = z.object({
 export default function RegisterForm() {
   const [submissionStatus, setSubmissionStatus] = useState(null);
 
-  // 2. Inicializa react-hook-form con el esquema de Zod
+  // 2. Inicializa react-hook-form con zod
   const { register, handleSubmit, setError, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
   });
 
-  // 3. Define la función que se ejecuta al enviar el formulario
+  // 3. Registro del usuario con PocketBase (modo cliente)
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8090/api/collections/users/records",
-        {
-          username: data.username,
-          email: data.email,
-          password: data.password,
-          passwordConfirm: data.password,
-        },
-        { headers: { "Content-Type": "application/json" } }
-      );
+      // ✅ Crear el usuario directamente con PocketBase SDK
+      const record = await pb.collection('users').create({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        passwordConfirm: data.password,
+      });
 
-      console.log("✅ Registro exitoso:", response.data);
+      console.log("✅ Registro exitoso:", record);
+      setSubmissionStatus('success');
+
+      // Opcional: iniciar sesión automáticamente
+      await pb.collection('users').authWithPassword(data.email, data.password);
+
+      // Redirigir después de registrar
       window.location.href = 'http://localhost:4321/haiku-reels-astro';
-
     } catch (error) {
-      console.error("❌ Error en registro:", error.response?.data);
-      if (error.response?.data?.data) {
-        for (let key in error.response.data.data) {
+      console.error("❌ Error en registro:", error);
+
+      // Manejo de errores de PocketBase
+      if (error?.data?.data) {
+        for (let key in error.data.data) {
           setError(key, {
             type: "manual",
-            message: error.response.data.data[key].message,
+            message: error.data.data[key].message,
           });
         }
+      } else {
+        setError("email", {
+          type: "manual",
+          message: "Error desconocido al registrar el usuario.",
+        });
       }
     }
   };
-
 
   return (
     <div className="p-8 rounded-lg max-w-sm mx-auto">

@@ -1,4 +1,5 @@
 ---
+// menu-principal/index.astro
 import MenuPrincipal from "@components/menu-principal/menu.astro";
 import MenuInfo from "./menu-info.astro";
 import MenuMode from "./menu-mode.astro";
@@ -7,22 +8,44 @@ import MenuHome from "./menu-home.astro";
 import MenuLogout from "./menu-logout.astro";
 import MenuLogin from "./menu-login.astro";
 import MenuPerfil from "./menu-perfil.astro";
+import pb from "../../utils/matterjs/pocketbase.js";
 
-// Obtenemos el usuario logueado desde PocketBase
-const user = Astro.locals.pb.authStore.baseModel;
+let user = null;
+
+// Esto solo se ejecutará en el cliente
 ---
+<div id="menu-dinamico">
+  <MenuPrincipal client:load>
+    <MenuInfo />
+    <MenuMode />
+    <MenuSearch />
 
-<MenuPrincipal>
-  <MenuInfo />
-  <MenuMode />
-  <MenuSearch />
+    <MenuHome user={user} />
 
-  <!-- Logo del home / perfil dinámico según sesión -->
-  <MenuHome user={user} />
+    {user ? (
+      <>
+        <MenuPerfil user={user} />
+        <MenuLogout user={user} />
+      </>
+    ) : (
+      <MenuLogin />
+    )}
+  </MenuPrincipal>
+</div>
 
-  <!-- Botón login o logout -->
-  {user ? <MenuLogout user={user} /> : <MenuLogin user={user} />}
+<script type="module">
+  import pb from '../../utils/matterjs/pocketbase.js';
 
-  <!-- Icono de perfil solo si hay usuario -->
-  {user && <MenuPerfil user={user} />}
-</MenuPrincipal>
+  // Solo se ejecuta en el cliente
+  let user = null;
+
+  try {
+    pb.authStore.loadFromCookie(document.cookie);
+    if (pb.authStore.isValid) {
+      user = pb.authStore.model;
+      document.querySelector("#menu-dinamico")?.setAttribute("data-user", user.username);
+    }
+  } catch (err) {
+    console.error("Error al obtener sesión:", err);
+  }
+</script>
