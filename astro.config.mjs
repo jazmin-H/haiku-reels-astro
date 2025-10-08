@@ -7,17 +7,16 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://joackob.github.io",
-    base: "/haiku-reels-astro",
-    integrations: [mdx(), sitemap(), tailwind(), react()],
-    output: 'static',
-    session: {
-       cookie: {
-     name: "my-session-cookie",
-     //sameSite: "lax",
-     secure: true,
-     ttl: 60 * 60 * 24 * 7, // 7 days
-   }
-    },
-  
+	site: "https://joackob.github.io",
+	base: "/haiku-reels-astro",
+	integrations: [mdx(), sitemap(), tailwind(), react()],
+	output: "static",
+	session: {
+		cookie: {
+			name: "my-session-cookie",
+			//sameSite: "lax",
+			secure: true,
+			ttl: 60 * 60 * 24 * 7, // 7 days
+		},
+	},
 });
